@@ -14,6 +14,7 @@ profile:
     <p>黑龙江哈尔滨人</p>
     <p>中国地质大学（北京）教授</p>
     <p>中国科学院院士（2013年当选）</p>
+    <p><span class="memorial-stamp">院士</span></p>
     <p>北京</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"

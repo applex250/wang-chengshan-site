@@ -152,6 +152,85 @@ footer a:hover {
   margin-top: 0.4rem;
 }
 
+/* ========== 7b. CV 页经历时间轴 ========== */
+.cv .list-group-item {
+  position: relative;
+  padding-left: 1.6rem;
+  border-left: 1px solid var(--memorial-line);
+  margin-left: 0.35rem;
+}
+
+.cv .list-group-item::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 1.1rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--memorial-gold);
+  border: 2px solid var(--memorial-paper);
+}
+
+.cv .card-title::after {
+  margin-left: 0;
+}
+
+/* ========== 7c. 新闻页时间轴年表 ========== */
+.news .memorial-timeline {
+  border-left: 1px solid var(--memorial-line);
+  margin-left: 0.35rem;
+}
+
+.news .memorial-timeline th {
+  position: relative;
+  color: var(--memorial-gold);
+  font-weight: 700;
+  padding-left: 1.4rem;
+}
+
+.news .memorial-timeline th::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 0.85em;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--memorial-red-deep);
+  border: 2px solid var(--memorial-paper);
+}
+
+.news .memorial-timeline tr:hover {
+  background: rgba(201, 162, 39, 0.06);
+}
+
+/* ========== 7d. 论文/项目/书籍展柜 ========== */
+.publications h2 {
+  position: relative;
+  padding-bottom: 0.35rem;
+}
+
+.publications h2::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: var(--memorial-gold-line);
+}
+
+/* 项目卡片:米白底 + 红系细线(展柜感) */
+.projects .card,
+.book-shelf .card {
+  background: var(--memorial-paper);
+  border: 1px solid var(--memorial-line);
+}
+
+/* 论文条目链接 hover 金色微光 */
+.publications a:hover {
+  color: var(--memorial-gold);
+}
+
 /* ========== 8. 克制动效(尊重 reduced-motion) ========== */
 @media (prefers-reduced-motion: no-preference) {
   .post,
@@ -175,5 +254,27 @@ footer a:hover {
   .card {
     transition: none;
     transform: none;
+  }
+}
+
+/* ========== 9. 移动端适配 ========== */
+@media (max-width: 576px) {
+  .memorial-stamp {
+    font-size: 0.7rem;
+    padding: 0.1em 0.4em;
+    letter-spacing: 0.2em;
+  }
+
+  .cv .list-group-item {
+    padding-left: 1.2rem;
+  }
+
+  .news .memorial-timeline th {
+    padding-left: 1.1rem;
+  }
+
+  .post-header h1::after,
+  .card-title::after {
+    width: 40px;
   }
 }

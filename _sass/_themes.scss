@@ -35,22 +35,16 @@
   --global-newsletter-text-color: #{v.$black-color};
 
   /* —— 纪念风格令牌（共和国脊梁 / 科学家纪念美学） —— */
-  --memorial-red-deep: #8b1a1a;      /* 深红主色 */
-  --memorial-red-press: #6b1414;     /* 压暗红（底） */
-  --memorial-gold: #b8860b;          /* 暗金（深） */
-  --memorial-gold-light: #c9a227;    /* 暗金（亮） */
-  --memorial-ink: #1a1a1a;           /* 炭黑正文 */
-  --memorial-grey-warm: #6e6a64;     /* 暖灰次级 */
-  --memorial-paper: #f7f3ec;         /* 米白纸张 */
-  --memorial-paper-deep: #efe9df;    /* 深一档纸张 */
+  --memorial-red-deep: #8b1a1a; /* 深红主色 */
+  --memorial-red-press: #6b1414; /* 压暗红（底） */
+  --memorial-gold: #b8860b; /* 暗金（深） */
+  --memorial-gold-light: #c9a227; /* 暗金（亮） */
+  --memorial-ink: #1a1a1a; /* 炭黑正文 */
+  --memorial-grey-warm: #6e6a64; /* 暖灰次级 */
+  --memorial-paper: #f7f3ec; /* 米白纸张 */
+  --memorial-paper-deep: #efe9df; /* 深一档纸张 */
   --memorial-line: rgba(139, 26, 26, 0.18); /* 红系细线 */
-  --memorial-gold-line: linear-gradient(
-    90deg,
-    transparent,
-    #c9a227 20%,
-    #b8860b 80%,
-    transparent
-  );
+  --memorial-gold-line: linear-gradient(90deg, transparent, #c9a227 20%, #b8860b 80%, transparent);
 
   --global-tip-block: #42b983;
   --global-tip-block-bg: #e2f5ec;

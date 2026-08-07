@@ -54,7 +54,7 @@
 
         <!-- 联系信息 -->
         {% if cv.name or cv.headline or cv.location or cv.email or cv.phone or cv.website or cv.custom_connections %}
-          <div class="card mt-3 p-3">
+          <div class="card mt-3 p-3 memorial-frame">
             <h3 id="联系信息" class="card-title font-weight-medium">联系信息</h3>
             <table class="table table-cv table-sm table-borderless">
               {% if cv.name %}
@@ -119,7 +119,7 @@
           {% assign section_title = section_pair[0] %}
           {% assign section_entries = section_pair[1] %}
 
-          <div class="card mt-3 p-3">
+          <div class="card mt-3 p-3 memorial-frame">
             <h3 id="{{ section_title }}" class="card-title font-weight-medium">{{ section_title }}</h3>
             <div>
               {% if section_title == '个人简介' %}
@@ -207,7 +207,7 @@
 
         <!-- 联系信息 -->
         {% if site.data.resume.basics %}
-          <div class="card mt-3 p-3">
+          <div class="card mt-3 p-3 memorial-frame">
             <h3 id="联系信息" class="card-title font-weight-medium">联系信息</h3>
             {% assign basics = site.data.resume.basics %}
             <table class="table table-cv table-sm table-borderless">
@@ -260,7 +260,7 @@
 
         <!-- 个人简介 -->
         {% if site.data.resume.basics.summary %}
-          <div class="card mt-3 p-3">
+          <div class="card mt-3 p-3 memorial-frame">
             <h3 id="个人简介" class="card-title font-weight-medium">个人简介</h3>
             <p>{{ site.data.resume.basics.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
           </div>
@@ -273,7 +273,7 @@
         {% assign combined_experience = work | concat: vol | al_cv_sort_by_date %}
         {% if combined_experience.size > 0 %}
           <a class="anchor" id="experience"></a>
-          <div class="card mt-3 p-3">
+          <div class="card mt-3 p-3 memorial-frame">
             <h3 id="工作经历" class="card-title font-weight-medium">工作经历</h3>
             <div>
               {% assign entries = combined_experience %}
@@ -285,7 +285,7 @@
         <!-- 教育经历 -->
         {% if site.data.resume.education.size > 0 %}
           <a class="anchor" id="education"></a>
-          <div class="card mt-3 p-3">
+          <div class="card mt-3 p-3 memorial-frame">
             <h3 id="教育经历" class="card-title font-weight-medium">教育经历</h3>
             <div>
               {% assign entries = site.data.resume.education | al_cv_sort_by_date %}
@@ -297,7 +297,7 @@
         <!-- 奖励荣誉 -->
         {% if site.data.resume.awards.size > 0 %}
           <a class="anchor" id="awards"></a>
-          <div class="card mt-3 p-3">
+          <div class="card mt-3 p-3 memorial-frame">
             <h3 id="奖励荣誉" class="card-title font-weight-medium">奖励荣誉</h3>
             <div>
               {% assign entries = site.data.resume.awards %}
@@ -309,7 +309,7 @@
         <!-- 论文 -->
         {% if site.data.resume.publications.size > 0 %}
           <a class="anchor" id="publications"></a>
-          <div class="card mt-3 p-3">
+          <div class="card mt-3 p-3 memorial-frame">
             <h3 id="论文" class="card-title font-weight-medium">论文</h3>
             <div>
               {% assign entries = site.data.resume.publications %}
@@ -321,7 +321,7 @@
         <!-- 专业技能 -->
         {% if site.data.resume.skills.size > 0 %}
           <a class="anchor" id="skills"></a>
-          <div class="card mt-3 p-3">
+          <div class="card mt-3 p-3 memorial-frame">
             <h3 id="专业技能" class="card-title font-weight-medium">专业技能</h3>
             <div>
               {% assign entries = site.data.resume.skills %}
@@ -333,7 +333,7 @@
         <!-- 语言 -->
         {% if site.data.resume.languages.size > 0 %}
           <a class="anchor" id="languages"></a>
-          <div class="card mt-3 p-3">
+          <div class="card mt-3 p-3 memorial-frame">
             <h3 id="语言" class="card-title font-weight-medium">语言</h3>
             <div>
               {% assign entries = site.data.resume.languages %}
@@ -345,7 +345,7 @@
         <!-- 兴趣 -->
         {% if site.data.resume.interests.size > 0 %}
           <a class="anchor" id="interests"></a>
-          <div class="card mt-3 p-3">
+          <div class="card mt-3 p-3 memorial-frame">
             <h3 id="兴趣" class="card-title font-weight-medium">兴趣</h3>
             <div>
               {% assign entries = site.data.resume.interests %}
@@ -357,7 +357,7 @@
         <!-- 证书 -->
         {% if site.data.resume.certificates.size > 0 %}
           <a class="anchor" id="certificates"></a>
-          <div class="card mt-3 p-3">
+          <div class="card mt-3 p-3 memorial-frame">
             <h3 id="证书" class="card-title font-weight-medium">证书</h3>
             <div>
               {% assign entries = site.data.resume.certificates %}
@@ -369,7 +369,7 @@
         <!-- 项目 -->
         {% if site.data.resume.projects.size > 0 %}
           <a class="anchor" id="projects"></a>
-          <div class="card mt-3 p-3">
+          <div class="card mt-3 p-3 memorial-frame">
             <h3 id="项目" class="card-title font-weight-medium">项目</h3>
             <div>
               {% assign entries = site.data.resume.projects %}
@@ -381,7 +381,7 @@
         <!-- 推荐 -->
         {% if site.data.resume.references.size > 0 %}
           <a class="anchor" id="references"></a>
-          <div class="card mt-3 p-3">
+          <div class="card mt-3 p-3 memorial-frame">
             <h3 id="推荐" class="card-title font-weight-medium">推荐</h3>
             <div>
               {% assign entries = site.data.resume.references %}
