@@ -1,0 +1,393 @@
+{% comment %}
+  中文版 CV 布局(覆盖 al_folio_cv gem 的同名模板)
+  - 数据源:_data/cv.yml(rendercv 2.x 现代格式:headline/location/custom_connections)
+  - 所有展示标签中文化;section 支持中文名映射
+  - 若 page.cv_format 未设置,legacy 行为:优先 RenderCV(site.data.cv.cv)
+{% endcomment %}
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      {{ page.title }}
+      {% if page.cv_pdf %}
+        <a
+          {% if page.cv_pdf contains '://' %}
+            href="{{ page.cv_pdf }}"
+          {% else %}
+            href="{{ page.cv_pdf | relative_url }}"
+          {% endif %}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="float-right"
+        >
+          <i class="fa-solid fa-file-pdf"></i>
+        </a>
+      {% endif %}
+    </h1>
+    {% if page.description %}
+      <p class="post-description">{{ page.description }}</p>
+    {% endif %}
+  </header>
+
+  <article>
+    <div class="cv">
+      {% comment %} Determine which CV format to render {% endcomment %}
+      {% assign render_rendercv = false %}
+      {% assign render_jsonresume = false %}
+
+      {% if page.cv_format == 'rendercv' %}
+        {% assign render_rendercv = true %}
+      {% elsif page.cv_format == 'jsonresume' %}
+        {% assign render_jsonresume = true %}
+      {% else %}
+        {% comment %} Legacy behavior: RenderCV takes priority if both exist {% endcomment %}
+        {% if site.data.cv and site.data.cv.cv %}
+          {% assign render_rendercv = true %}
+        {% elsif site.data.resume %}
+          {% assign render_jsonresume = true %}
+        {% endif %}
+      {% endif %}
+
+      {% if render_rendercv and site.data.cv and site.data.cv.cv %}
+        {% comment %} RenderCV format {% endcomment %}
+        {% assign cv = site.data.cv.cv %}
+
+        <!-- 联系信息 -->
+        {% if cv.name or cv.headline or cv.location or cv.email or cv.phone or cv.website or cv.custom_connections %}
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">联系信息</h3>
+            <table class="table table-cv table-sm table-borderless">
+              {% if cv.name %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>姓名</b></td>
+                  <td class="p-1 pl-2 font-weight-light">{{ cv.name }}</td>
+                </tr>
+              {% endif %}
+              {% if cv.headline %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>职称</b></td>
+                  <td class="p-1 pl-2 font-weight-light">{{ cv.headline }}</td>
+                </tr>
+              {% endif %}
+              {% if cv.email %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>邮箱</b></td>
+                  <td class="p-1 pl-2 font-weight-light">{{ cv.email }}</td>
+                </tr>
+              {% endif %}
+              {% if cv.phone %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>电话</b></td>
+                  <td class="p-1 pl-2 font-weight-light">{{ cv.phone }}</td>
+                </tr>
+              {% endif %}
+              {% if cv.location %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>所在地</b></td>
+                  <td class="p-1 pl-2 font-weight-light">{{ cv.location }}</td>
+                </tr>
+              {% endif %}
+              {% if cv.website %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>个人主页</b></td>
+                  <td class="p-1 pl-2 font-weight-light">
+                    <a href="{{ cv.website }}" target="_blank">{{ cv.website }}</a>
+                  </td>
+                </tr>
+              {% endif %}
+              {% if cv.custom_connections %}
+                {% for conn in cv.custom_connections %}
+                  <tr>
+                    <td class="p-1 pr-2 font-weight-bold"><b>单位</b></td>
+                    <td class="p-1 pl-2 font-weight-light">
+                      {% if conn.url %}
+                        <a href="{{ conn.url }}" target="_blank">{{ conn.placeholder }}</a>
+                      {% else %}
+                        {{ conn.placeholder }}
+                      {% endif %}
+                    </td>
+                  </tr>
+                {% endfor %}
+              {% endif %}
+            </table>
+          </div>
+        {% endif %}
+
+        {% comment %} 渲染所有 sections:按中文 section 名映射到对应模板 {% endcomment %}
+        {% assign empty_array = '' | split: ',' %}
+        {% for section_pair in cv.sections %}
+          {% assign section_title = section_pair[0] %}
+          {% assign section_entries = section_pair[1] %}
+
+          <a class="anchor" id="section-{{ forloop.index }}"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">{{ section_title }}</h3>
+            <div>
+              {% if section_title == '个人简介' %}
+                {% comment %} TextEntry:纯文本段落 {% endcomment %}
+                <p class="card-text font-weight-light">{{ section_entries | join: ' ' }}</p>
+
+              {% elsif section_title == '教育经历' %}
+                {% assign entries = section_entries | al_cv_sort_by_date %}
+                {% include cv/education.liquid %}
+
+              {% elsif section_title == '工作经历' or section_title == '学术兼职与项目' %}
+                {% assign entries = section_entries | al_cv_sort_by_date %}
+                {% include cv/experience.liquid %}
+
+              {% elsif section_title == '奖励荣誉' %}
+                {% comment %} NormalEntry:name / date / summary {% endcomment %}
+                <ul class="card-text font-weight-light list-group list-group-flush">
+                  {% for entry in section_entries %}
+                    <li class="list-group-item">
+                      <div class="row">
+                        <div class="col-xs-2 col-sm-2 col-md-2 text-center">
+                          {% if entry.date %}
+                            <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">{{ entry.date | split: '-' | first }}</span>
+                          {% endif %}
+                        </div>
+                        <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+                          {% if entry.name %}
+                            <h6 class="title font-weight-bold ml-1 ml-md-4">{{ entry.name }}</h6>
+                          {% endif %}
+                          {% if entry.summary %}
+                            <p class="ml-1 ml-md-4 mb-0">{{ entry.summary }}</p>
+                          {% endif %}
+                          {% if entry.highlights %}
+                            <ul class="items">
+                              {% for item in entry.highlights %}
+                                <li><span class="item">{{ item }}</span></li>
+                              {% endfor %}
+                            </ul>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </li>
+                  {% endfor %}
+                </ul>
+
+              {% elsif section_title == '研究方向' or section_title == '语言' %}
+                {% comment %} NormalEntry 简化展示:name + summary {% endcomment %}
+                <div class="card-text font-weight-light">
+                  {% for entry in section_entries %}
+                    <div style="padding: 0.5rem 0;">
+                      {% if entry.name %}<strong>{{ entry.name }}:</strong>{% endif %}
+                      {% if entry.summary %} {{ entry.summary }}{% endif %}
+                    </div>
+                  {% endfor %}
+                </div>
+
+              {% else %}
+                {% comment %} 通用兜底:bullet / label+details / 纯文本 {% endcomment %}
+                <ul class="card-text font-weight-light list-group list-group-flush">
+                  {% for entry in section_entries %}
+                    {% if entry.bullet %}
+                      <li class="list-group-item">{{ entry.bullet | markdownify | remove: '<p>' | remove: '</p>' }}</li>
+                    {% elsif entry.label %}
+                      <div class="card-text font-weight-light">
+                        <strong>{{ entry.label }}:</strong> {{ entry.details }}
+                      </div>
+                    {% else %}
+                      <li class="list-group-item">{{ entry }}</li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+
+      {% elsif render_jsonresume and site.data.resume %}
+        {% comment %} JSONResume 格式(保持 gem 原逻辑,标签中文化) {% endcomment %}
+
+        <!-- 联系信息 -->
+        {% if site.data.resume.basics %}
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">联系信息</h3>
+            {% assign basics = site.data.resume.basics %}
+            <table class="table table-cv table-sm table-borderless">
+              {% if basics.name %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>姓名</b></td>
+                  <td class="p-1 pl-2 font-weight-light">{{ basics.name }}</td>
+                </tr>
+              {% endif %}
+              {% if basics.label %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>职称</b></td>
+                  <td class="p-1 pl-2 font-weight-light">{{ basics.label }}</td>
+                </tr>
+              {% endif %}
+              {% if basics.email %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>邮箱</b></td>
+                  <td class="p-1 pl-2 font-weight-light">{{ basics.email }}</td>
+                </tr>
+              {% endif %}
+              {% if basics.phone %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>电话</b></td>
+                  <td class="p-1 pl-2 font-weight-light">{{ basics.phone }}</td>
+                </tr>
+              {% endif %}
+              {% if basics.location %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>所在地</b></td>
+                  <td class="p-1 pl-2 font-weight-light">
+                    {% if basics.location.address %}{{ basics.location.address }}, {% endif %}
+                    {% if basics.location.city %}{{ basics.location.city }}, {% endif %}
+                    {% if basics.location.region %}{{ basics.location.region }} {% endif %}
+                    {% if basics.location.postalCode %}{{ basics.location.postalCode }}{% endif %}
+                  </td>
+                </tr>
+              {% endif %}
+              {% if basics.url %}
+                <tr>
+                  <td class="p-1 pr-2 font-weight-bold"><b>个人主页</b></td>
+                  <td class="p-1 pl-2 font-weight-light">
+                    <a href="{{ basics.url }}" target="_blank">{{ basics.url }}</a>
+                  </td>
+                </tr>
+              {% endif %}
+            </table>
+          </div>
+        {% endif %}
+
+        <!-- 个人简介 -->
+        {% if site.data.resume.basics.summary %}
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">个人简介</h3>
+            <p>{{ site.data.resume.basics.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+          </div>
+        {% endif %}
+
+        <!-- 工作经历 -->
+        {% assign empty_array = '' | split: ',' %}
+        {% assign work = site.data.resume.work | default: empty_array %}
+        {% assign vol = site.data.resume.volunteer | default: empty_array %}
+        {% assign combined_experience = work | concat: vol | al_cv_sort_by_date %}
+        {% if combined_experience.size > 0 %}
+          <a class="anchor" id="experience"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">工作经历</h3>
+            <div>
+              {% assign entries = combined_experience %}
+              {% include cv/experience.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- 教育经历 -->
+        {% if site.data.resume.education.size > 0 %}
+          <a class="anchor" id="education"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">教育经历</h3>
+            <div>
+              {% assign entries = site.data.resume.education | al_cv_sort_by_date %}
+              {% include cv/education.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- 奖励荣誉 -->
+        {% if site.data.resume.awards.size > 0 %}
+          <a class="anchor" id="awards"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">奖励荣誉</h3>
+            <div>
+              {% assign entries = site.data.resume.awards %}
+              {% include cv/awards.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- 论文 -->
+        {% if site.data.resume.publications.size > 0 %}
+          <a class="anchor" id="publications"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">论文</h3>
+            <div>
+              {% assign entries = site.data.resume.publications %}
+              {% include cv/publications.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- 专业技能 -->
+        {% if site.data.resume.skills.size > 0 %}
+          <a class="anchor" id="skills"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">专业技能</h3>
+            <div>
+              {% assign entries = site.data.resume.skills %}
+              {% include cv/skills.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- 语言 -->
+        {% if site.data.resume.languages.size > 0 %}
+          <a class="anchor" id="languages"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">语言</h3>
+            <div>
+              {% assign entries = site.data.resume.languages %}
+              {% include cv/languages.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- 兴趣 -->
+        {% if site.data.resume.interests.size > 0 %}
+          <a class="anchor" id="interests"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">兴趣</h3>
+            <div>
+              {% assign entries = site.data.resume.interests %}
+              {% include cv/interests.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- 证书 -->
+        {% if site.data.resume.certificates.size > 0 %}
+          <a class="anchor" id="certificates"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">证书</h3>
+            <div>
+              {% assign entries = site.data.resume.certificates %}
+              {% include cv/certificates.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- 项目 -->
+        {% if site.data.resume.projects.size > 0 %}
+          <a class="anchor" id="projects"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">项目</h3>
+            <div>
+              {% assign entries = site.data.resume.projects %}
+              {% include cv/projects.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+        <!-- 推荐 -->
+        {% if site.data.resume.references.size > 0 %}
+          <a class="anchor" id="references"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">推荐</h3>
+            <div>
+              {% assign entries = site.data.resume.references %}
+              {% include cv/references.liquid %}
+            </div>
+          </div>
+        {% endif %}
+
+      {% else %}
+        <p>未找到简历数据。请配置 RenderCV(cv.yml)或 JSONResume(resume.json)数据。</p>
+      {% endif %}
+    </div>
+  </article>
+</div>
