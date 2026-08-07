@@ -42,15 +42,27 @@ cv:
         end_date: 1978
 
       - company: 成都地质学院（现成都理工大学）
-        position: 教师（留校任教）
+        position: 任教（留校）
+        location: 四川 · 成都
         start_date: 1981
-        end_date: 1987
+        end_date: 2003
+        summary: 1981年留校任教，长期从事沉积学与大地构造教学科研工作。
 
       - company: 成都地质学院
         position: 沉积地质研究所所长
         location: 四川 · 成都
         start_date: 1987
         end_date: 1991
+        highlights:
+          - 1987年9月起任所长
+
+      - company: 成都理工大学
+        position: 副校长
+        location: 四川 · 成都
+        start_date: 1991
+        end_date: 2001
+        highlights:
+          - 1991年4月—2001年9月任副校长
 
       - company: 美国地质调查局（USGS）
         position: 访问学者
@@ -58,16 +70,12 @@ cv:
         end_date: 1994
 
       - company: 成都理工大学
-        position: 副校长
-        location: 四川 · 成都
-        start_date: 1991
-        end_date: 2001
-
-      - company: 成都理工大学
         position: 校长
         location: 四川 · 成都
         start_date: 2001
         end_date: 2003
+        highlights:
+          - 2001年9月任校长
 
       - company: 西南科技大学
         position: 教授
@@ -81,7 +89,7 @@ cv:
         start_date: 2005
         end_date: 至今
         highlights:
-          - 地球科学与资源学院教授
+          - 2005年起任教于地球科学与资源学院
 
     学术兼职与项目:
       - company: 国际大陆科学钻探计划（ICDP）
@@ -154,9 +162,13 @@ cv:
         date: 2003
         summary: 由李四光地质科学奖基金会颁发
 
+      - name: 四川省学术和技术带头人
+        date: 2000
+        summary: 2000年被评为四川省学术和技术带头人
+
       - name: 国家杰出青年科学基金
         date: 1996
-        summary: 获国家杰出青年科学基金资助
+        summary: 获国家自然科学基金委杰出青年科学基金资助
 
       - name: 中国青年科技奖
         date: 1991
