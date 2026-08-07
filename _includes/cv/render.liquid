@@ -143,7 +143,9 @@
                       <div class="row">
                         <div class="col-xs-2 col-sm-2 col-md-2 text-center">
                           {% if entry.date %}
-                            <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">{{ entry.date | split: '-' | first }}</span>
+                            <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+                              {{- entry.date | split: '-' | first -}}
+                            </span>
                           {% endif %}
                         </div>
                         <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
@@ -156,7 +158,9 @@
                           {% if entry.highlights %}
                             <ul class="items">
                               {% for item in entry.highlights %}
-                                <li><span class="item">{{ item }}</span></li>
+                                <li>
+                                  <span class="item">{{ item }}</span>
+                                </li>
                               {% endfor %}
                             </ul>
                           {% endif %}
@@ -171,7 +175,9 @@
                 <div class="card-text font-weight-light">
                   {% for entry in section_entries %}
                     <div style="padding: 0.5rem 0;">
-                      {% if entry.name %}<strong>{{ entry.name }}:</strong>{% endif %}
+                      {% if entry.name -%}
+                        <strong>{{ entry.name }}:</strong>
+                      {%- endif %}
                       {% if entry.summary %} {{ entry.summary }}{% endif %}
                     </div>
                   {% endfor %}
