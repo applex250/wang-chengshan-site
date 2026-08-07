@@ -1,9 +1,3 @@
-settings:
-  render_command:
-    # 供 rendercv CLI 解析 design/locale(路径相对本文件 _data/)
-    design: ../assets/rendercv/design.yaml
-    locale: ../assets/rendercv/locale.yaml
-
 cv:
   name: 王成善
   headline: 中国科学院院士 · 地质学家 · 沉积学家
