@@ -12,33 +12,35 @@
 
 ## 一、现状调研(只读完成)
 
-| 色值 | 变量 | 语义/消费方 |
-|---|---|---|
-| `#F3F1EC` | `--global-bg-color` | 页面整体背景(layout.scss `body`) |
-| `#EFE9DF` | `--global-card-bg-color` | 卡片/展柜底(components、projects、CV 卡片) |
-| `#EFE9DF` | `--global-newsletter-bg-color` | 新闻简报订阅框底 |
-| `#F7F3EC` | `--memorial-paper` | 纪念组件纸张令牌(档案框底、时间轴金点描边、朱印关联) |
-| `#EFE9DF` | `--memorial-paper-deep` | 深一档纸张令牌(卡片底对比) |
+| 色值      | 变量                           | 语义/消费方                                          |
+| --------- | ------------------------------ | ---------------------------------------------------- |
+| `#F3F1EC` | `--global-bg-color`            | 页面整体背景(layout.scss `body`)                     |
+| `#EFE9DF` | `--global-card-bg-color`       | 卡片/展柜底(components、projects、CV 卡片)           |
+| `#EFE9DF` | `--global-newsletter-bg-color` | 新闻简报订阅框底                                     |
+| `#F7F3EC` | `--memorial-paper`             | 纪念组件纸张令牌(档案框底、时间轴金点描边、朱印关联) |
+| `#EFE9DF` | `--memorial-paper-deep`        | 深一档纸张令牌(卡片底对比)                           |
 
 `#F2F0EB` 在仓库代码中**不存在**(用户从浏览器 DevTools 取到的可能为混合渲染色),计划中按同系映射处理,若执行时发现残留则一并替换。
 
 色彩属性分析(均为暖黄调:R 通道 > G > B):
+
 - `#F3F1EC` = RGB(243, 241, 236),偏黄 +7
 - `#EFE9DF` = RGB(239, 233, 223),偏黄 +16
 - `#F7F3EC` = RGB(247, 243, 236),偏黄 +11
 
 ## 二、灰色调映射方案(保持明度层次,去黄)
 
-| 现值 | 语义 | 新值(中性灰,保留 ~2% 微暖) | 说明 |
-|---|---|---|---|
-| `#F3F1EC` | 页面背景 | **`#F1F1EF`** | RGB(241,241,239),中性浅灰,微暖可忽略 |
-| `#EFE9DF` | 卡片/深一档 | **`#E9E9E7`** | RGB(233,233,231),中灰白,与背景保持层次 |
-| `#F7F3EC` | 纸张令牌 | **`#F2F2F0`** | RGB(242,242,240),同背景系 |
-| `#F2F0EB` | (若存在) | `#EEEEEC` | 备用映射 |
+| 现值      | 语义        | 新值(中性灰,保留 ~2% 微暖) | 说明                                   |
+| --------- | ----------- | -------------------------- | -------------------------------------- |
+| `#F3F1EC` | 页面背景    | **`#F1F1EF`**              | RGB(241,241,239),中性浅灰,微暖可忽略   |
+| `#EFE9DF` | 卡片/深一档 | **`#E9E9E7`**              | RGB(233,233,231),中灰白,与背景保持层次 |
+| `#F7F3EC` | 纸张令牌    | **`#F2F2F0`**              | RGB(242,242,240),同背景系              |
+| `#F2F0EB` | (若存在)    | `#EEEEEC`                  | 备用映射                               |
 
 **层次关系(必须保持)**:背景 `#F1F1EF` < 卡片 `#E9E9E7`(卡片略深)→ 展柜感不破坏。
 
 **对比度核算**:
+
 - 正文 `#1A1A1A` on `#F1F1EF` ≈ 16:1 ✅(远超 AAA)
 - 次级 `#6E6A64` on `#F1F1EF` ≈ 5.5:1 ✅(AA)
 - 金色日期 `#B8860B` on `#E9E9E7` ≈ 3.2:1(装饰性,不承载唯一信息)✅
@@ -48,8 +50,10 @@
 ## 三、分步实施任务
 
 ### Task 1:变量色值替换
+
 **Files:** Modify `_sass/_themes.scss`(仅 5 处变量值)
 **Step 1:** `:root` 中:
+
 ```scss
 --global-bg-color: #f1f1ef;
 --global-card-bg-color: #e9e9e7;
@@ -57,27 +61,32 @@
 --memorial-paper: #f2f2f0;
 --memorial-paper-deep: #e9e9e7;
 ```
+
 **Step 2:** 更新注释(`/* 米白纸张 */` → `/* 中性浅灰纸张 */` 等),说明灰色调定位
 **Step 3:** 提交:`git commit -m "style: 米白色系向中性灰调靠拢(背景/卡片/纸张令牌)"`
 
 ### Task 2:消费方残留检查
+
 **Files:** 只读检查 `_sass/_memorial.scss`、`_includes/`、`_pages/`
 **Step 1:** `grep -rni "f3f1ec\|efe9df\|f7f3ec\|f2f0eb" _sass/ _includes/ _pages/ assets/` 预期:仅 `_themes.scss` 变量定义(消费方全是 `var()` 引用)
 **Step 2:** 确认纪念组件(档案框/时间轴/朱印)无硬编码米白
 **Step 3:** 提交:无改动则跳过
 
 ### Task 3:对比度与一致性验证
+
 **Files:** 无(计算核对)
 **Step 1:** 核对正文/次级文本在新底色上的对比度(≥7:1 达标,已核算)
 **Step 2:** 确认深色模式不受影响(dark 块不含这些变量)
 **Step 3:** 提交:无改动则跳过
 
 ### Task 4:验证与部署
+
 **Step 1:** `nvm use 25.7.0 && npx prettier . --check` → 预期全绿
 **Step 2:** `git push origin main` → CI(Prettier / Deploy / broken links)全绿
 **Step 3:** 抓取 gh-pages 产物:
+
 - `main.css` 含 `#f1f1ef`、`#e9e9e7`、`#f2f2f0`,且无旧值 `#f3f1ec`/`#efe9df`/`#f7f3ec` 残留
-**Step 4:** 汇报,请用户强刷验收(整体观感应为中性浅灰、无黄调)
+  **Step 4:** 汇报,请用户强刷验收(整体观感应为中性浅灰、无黄调)
 
 ---
 
