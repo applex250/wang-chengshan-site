@@ -38,23 +38,23 @@
 
 ### "后端"在哪？（三种伪后端）
 
-| 需求 | 实现方式 | 发生时机 |
-|---|---|---|
-| 文献列表 / 引用 | jekyll-scholar 读 `papers.bib` 生成 HTML | **构建时** |
-| 站内搜索 | 构建索引 + 浏览器端 ninja-keys 过滤 | 构建时 + **纯客户端** |
-| 评论 | Giscus（基于 GitHub Discussions 的第三方组件） | 运行时，服务端是 GitHub |
-| 主题切换 / 复制按钮 / 折叠展开 | 原生 JS | 客户端 |
+| 需求                           | 实现方式                                       | 发生时机                |
+| ------------------------------ | ---------------------------------------------- | ----------------------- |
+| 文献列表 / 引用                | jekyll-scholar 读 `papers.bib` 生成 HTML       | **构建时**              |
+| 站内搜索                       | 构建索引 + 浏览器端 ninja-keys 过滤            | 构建时 + **纯客户端**   |
+| 评论                           | Giscus（基于 GitHub Discussions 的第三方组件） | 运行时，服务端是 GitHub |
+| 主题切换 / 复制按钮 / 折叠展开 | 原生 JS                                        | 客户端                  |
 
 ### 前端技术栈
 
-| 层 | 技术 |
-|---|---|
-| 内容 | Markdown + YAML frontmatter |
-| 数据 | YAML（`_data/`）、BibTeX（`_bibliography/`） |
-| 模板 | Liquid（`{{ }}` / `{% %}`，主要在 gem 内） |
+| 层   | 技术                                                                      |
+| ---- | ------------------------------------------------------------------------- |
+| 内容 | Markdown + YAML frontmatter                                               |
+| 数据 | YAML（`_data/`）、BibTeX（`_bibliography/`）                              |
+| 模板 | Liquid（`{{ }}` / `{% %}`，主要在 gem 内）                                |
 | 样式 | Sass + Tailwind CSS（gem 内编译），本地 `_sass/_themes.scss` 覆盖红色主题 |
-| 脚本 | 原生 JS + 第三方库（ninja-keys、highlightjs 等） |
-| 字体 | Google Fonts（Roboto），中文走系统雅黑类回退 |
+| 脚本 | 原生 JS + 第三方库（ninja-keys、highlightjs 等）                          |
+| 字体 | Google Fonts（Roboto），中文走系统雅黑类回退                              |
 
 ## 三、目录结构
 
@@ -94,17 +94,17 @@ docker compose down                       # 停止
 
 ## 五、内容怎么更新
 
-| 要改什么 | 改哪里 |
-|---|---|
-| 首页简介 / 肖像 | `_pages/about.md`、`assets/img/prof_pic.png` |
-| 一条新闻 | `_news/` 新增 `YYYY-MM-DD-xxx.md`（`layout: post`，可 `inline: true`） |
-| 一篇博文 | `_posts/` 新增 `YYYY-MM-DD-xxx.md` |
-| 科研项目 | `_projects/` 新增/编辑（标题/描述/正文） |
-| 课程 | `_teachings/` |
-| 论文 | `_bibliography/papers.bib` 增删条目 |
-| 简历 | `_data/cv.yml` |
-| 联系方式 / 社交 | `_data/socials.yml` |
-| 导航 / 站点标题 / 主题色 | `_config.yml` |
+| 要改什么                 | 改哪里                                                                 |
+| ------------------------ | ---------------------------------------------------------------------- |
+| 首页简介 / 肖像          | `_pages/about.md`、`assets/img/prof_pic.png`                           |
+| 一条新闻                 | `_news/` 新增 `YYYY-MM-DD-xxx.md`（`layout: post`，可 `inline: true`） |
+| 一篇博文                 | `_posts/` 新增 `YYYY-MM-DD-xxx.md`                                     |
+| 科研项目                 | `_projects/` 新增/编辑（标题/描述/正文）                               |
+| 课程                     | `_teachings/`                                                          |
+| 论文                     | `_bibliography/papers.bib` 增删条目                                    |
+| 简历                     | `_data/cv.yml`                                                         |
+| 联系方式 / 社交          | `_data/socials.yml`                                                    |
+| 导航 / 站点标题 / 主题色 | `_config.yml`                                                          |
 
 保存后等几秒自动重建，刷新即可。提交并推送到 GitHub：
 
@@ -147,4 +147,4 @@ git add -A && git commit -m "说明" && git push
 
 ---
 
-*Built with [Jekyll](https://jekyllrb.com/) and the [al-folio](https://github.com/alshedivat/al-folio) starter.*
+_Built with [Jekyll](https://jekyllrb.com/) and the [al-folio](https://github.com/alshedivat/al-folio) starter._
