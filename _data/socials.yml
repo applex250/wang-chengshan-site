@@ -1,0 +1,12 @@
+# this file contains the social media links and usernames of the author
+# the socials will be displayed in the order they are defined here
+# for more information, please refer to the documentation of jekyll-socials plugin: https://github.com/george-gca/jekyll-socials
+# cv_pdf: /assets/pdf/cv.pdf # path to your CV PDF file
+email: wangchengshan@cdut.edu.cn # 请替换为真实邮箱地址
+rss_icon: true # comment this line to hide the RSS icon
+# scholar_userid: # your Google Scholar ID
+# wechat_qr: # filename of your wechat qr-code saved as an image (e.g., wechat-qr.png if saved to assets/img/wechat-qr.png)
+custom_social: # can be any name here other than the ones already defined in the jekyll-socials plugin
+  logo: https://www.cdut.edu.cn/favicon.ico # can be png, svg, jpg
+  title: 成都理工大学
+  url: https://www.cdut.edu.cn/

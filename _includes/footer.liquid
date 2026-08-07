@@ -1,0 +1,106 @@
+{% capture footer_contents %}
+  &copy; 版权所有 {{ site.time | date: '%Y' }}
+  {{ site.first_name }}
+  {{ site.middle_name }}
+  {{ site.last_name }}. {{ site.footer_text }}
+  {% if site.impressum_path %}
+    <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
+  {% endif %}
+  {% if site.last_updated %}
+    最后更新：{{ 'now' | date: '%Y年%-m月%-d日' }}。
+  {% endif %}
+{% endcapture %}
+
+{% if site.footer_fixed %}
+  <footer class="fixed-bottom" role="contentinfo">
+    <div class="container mt-0">
+      {{ footer_contents }}
+    </div>
+  </footer>
+{% else %}
+  <footer class="sticky-bottom mt-5" role="contentinfo">
+    {% if site.newsletter.enabled %}
+      {% if site.plugins contains 'al_newsletter' %}
+        {% include plugins/al_newsletter_form_center.liquid %}
+      {% else %}
+        {% include newsletter.liquid %}
+      {% endif %}
+    {% endif %}
+
+    <div class="container">
+      {{ footer_contents }}
+    </div>
+  </footer>
+{% endif %}
+
+{% raw %}
+<script>
+// 搜索面板（ninja-keys）运行时汉化：占位符 + 分区标题。数据由 al_search 在客户端异步注入，故轮询兼容。
+(function () {
+  var SECTION_MAP = {
+    Navigation: "导航",
+    Posts: "随笔",
+    Dropdown: "更多",
+    Socials: "社交",
+    Theme: "主题",
+    News: "新闻",
+    Projects: "项目",
+    Teachings: "教学",
+    Books: "书架",
+    Repositories: "仓库",
+    Profiles: "成员",
+  };
+  function localizeNinja() {
+    var nk = document.querySelector("ninja-keys");
+    if (!nk) return false;
+    try {
+      nk.placeholder = "输入命令或搜索…";
+      nk.hotKeysJoinedTip = nk.hotKeysJoinedTip; // no-op, keep
+    } catch (e) {}
+    if (nk.data && nk.data.length) {
+      var changed = false;
+      var TITLE_MAP = {
+        "Change theme to light": "切换到浅色主题",
+        "Change theme to dark": "切换到深色主题",
+        "Use system default theme": "使用系统默认主题",
+        "Change the theme of the site to Light": "将站点主题切换为浅色",
+        "Change the theme of the site to Dark": "将站点主题切换为深色",
+        "Change the theme of the site to System Default": "将站点主题切换为系统默认",
+      };
+      var next = nk.data.map(function (it) {
+        var zhSec = SECTION_MAP[it.section];
+        var zhTitle = TITLE_MAP[it.title];
+        var zhDesc = TITLE_MAP[it.description];
+        if (zhSec || zhTitle || zhDesc) {
+          changed = true;
+          var o = Object.assign({}, it);
+          if (zhSec) o.section = zhSec;
+          if (zhTitle) o.title = zhTitle;
+          if (zhDesc) o.description = zhDesc;
+          return o;
+        }
+        return it;
+      });
+      if (changed) {
+        nk.data = next;
+      }
+    }
+    return true;
+  }
+  var tries = 0;
+  var timer = setInterval(function () {
+    tries++;
+    localizeNinja();
+    if (tries > 30) {
+      clearInterval(timer);
+    }
+  }, 200);
+  // 通过快捷键（Ctrl/Cmd+K）打开时再补一次
+  document.addEventListener("keydown", function (e) {
+    if ((e.metaKey || e.ctrlKey) && (e.key === "k" || e.key === "K")) {
+      setTimeout(localizeNinja, 60);
+    }
+  });
+})();
+</script>
+{% endraw %}

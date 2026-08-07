@@ -1,0 +1,119 @@
+cv:
+  name: 王成善
+  label: 中国科学院院士 · 地质学家 · 沉积学家
+  email: wangchengshan@cdut.edu.cn # 请替换为真实邮箱
+  location: 四川 · 成都
+  image: ""
+  summary: 1951年11月生，黑龙江哈尔滨人。主要从事沉积学与大地构造研究，重点探索青藏高原隆升、深时古气候与古海洋学，牵头完成松辽盆地国际大陆科学钻探项目工程。
+
+  social_networks:
+    - network: 单位
+      username: 成都理工大学
+
+  address:
+    street: 成华区二仙桥东三路1号
+    city: 成都市
+    region: 四川省
+    postalCode: "610059"
+    countryCode: CN
+
+  sections:
+    教育经历:
+      - institution: 成都地质学院（现成都理工大学）
+        location: 四川 · 成都
+        area: 地质学
+        studyType: 硕士
+        start_date: 1978
+        end_date: 1981
+        highlights:
+          - 获地质学硕士学位
+
+      - institution: 成都地质学院（现成都理工大学）
+        location: 四川 · 成都
+        area: 找矿系
+        studyType: 本科
+        start_date: 1974
+        end_date: 1977
+        highlights:
+          - 1977年本科毕业
+
+    工作经历:
+      - company: 成都理工大学
+        position: 校长
+        location: 四川 · 成都
+        summary: 曾任成都理工大学校长，长期坚持教学与科研并重。
+        highlights:
+          - 2023年荣获国家教学成果二等奖
+
+      - company: 成都地质学院
+        position: 沉积地质研究所所长
+        location: 四川 · 成都
+        highlights:
+          - 组织沉积地质学科建设与科研工作
+
+    学术兼职与项目:
+      - company: 国际大陆科学钻探计划（ICDP）
+        position: 松辽盆地国际大陆科学钻探项目工程 首席科学家
+        summary: 牵头完成历时20年的松辽盆地国际大陆科学钻探项目工程。
+
+      - company: 国家重点基础研究发展计划（973计划）
+        position: 首席科学家（两项）
+        summary: 担任两项国家"973"项目首席科学家。
+
+      - company: 联合国教科文组织地球科学计划（IGCP）
+        position: 项目负责人（两项）
+        summary: 担任两项 UNESCO/IUGS IGCP 项目负责人。
+
+    奖励荣誉:
+      - title: 国家科学技术进步奖一等奖
+        date: 2025
+        awarder: 中华人民共和国国务院
+        summary: 2025年荣获国家科学技术进步奖一等奖。
+
+      - title: 何梁何利基金科学与技术进步奖
+        date: 2024
+        awarder: 何梁何利基金
+
+      - title: 国家教学成果二等奖
+        date: 2023
+        awarder: 中华人民共和国教育部
+
+      - title: 国家自然科学奖二等奖
+        date: 2015
+        awarder: 中华人民共和国国务院
+
+      - title: 全国先进工作者
+        date: 2010
+        awarder: 中共中央、国务院
+
+      - title: 全国五一劳动奖章
+        date: 2007
+        awarder: 中华全国总工会
+
+      - title: 李四光地质科学奖
+        date: 2003
+        awarder: 李四光地质科学奖基金会
+
+      - title: 中国青年科技奖
+        date: 1991
+        awarder: 中国科学技术协会等
+
+    研究方向:
+      - name: 沉积学与大地构造
+        icon: fa-solid fa-mountain
+        keywords: "青藏高原隆升, 沉积盆地分析, 沉积—构造耦合"
+
+      - name: 深时古气候与古海洋学
+        icon: fa-solid fa-water
+        keywords: "白垩纪大洋红层, 温室气候, 大陆科学钻探"
+
+      - name: 大数据沉积学
+        icon: fa-solid fa-database
+        keywords: "旋回地层学, 地球自转节律, 深时数字地球"
+
+    语言:
+      - name: 中文
+        summary: 母语
+
+      - name: 英文
+        summary: 熟练
