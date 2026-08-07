@@ -78,6 +78,7 @@ body::before {
   background: var(--memorial-red-press);
   color: #f5e9e0;
   font-family: "Songti SC", "STSong", "STZhongsong", "SimSun", "Noto Serif CJK SC", serif;
+  font-style: normal; /* 显式声明:禁止任何继承斜体 */
   font-weight: 700;
   font-size: 0.8rem;
   letter-spacing: 0.25em;
