@@ -8,6 +8,10 @@
 
 站点包含：首页简介 · 新闻动态 · 学术成果 · 科研项目 · 学术随笔 · 人才培养 · 学术简历。
 
+<div align="center">
+  <img src="readme_preview/home.png" alt="王成善院士主页 · 首页预览" width="880">
+</div>
+
 ---
 
 ## 一、技术本质
