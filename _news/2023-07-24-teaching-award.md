@@ -1,8 +1,9 @@
 ---
 layout: post
 date: 2023-07-24 09:00:00+0800
-inline: true
-related_posts: false
+inline: false
+external_url: https://www.cugb.edu.cn/xynews/44294.jhtml
+title: 王成善院士参与成果获国家级教学成果奖二等奖
 ---
 
-王成善院士荣获**国家教学成果二等奖**。
+2023年7月，教育部公布2022年国家级教学成果奖获奖项目，中国地质大学（北京）《"五位一体"地质学拔尖人才培养体系构建与实践》获高等教育（本科）国家级教学成果奖二等奖，王成善院士为完成人之一。

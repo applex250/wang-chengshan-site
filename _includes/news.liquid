@@ -16,12 +16,16 @@
         {% endif %}
         {% for item in news limit: news_limit %}
           <tr>
-            <th scope="row" style="width: 20%">{{ item.date | date: '%Y年%-m月%-d日' }}</th>
+            <th scope="row" style="width: 20%">{{ item.date | date: '%b %d, %Y' }}</th>
             <td>
               {% if item.inline %}
                 {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
               {% else %}
-                <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                {% if item.external_url %}
+                  <a class="news-title" href="{{ item.external_url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
+                {% else %}
+                  <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                {% endif %}
               {% endif %}
             </td>
           </tr>
@@ -29,6 +33,6 @@
       </table>
     </div>
   {% else %}
-    <p>暂无新闻。</p>
+    <p>No news so far...</p>
   {% endif %}
 </div>
