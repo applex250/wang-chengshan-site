@@ -2,63 +2,127 @@ cv:
   name: 王成善
   headline: 中国科学院院士 · 地质学家 · 沉积学家
   email: wangchengshan@cdut.edu.cn # 请替换为真实邮箱
-  location: 成华区二仙桥东三路1号, 成都市, 四川省 610059
+  location: 北京市海淀区学院路29号, 中国地质大学(北京) 100083
 
   custom_connections:
+    - fontawesome_icon: building-columns
+      placeholder: 中国地质大学（北京）
+      url: https://www.cugb.edu.cn/
     - fontawesome_icon: building-columns
       placeholder: 成都理工大学
       url: https://www.cdut.edu.cn
 
   sections:
     个人简介:
-      - 1951年11月生，黑龙江哈尔滨人。主要从事沉积学与大地构造研究，重点探索青藏高原隆升、深时古气候与古海洋学，牵头完成松辽盆地国际大陆科学钻探项目工程。
+      - 1951年11月生，黑龙江哈尔滨人，地质学家、沉积学家，中国科学院院士（2013年当选），中国地质大学（北京）教授、博士生导师。主要从事沉积学与大地构造研究，重点探索青藏高原隆升、深时古气候与古海洋学，牵头完成松辽盆地国际大陆科学钻探项目工程，主导发起"深时数字地球（DDE）"国际大科学计划。
 
     教育经历:
       - institution: 成都地质学院（现成都理工大学）
         location: 四川 · 成都
-        area: 地质学
-        degree: 硕士
-        start_date: 1978
-        end_date: 1981
-        highlights:
-          - 获地质学硕士学位
-
-      - institution: 成都地质学院（现成都理工大学）
-        location: 四川 · 成都
-        area: 找矿系
+        area: 地质系 找矿系
         degree: 本科
         start_date: 1974
         end_date: 1977
         highlights:
-          - 1977年本科毕业
+          - 1977年本科毕业于找矿系
+
+      - institution: 成都地质学院（现成都理工大学）
+        location: 四川 · 成都
+        area: 地质系
+        degree: 硕士
+        start_date: 1978
+        end_date: 1981
+        highlights:
+          - 1981年获地质学硕士学位
 
     工作经历:
-      - company: 成都理工大学
-        position: 校长
-        location: 四川 · 成都
-        summary: 曾任成都理工大学校长，长期坚持教学与科研并重。
-        highlights:
-          - 2023年荣获国家教学成果二等奖
+      - company: 西藏昌都工业局
+        position: 地质组技术员
+        start_date: 1977
+        end_date: 1978
+
+      - company: 成都地质学院（现成都理工大学）
+        position: 教师（留校任教）
+        start_date: 1981
+        end_date: 1987
 
       - company: 成都地质学院
         position: 沉积地质研究所所长
         location: 四川 · 成都
+        start_date: 1987
+        end_date: 1991
+
+      - company: 美国地质调查局（USGS）
+        position: 访问学者
+        start_date: 1993
+        end_date: 1994
+
+      - company: 成都理工大学
+        position: 副校长
+        location: 四川 · 成都
+        start_date: 1991
+        end_date: 2001
+
+      - company: 成都理工大学
+        position: 校长
+        location: 四川 · 成都
+        start_date: 2001
+        end_date: 2003
+
+      - company: 西南科技大学
+        position: 教授
+        location: 四川 · 绵阳
+        start_date: 2003
+        end_date: 2004
+
+      - company: 中国地质大学（北京）
+        position: 教授、博士生导师
+        location: 北京
+        start_date: 2005
+        end_date: present
+        highlights:
+          - 地球科学与资源学院教授
 
     学术兼职与项目:
       - company: 国际大陆科学钻探计划（ICDP）
         position: 松辽盆地国际大陆科学钻探项目工程 首席科学家
-        summary: 牵头完成历时20年的松辽盆地国际大陆科学钻探项目工程。
+        summary: 牵头完成历时20年的松辽盆地国际大陆科学钻探项目工程，获2025年度国家科学技术进步奖一等奖。
+
+      - company: 深时数字地球（DDE）国际大科学计划
+        position: 执行委员会主席
+        summary: 主导发起由IUGS认证的首个国际大科学计划"深时数字地球（Deep-time Digital Earth）"，推动地球演化数据的全球整合与共享。
 
       - company: 国家重点基础研究发展计划（973计划）
         position: 首席科学家（两项）
         summary: 担任两项国家"973"项目首席科学家。
 
       - company: 联合国教科文组织地球科学计划（IGCP）
-        position: 项目负责人（两项）
-        summary: 担任两项 UNESCO/IUGS IGCP 项目负责人。
+        position: 项目主席（IGCP 463、555）
+        summary: 担任两项 UNESCO/IUGS IGCP 项目主席。
+
+      - company: 国际沉积学家协会（IAS）
+        position: 副主席
+
+      - company: 教育部科学技术委员会
+        position: 地学与资源环境学部副主任
+
+      - company: 中国科学院
+        position: 地学部常务委员会委员
+
+      - company: 中国地质学会
+        position: 地质教育分会会长
+
+      - company: 国际大陆科学钻探中国委员会
+        position: 副主席
+
+      - company: 中国青藏高原研究会
+        position: 常务理事
+
+      - company: 《沉积学报》
+        position: 主编
 
     奖励荣誉:
-      - name: 国家科学技术进步奖一等奖
+      - name: 国家科学技术进步奖一等奖（松辽盆地国际大陆科学钻探工程）
         date: 2025
         summary: 中华人民共和国国务院颁发
 
@@ -70,7 +134,7 @@ cv:
         date: 2023
         summary: 由中华人民共和国教育部颁发
 
-      - name: 国家自然科学奖二等奖
+      - name: 国家自然科学奖二等奖（青藏高原生长的深部过程、岩石圈结构与地表隆升）
         date: 2015
         summary: 由中华人民共和国国务院颁发
 
@@ -82,23 +146,34 @@ cv:
         date: 2007
         summary: 由中华全国总工会颁发
 
+      - name: 国家自然科学奖二等奖（西藏特提斯喜马拉雅中—新生代沉积地质与大陆古海洋学）
+        date: 2004
+        summary: 第一完成人，由中华人民共和国国务院颁发
+
       - name: 李四光地质科学奖
         date: 2003
         summary: 由李四光地质科学奖基金会颁发
+
+      - name: 国家杰出青年科学基金
+        date: 1996
+        summary: 获国家杰出青年科学基金资助
 
       - name: 中国青年科技奖
         date: 1991
         summary: 由中国科学技术协会等颁发
 
     研究方向:
-      - name: 沉积学与大地构造
-        summary: 青藏高原隆升、沉积盆地分析、沉积—构造耦合
+      - name: 青藏高原隆升与沉积响应
+        summary: 高原隆升过程重建、沉积—构造耦合、"原西藏高原"隆升模式
 
       - name: 深时古气候与古海洋学
-        summary: 白垩纪大洋红层、温室气候、大陆科学钻探
+        summary: 白垩纪大洋红层、温室气候、大陆科学钻探、深时数字地球
+
+      - name: 沉积学与大地构造
+        summary: 沉积盆地分析、松辽盆地白垩系大陆科学钻探
 
       - name: 大数据沉积学
-        summary: 旋回地层学、地球自转节律、深时数字地球
+        summary: 旋回地层学、地球自转节律、天文旋回与沉积记录交叉
 
     语言:
       - name: 中文

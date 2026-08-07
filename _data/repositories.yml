@@ -1,14 +1,6 @@
-github_users:
-  - torvalds
-  - alshedivat
+# 王成善院士学术主页不需要 GitHub 仓库展示,数据置空
+github_users: []
 
 repo_description_lines_max: 2
 
-github_repos:
-  - alshedivat/al-folio
-  - jekyll/jekyll
-  - twbs/bootstrap
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - mathjax/MathJax
-  - jpswalsh/academicons
+github_repos: []
