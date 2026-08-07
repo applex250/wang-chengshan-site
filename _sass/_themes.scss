@@ -10,7 +10,7 @@
 
 :root {
   color-scheme: light;
-  --global-bg-color: #f3f1ec;
+  --global-bg-color: #f1f1ef;
   --global-code-bg-color: #{v.$code-bg-color-light};
   --global-text-color: #{v.$black-color};
   --global-text-color-light: #{v.$grey-color};
@@ -22,7 +22,7 @@
   --global-footer-link-color: #{v.$white-color};
   --global-distill-app-color: #{v.$grey-color};
   --global-divider-color: rgba(139, 26, 26, 0.18);
-  --global-card-bg-color: #efe9df;
+  --global-card-bg-color: #e9e9e7;
   --global-highlight-color: #{v.$red-color-dark};
   --global-back-to-top-bg-color: rgba(
     #{color.channel(v.$black-color, "red", v.$space: rgb)},
@@ -31,7 +31,7 @@
     0.4
   );
   --global-back-to-top-text-color: #{v.$white-color};
-  --global-newsletter-bg-color: #efe9df;
+  --global-newsletter-bg-color: #e9e9e7;
   --global-newsletter-text-color: #{v.$black-color};
 
   /* —— 纪念风格令牌（共和国脊梁 / 科学家纪念美学） —— */
@@ -41,8 +41,8 @@
   --memorial-gold-light: #c9a227; /* 暗金（亮） */
   --memorial-ink: #1a1a1a; /* 炭黑正文 */
   --memorial-grey-warm: #6e6a64; /* 暖灰次级 */
-  --memorial-paper: #f7f3ec; /* 米白纸张 */
-  --memorial-paper-deep: #efe9df; /* 深一档纸张 */
+  --memorial-paper: #f2f2f0; /* 中性浅灰纸张 */
+  --memorial-paper-deep: #e9e9e7; /* 深一档中性灰纸张 */
   --memorial-line: rgba(139, 26, 26, 0.18); /* 红系细线 */
   --memorial-gold-line: linear-gradient(90deg, transparent, #c9a227 20%, #b8860b 80%, transparent);
   /* 背景质感多层(渐变 + 暖灰纸纹 + 细微颗粒),透明度 3%-8% */
