@@ -2,7 +2,7 @@
 layout: post
 date: 2024-12-03 09:00:00+0800
 inline: false
-external_url: https://www.163.com/dy/article/JII8IDMG05268MTU.html
+external_url: https://www.cugb.edu.cn/jdxw/47156.jhtml
 title: 王成善院士荣获何梁何利基金科学与技术进步奖
 ---
 
