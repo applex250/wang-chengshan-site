@@ -6,26 +6,14 @@
  * 覆盖规则全部放在无层位置,优先级高于 Tailwind @layer base。
  ******************************************************************************/
 
-/* ========== 1. 全局纸张噪点纹理 ========== */
-/* body 多层背景:微渐变(空间层次) + 暖灰纸纹(档案纸) + 细微颗粒 */
-body {
-  background-image: var(--memorial-bg-layers);
-}
+/* ========== 1. 背景(2026-08 改为纯色) ========== */
+/* 原纸张噪点纹理(渐变+纸纹+颗粒)已移除,背景为纯 --global-bg-color 米白;
+   照片墙(首页)保留,其边缘渐变遮罩使用 --global-bg-color,视觉无缝。 */
 
 /* Hero 稳定(2026-08):头像按 4:5 比例预留空间,加载前后不产生布局偏移(CLS) */
 .profile img {
   aspect-ratio: 4 / 5;
   height: auto;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.015;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.4' numOctaves='3' seed='11'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
 }
 
 /* ========== 2. 章节标题金色饰线 ========== */
