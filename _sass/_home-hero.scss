@@ -53,10 +53,11 @@
   text-indent: 0.12em;
 }
 
-/* 白底主体(费曼 #bodyWrap 白底) */
+/* 白底主体(费曼 #bodyWrap 白底;banner 后两行 <br> 留白 ≈ padding-top) */
 .fh-body {
   background: var(--global-bg-color);
   min-height: 475px;
+  padding-top: 1.5rem;
   padding-bottom: 2.5rem;
 }
 
@@ -109,7 +110,7 @@
   font-family: var(--font-family-sans, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif);
   font-size: 32px; /* 费曼 h1 全局 32px(继承) */
   font-weight: 700;
-  line-height: 1.4; /* 费曼 body line-height:1,中文取 1.4 保行距 */
+  line-height: 1; /* 费曼 body line-height:1,按英文原版 1:1 */
   color: #222222;
   margin: 0; /* 费曼 reset 后 h1 margin:0,p 的 1em 提供间距 */
 }
@@ -120,7 +121,7 @@
 
 .fh-quote-content p {
   font-size: 18px;
-  line-height: 1.5; /* 费曼 18px/line-height:1,中文取 1.5 */
+  line-height: 1; /* 费曼 18px / line-height:1 */
   color: #000;
   margin: 1em 0;
 }
@@ -168,6 +169,7 @@
   font-family: var(--font-family-serif, "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", serif);
   font-size: 24px;
   font-weight: 400;
+  line-height: 1; /* 费曼 body line-height:1 */
   color: #222222;
 }
 
@@ -182,7 +184,7 @@
   color: var(--memorial-red-deep); /* 费曼 #5084ca → 红 */
 }
 
-/* 右下引语区(费曼 .dropQuote1: 右浮 400px) */
+/* 右下引语区(费曼 .dropQuote1: 右浮 400px,视频框 400×270 + 说明) */
 .fh-quote1 {
   width: 400px;
   max-width: 100%;
@@ -191,9 +193,18 @@
   box-sizing: border-box;
 }
 
+.fh-quote1 video {
+  display: block;
+  width: 400px;
+  max-width: 100%;
+  height: 270px; /* 费曼 iframe 400×270 */
+  background: #000;
+  border: 1px solid var(--memorial-line);
+}
+
 .fh-quote1 p {
-  font-size: 18px;
-  line-height: 1.9;
+  font-size: 15px; /* 费曼全局 p 15px */
+  line-height: 1.5; /* 费曼 body line-height:1,说明句取 1.5 保可读 */
   color: #000;
   margin: 1em 0;
 }

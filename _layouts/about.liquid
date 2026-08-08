@@ -72,9 +72,18 @@ layout: default
       </div>
 
       <!-- 右下引语区(费曼 dropQuote1,原为视频,此处放引言) -->
+      <!-- 右下引语区(费曼 dropQuote1:视频框 400×270 + 说明文字) -->
       <div class="fh-quote1">
-        <p><strong>地质学家 · 沉积学家 · 中国科学院院士</strong></p>
-        <p>在亿万年的尺度上，与这颗星球促膝长谈。</p>
+        <video
+          controls
+          preload="metadata"
+          width="400"
+          height="270"
+          poster="{{ '/assets/img/wall/2026_songke1_well.jpg' | relative_url }}"
+        >
+          <source src="{{ '/assets/video/pexels-engin-akyurt-6069112-960x540-30fps.mp4' | relative_url }}" type="video/mp4" />
+        </video>
+        <p><strong>地质学家 · 沉积学家 · 中国科学院院士</strong> —— 在亿万年的尺度上，与这颗星球促膝长谈。</p>
       </div>
 
     </div>
