@@ -1,17 +1,17 @@
 /* ========== 跨页过渡 View Transitions(2026-08) ========== */
 /* 现代浏览器原生跨页动画:旧页淡出+微缩,新页淡入+微上移。
    仅 opacity/transform,不触发 reflow;不支持时自动降级为普通跳转。
-   2026-08-08 用户两次要求放慢:先 320/360→550/700,再 550/700→900/1100(明显可见)。 */
+   时长演进(用户逐步要求放慢):320/360 → 550/700 → 900/1100 → 2000/2000(2 秒,沉稳显著)。 */
 @view-transition {
   navigation: auto;
 }
 
 ::view-transition-old(root) {
-  animation: vt-out 900ms cubic-bezier(0.4, 0.05, 0.25, 1) both;
+  animation: vt-out 2000ms cubic-bezier(0.4, 0.05, 0.25, 1) both;
 }
 
 ::view-transition-new(root) {
-  animation: vt-in 1100ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: vt-in 2000ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes vt-out {
