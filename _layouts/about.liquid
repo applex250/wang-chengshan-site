@@ -1,58 +1,82 @@
 ---
 layout: default
 ---
-<!-- 首页极简 Hero(2026-08 重构):大图 + 遮罩 + "与地球对话" + 三句文案。
-     下方 2×2 栏目卡片(参考 Richard Feynman 官网排版):
-     图片 + 栏目名 + "进入",信息收敛到导航栏与首页快捷入口。 -->
-<div class="home-hero">
-  {% if page.hero and page.hero.image %}
-    <div
-      class="home-hero-bg"
-      style="background-image: url('{{ page.hero.image | prepend: '/assets/img/' | relative_url }}')"
-      role="img"
-      aria-label="{{ site.title }}"
-    ></div>
-  {% endif %}
-  <div class="home-hero-overlay"></div>
-  <div class="home-hero-content">
-    <h1 class="home-hero-title">与地球对话</h1>
-    {% if page.subtitle %}
-      <p class="home-hero-sub">{{ page.subtitle }}</p>
-    {% endif %}
-    {% if content %}
-      <div class="home-hero-copy">{{ content }}</div>
+<!-- 首页:排版 1:1 复刻 Richard Feynman 官网(richardfeynman.com/index.html)。
+     结构:黑底大图 Hero(底部 10px 红条) → 红色 Banner(主标题) → 白底主体
+     [左侧名言区(头像+名字+阅读更多) | 右侧 2 张圆形卡片]
+     [左侧 2 张圆形卡片 | 右下引语区]。
+     配色遵守本站约束:黑/红/白(原站橙 #c4793a、蓝 #5084ca 均改红系)。
+     本站导航栏为全局持久区(swup 架构),不随页面渲染,故 Hero 区不含导航。 -->
+<div class="fh-wrap">
+
+  <!-- Hero:黑底大图 + 底部 10px 红条 -->
+  <div class="fh-hero">
+    {% if page.hero and page.hero.image %}
+      <div
+        class="fh-hero-bg"
+        style="background-image: url('{{ page.hero.image | prepend: '/assets/img/' | relative_url }}')"
+        role="img"
+        aria-label="{{ site.title }}"
+      ></div>
     {% endif %}
   </div>
-</div>
 
-<!-- 2×2 栏目快捷卡片 -->
-<div class="home-cards">
-  <a class="home-card" href="{{ '/news/' | relative_url }}">
-    <img src="{{ '/assets/img/wall/2026_national_award_team_people_hall.jpg' | relative_url }}" alt="新闻动态" loading="lazy" />
-    <div class="home-card-body">
-      <h3 class="home-card-title">新闻动态</h3>
-      <span class="home-card-link">进入 <i class="fa-solid fa-arrow-right"></i></span>
+  <!-- Banner 红条:主标题 -->
+  <div class="fh-banner">
+    <div class="fh-banner-content">
+      <h1>与地球对话</h1>
     </div>
-  </a>
-  <a class="home-card" href="{{ '/publications/' | relative_url }}">
-    <img src="{{ '/assets/img/wall/wang_chengshan_unesco_speaking.jpg' | relative_url }}" alt="学术成果" loading="lazy" />
-    <div class="home-card-body">
-      <h3 class="home-card-title">学术成果</h3>
-      <span class="home-card-link">进入 <i class="fa-solid fa-arrow-right"></i></span>
+  </div>
+
+  <!-- 白底主体 -->
+  <div class="fh-body">
+    <div class="fh-content">
+
+      <!-- 名言区(费曼 dropQuote) -->
+      <div class="fh-quote">
+        <div class="fh-quote-content">
+          <h1>每一道岩层，都是一页写给时间的信。<span>四十六亿年，地球把答案写进石头里。</span></h1>
+          <img class="fh-headshot" src="{{ '/assets/img/prof_pic.jpg' | relative_url }}" alt="王成善" />
+          <p>
+            <strong>王成善</strong><br />
+            <br />
+            <a href="{{ '/cv/' | relative_url }}">阅读更多 &nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+          </p>
+        </div>
+      </div>
+
+      <!-- 圆形卡片 第 1 行右侧 -->
+      <div class="fh-card fh-card-r">
+        <img src="{{ '/assets/img/wall/wang_chengshan_unesco_speaking.jpg' | relative_url }}" alt="学术成果" />
+        <h2>学术成果</h2>
+        <p><a href="{{ '/publications/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i></a></p>
+      </div>
+      <div class="fh-card fh-card-r">
+        <img src="{{ '/assets/img/wall/wang_chengshan_medal_portrait.jpg' | relative_url }}" alt="学术简历" />
+        <h2>学术简历</h2>
+        <p><a href="{{ '/cv/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i></a></p>
+      </div>
+
+      <div class="fh-clearfix"></div>
+
+      <!-- 圆形卡片 第 2 行左侧 -->
+      <div class="fh-card fh-card-l">
+        <img src="{{ '/assets/img/wall/2026_songke1_well.jpg' | relative_url }}" alt="科研项目" />
+        <h2>科研项目</h2>
+        <p><a href="{{ '/projects/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i></a></p>
+      </div>
+      <div class="fh-card fh-card-l">
+        <img src="{{ '/assets/img/wall/2026_national_award_team_people_hall.jpg' | relative_url }}" alt="新闻动态" />
+        <h2>新闻动态</h2>
+        <p><a href="{{ '/news/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i></a></p>
+      </div>
+
+      <!-- 右下引语区(费曼 dropQuote1,原为视频,此处放引言) -->
+      <div class="fh-quote1">
+        <p><strong>地质学家 · 沉积学家 · 中国科学院院士</strong></p>
+        <p>在亿万年的尺度上，与这颗星球促膝长谈。</p>
+      </div>
+
     </div>
-  </a>
-  <a class="home-card" href="{{ '/projects/' | relative_url }}">
-    <img src="{{ '/assets/img/wall/2026_songke1_well.jpg' | relative_url }}" alt="科研项目" loading="lazy" />
-    <div class="home-card-body">
-      <h3 class="home-card-title">科研项目</h3>
-      <span class="home-card-link">进入 <i class="fa-solid fa-arrow-right"></i></span>
-    </div>
-  </a>
-  <a class="home-card" href="{{ '/cv/' | relative_url }}">
-    <img src="{{ '/assets/img/wall/wang_chengshan_medal_portrait.jpg' | relative_url }}" alt="学术简历" loading="lazy" />
-    <div class="home-card-body">
-      <h3 class="home-card-title">学术简历</h3>
-      <span class="home-card-link">进入 <i class="fa-solid fa-arrow-right"></i></span>
-    </div>
-  </a>
+  </div>
 </div>

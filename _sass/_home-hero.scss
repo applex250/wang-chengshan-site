@@ -1,170 +1,259 @@
-/* ========== 首页极简 Hero(2026-08 重构) ========== */
-/* "与地球对话":全幅大图 + 深红黑渐变遮罩 + 居中标题/副题/三句文案。
-   下方 2×2 栏目卡片(参考 Richard Feynman 官网排版:图片+栏目名+"进入")。 */
+/* ========== 首页:Richard Feynman 官网排版 1:1 复刻(2026-08) ========== */
+/* 结构:fh-hero(黑底大图+底部10px红条) → fh-banner(红条主标题) →
+        fh-body(白底):fh-quote(左,名言+头像) + fh-card-r×2(右)
+        fh-clearfix → fh-card-l×2(左) + fh-quote1(右,引语)
+   版心 960px(与费曼站一致),配色遵守本站黑/红/白约束。
+   字体:标题用系统衬线(近似 Vollkorn),正文系统无衬线(近似 Raleway),
+   不引入外部字体依赖。 */
 
-.home-hero {
+.fh-hero {
   position: relative;
-  min-height: 58vh; /* 压缩高度,首屏露出下方栏目卡片(费曼站排版) */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  text-align: center;
+  min-height: 600px; /* 费曼 indexHeaderWrap min-height:600px */
+  background-color: #000;
+  border-bottom: 10px solid var(--memorial-red-deep); /* 费曼 10px #c4793a → 红 */
+  background-size: cover;
+  background-position: center 30%;
+  /* 突破本站内容容器,与费曼站一致全宽 */
+  margin-left: calc(50% - 50vw);
+  width: 100vw;
 }
 
-/* 主视觉(640px 素材放大,遮罩压暗后观感可接受) */
-.home-hero-bg {
+.fh-hero-bg {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center 38%;
-  z-index: 0;
+  background-position: center 30%;
 }
 
-/* 深红黑遮罩:保证文字对比度,同时缓解低分辨率放大的模糊感 */
-.home-hero-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: radial-gradient(ellipse 90% 70% at 50% 40%, rgba(12, 5, 5, 0.32), rgba(12, 5, 5, 0.62) 85%);
+/* Banner 红条(费曼 #banner: 高50px 橙底,全宽) */
+.fh-banner {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  background: var(--memorial-red-deep); /* #c4793a → 红 */
+  height: 50px;
 }
 
-.home-hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 52rem;
-  padding: 3rem 1.5rem;
-  color: #f5f5f3;
+.fh-banner-content {
+  width: 960px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
-.home-hero-title {
-  font-family: var(--font-family-serif, "Songti SC", "STSong", "STZhongsong", "SimSun", "Noto Serif CJK SC", serif);
-  font-size: clamp(2.4rem, 6vw, 4rem);
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-indent: 0.18em; /* 抵消字距造成的视觉偏移 */
+.fh-banner-content h1 {
+  font-family: var(--font-family-serif, "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", serif);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 50px; /* 费曼 line-height:45px */
+  color: #fff;
+  text-shadow: 1px 1px 2px #000000;
   margin: 0;
-  color: #f7f5f0;
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
-}
-
-.home-hero-sub {
-  margin: 1.4rem 0 0;
-  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-  letter-spacing: 0.32em;
-  text-indent: 0.32em;
-  color: rgba(247, 245, 240, 0.92);
-  font-weight: 400;
-}
-
-.home-hero-copy {
-  margin: 2.4rem auto 0;
-  max-width: 44rem;
-  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
-  line-height: 2.3;
-  letter-spacing: 0.06em;
-  color: rgba(247, 245, 240, 0.94);
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
-}
-
-/* ========== 2×2 栏目卡片(费曼站排版) ========== */
-.home-cards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2rem;
-  max-width: 60rem;
-  margin: 2.5rem auto 4rem;
-  padding: 0 1.5rem;
-}
-
-.home-card {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  background: var(--memorial-paper);
-  border: 1px solid var(--memorial-line);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-  text-decoration: none !important;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-
-  img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    filter: saturate(0.92);
-  }
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.14);
-    border-color: var(--memorial-red-deep);
-
-    .home-card-link {
-      color: var(--memorial-red-deep);
-    }
-  }
-}
-
-.home-card-body {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 1rem 1.2rem;
-}
-
-.home-card-title {
-  margin: 0;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--global-text-color);
-  letter-spacing: 0.08em;
-}
-
-.home-card-link {
-  font-size: 0.85rem;
   letter-spacing: 0.12em;
-  color: var(--global-text-color-light);
-  transition: color 0.25s ease;
+  text-indent: 0.12em;
 }
 
-/* 深色模式:遮罩略加深,卡片背景/边框随主题 */
-html[data-theme="dark"] .home-hero-overlay {
-  background: radial-gradient(ellipse 90% 70% at 50% 40%, rgba(8, 3, 3, 0.4), rgba(8, 3, 3, 0.7) 85%);
+/* 白底主体(费曼 #bodyWrap 白底) */
+.fh-body {
+  background: var(--global-bg-color);
+  min-height: 475px;
+  padding-bottom: 2.5rem;
 }
 
-html[data-theme="dark"] .home-card {
-  background: var(--global-card-bg-color);
+/* 版心 960px(费曼 .content width:960px)。本站内容容器宽 900,
+   用负 margin 突破容器并在视口居中,保证 quote(400)+卡片(225×2)
+   一行放得下(费曼 890 < 960)。 */
+.fh-content {
+  width: 960px;
+  margin-left: calc(50% - 480px);
+  box-sizing: border-box;
 }
 
-/* 移动端:hero 高度收敛,卡片单列 */
+@media (max-width: 992px) {
+  .fh-content {
+    width: 100%;
+    margin-left: 0;
+    padding: 0 1rem;
+  }
+}
+
+.fh-clearfix::after {
+  clear: both;
+  content: " ";
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* 名言区(费曼 .dropQuote: 左浮 400px) */
+.fh-quote {
+  width: 400px;
+  max-width: 100%;
+  float: left;
+  margin-top: 15px;
+  box-sizing: border-box;
+}
+
+.fh-quote-content {
+  width: 320px;
+  max-width: 100%;
+  margin: 25px auto;
+  box-sizing: border-box;
+}
+
+.fh-quote-content h1 {
+  padding-top: 5px;
+  font-family: var(--font-family-sans, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: #222222;
+  margin: 0 0 1.2rem;
+}
+
+.fh-quote-content h1 span {
+  font-weight: 300; /* 费曼 span font-weight:300 */
+}
+
+.fh-quote-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #000;
+  margin: 1em 0;
+}
+
+.fh-quote-content a {
+  color: var(--memorial-red-deep); /* 费曼 #5084ca → 红 */
+  font-size: 16px;
+}
+
+.fh-headshot {
+  float: left;
+  margin-right: 10px;
+  width: 96px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* 圆形卡片(费曼 .circleContent/.circleContent1: 225px 居中) */
+.fh-card {
+  width: 225px;
+  max-width: 100%;
+  margin: 15px 10px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.fh-card-r {
+  float: right;
+}
+
+.fh-card-l {
+  float: left;
+}
+
+.fh-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; /* 费曼为圆形图标,照片用圆形裁切 */
+  object-fit: cover;
+}
+
+.fh-card h2 {
+  margin: 10px 0 0;
+  font-family: var(--font-family-serif, "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", serif);
+  font-size: 24px;
+  font-weight: 400;
+  color: #222222;
+}
+
+.fh-card p {
+  font-size: 16px;
+  color: #000;
+  margin: 1em 0;
+}
+
+.fh-card a {
+  font-size: 16px;
+  color: var(--memorial-red-deep); /* 费曼 #5084ca → 红 */
+}
+
+/* 右下引语区(费曼 .dropQuote1: 右浮 400px) */
+.fh-quote1 {
+  width: 400px;
+  max-width: 100%;
+  float: right;
+  margin-top: 15px;
+  box-sizing: border-box;
+}
+
+.fh-quote1 p {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #000;
+  margin: 1em 0;
+}
+
+/* 深色模式:白底区/文字/链接随主题 */
+html[data-theme="dark"] .fh-body {
+  background: var(--global-bg-color);
+}
+
+html[data-theme="dark"] .fh-quote-content h1,
+html[data-theme="dark"] .fh-card h2 {
+  color: var(--global-text-color);
+}
+
+html[data-theme="dark"] .fh-quote-content p,
+html[data-theme="dark"] .fh-card p,
+html[data-theme="dark"] .fh-quote1 p {
+  color: var(--global-text-color);
+}
+
+@media (max-width: 992px) {
+  .fh-content {
+    width: 100%;
+    margin-left: 0;
+    padding: 0 1rem;
+  }
+
+  .fh-hero,
+  .fh-banner {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+/* 移动端:版心收窄,取消浮动堆叠为单列 */
 @media (max-width: 768px) {
-  .home-hero {
-    min-height: 62vh;
-    align-items: flex-start;
-    padding-top: 3rem;
+  .fh-hero {
+    min-height: 320px;
   }
 
-  .home-hero-title {
-    letter-spacing: 0.12em;
-    text-indent: 0.12em;
+  .fh-banner-content h1 {
+    font-size: 24px;
   }
 
-  .home-hero-sub {
-    letter-spacing: 0.18em;
-    text-indent: 0.18em;
-    line-height: 2;
+  .fh-quote,
+  .fh-quote1,
+  .fh-card,
+  .fh-card-r,
+  .fh-card-l {
+    float: none;
+    width: 100%;
+    margin: 15px auto;
   }
 
-  .home-hero-copy {
-    margin-top: 2rem;
-    line-height: 2.2;
+  .fh-quote-content {
+    width: 100%;
   }
 
-  .home-cards {
-    grid-template-columns: 1fr;
-    gap: 1.4rem;
-    margin: 1.8rem auto 3rem;
-    padding: 0 1.2rem;
+  .fh-card img {
+    width: 140px;
+    height: 140px;
   }
 }
