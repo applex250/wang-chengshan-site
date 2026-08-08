@@ -226,18 +226,9 @@ html[data-theme="dark"] .fh-quote1 p {
     margin-left: 0;
     width: 100%;
   }
-}
 
-/* 移动端:版心收窄,取消浮动堆叠为单列 */
-@media (max-width: 768px) {
-  .fh-hero {
-    min-height: 320px;
-  }
-
-  .fh-banner-content h1 {
-    font-size: 24px;
-  }
-
+  /* 992px 以下版心不足 960,quote(400)+圆框(225×2) 放不下会换行错位
+     (圆框跑到名言区旁边),此处全部取消浮动、单列居中堆叠 */
   .fh-quote,
   .fh-quote1,
   .fh-card,
@@ -255,5 +246,16 @@ html[data-theme="dark"] .fh-quote1 p {
   .fh-card img {
     width: 140px;
     height: 140px;
+  }
+}
+
+/* 移动端:hero 高度与标题字号收敛 */
+@media (max-width: 768px) {
+  .fh-hero {
+    min-height: 320px;
+  }
+
+  .fh-banner-content h1 {
+    font-size: 24px;
   }
 }
