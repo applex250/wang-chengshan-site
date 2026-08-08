@@ -3,7 +3,7 @@ layout: page
 permalink: /teaching/
 title: 人才培养
 description: 课程建设、研究生培养与教学成果。
-nav: true
+nav: false
 nav_order: 6
 ---
 
