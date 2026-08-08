@@ -12,6 +12,12 @@ body {
   background-image: var(--memorial-bg-layers);
 }
 
+/* Hero 稳定(2026-08):头像按 4:5 比例预留空间,加载前后不产生布局偏移(CLS) */
+.profile img {
+  aspect-ratio: 4 / 5;
+  height: auto;
+}
+
 body::before {
   content: "";
   position: fixed;
