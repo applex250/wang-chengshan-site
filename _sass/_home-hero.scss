@@ -132,11 +132,11 @@
 
 .fh-headshot {
   float: left;
-  margin-right: 10px; /* 费曼 headshot 78×78,float:left margin-right:10px */
+  margin-right: 10px; /* 头像 78×78 圆形,float:left margin-right:10px */
   width: 78px;
   height: 78px;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 50%; /* 圆形头像 */
 }
 
 /* 圆形卡片(费曼 .circleContent/.circleContent1: 225px 居中) */
