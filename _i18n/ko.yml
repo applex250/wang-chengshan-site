@@ -1,0 +1,28 @@
+nav:
+  current: "(현재)"
+  toggle_nav: "내비게이션 전환"
+  search_open: "검색 열기"
+  search: "검색"
+  theme: "테마 전환"
+  theme_label: "색상 테마 전환"
+
+news:
+  empty: "아직 뉴스가 없습니다."
+
+footer:
+  newsletter: "이메일 업데이트 구독"
+  subscribe: "구독"
+
+search:
+  placeholder: "명령 또는 검색어 입력…"
+home:
+  banner: "왕성산 공식 웹사이트"
+  quote1: "모든 지층은 시간에 보내는 한 장의 편지입니다."
+  quote2: "46억 년 동안 지구는 그 답을 돌에 새겨 왔습니다."
+  name: "왕성산"
+  readmore: "더 보기"
+  card_works: "주요 연구 성과"
+  card_bio: "학술 이력"
+  card_projects: "연구 프로젝트"
+  card_news: "뉴스"
+  caption: "지질학자 왕성산이 깊은 시간이 지구의 돌에 새겨지는 방식을 설명합니다."

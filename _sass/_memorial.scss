@@ -89,6 +89,42 @@
   box-shadow: 0 1px 0 var(--memorial-gold-line);
 }
 
+/* 语言切换器(多语言,2026-08) */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  margin-left: 0.6rem;
+}
+
+.lang-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.3rem;
+}
+
+.lang-list li {
+  margin: 0;
+}
+
+.lang-list a {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--global-text-color);
+  border: 1px solid var(--memorial-line);
+  border-radius: 3px;
+  text-decoration: none !important;
+}
+
+.lang-list a:hover,
+.lang-list a.lang-active {
+  color: var(--memorial-red-deep);
+  border-color: var(--memorial-red-deep);
+}
+
 /* 页脚金色顶线 */
 footer {
   border-top: 2px solid transparent;

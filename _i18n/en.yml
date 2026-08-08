@@ -1,0 +1,28 @@
+nav:
+  current: "(current)"
+  toggle_nav: "Toggle navigation"
+  search_open: "Open search"
+  search: "Search"
+  theme: "Toggle theme"
+  theme_label: "Toggle color theme"
+
+news:
+  empty: "No news yet."
+
+footer:
+  newsletter: "Subscribe to email updates"
+  subscribe: "Subscribe"
+
+search:
+  placeholder: "Type a command or search…"
+home:
+  banner: "Welcome to the Official Site of Wang Chengshan"
+  quote1: "Every stratum is a letter written to time."
+  quote2: "For 4.6 billion years, the Earth has written its answers in stone."
+  name: "Wang Chengshan"
+  readmore: "Read More"
+  card_works: "Selected Scientific Works"
+  card_bio: "Biography"
+  card_projects: "Research Projects"
+  card_news: "News and Updates"
+  caption: "Geologist Wang Chengshan explains how deep time is written into the stones of our planet."

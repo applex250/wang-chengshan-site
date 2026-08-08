@@ -51,6 +51,9 @@
 // Feynman 首页字体（Vollkorn + Raleway 自托管，本站新增 2026-08）
 @use "fonts";
 
+// Noto Sans SC/JP/KR 全分片自托管（多语言站，本站新增 2026-08）
+@use "fonts-noto";
+
 // 注：跨页 View Transitions 实验已移除（2026-08-08）——3 秒串行动画导致
 // 过渡期间页面冻结不可交互（点导航无响应）、中断重放（重复淡入淡出）、
 // fixed 导航栏快照闪烁。原文件存档于 _backup_demo/page-transition.scss.removed。

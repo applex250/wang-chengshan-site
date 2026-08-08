@@ -224,6 +224,8 @@ GEM
       jekyll (~> 4.0)
       json-minify (~> 0.0.3)
       terser (~> 1.2.3)
+    jekyll-multiple-languages-plugin (1.8.0)
+      jekyll (>= 2.0, < 5.0)
     jekyll-paginate-v2 (3.0.0)
       jekyll (>= 3.0, < 5.0)
     jekyll-regex-replace (1.1.0)
@@ -386,6 +388,7 @@ DEPENDENCIES
   jekyll-jupyter-notebook
   jekyll-link-attributes
   jekyll-minifier
+  jekyll-multiple-languages-plugin
   jekyll-paginate-v2
   jekyll-regex-replace
   jekyll-scholar
@@ -480,6 +483,7 @@ CHECKSUMS
   jekyll-jupyter-notebook (0.0.6) sha256=33f757eaad9035bebc5309e23ce2274db089ae8a0d002a53c3acbc5265d322cd
   jekyll-link-attributes (2.0.1) sha256=e25b12e3c2a2960c8cfd9ab33e8df9aa3c4ba86491dbeec48f3cb11b0a0f216d
   jekyll-minifier (0.2.2) sha256=f0a182b98b369492b9d93f1dd064223cf04a10ba31c49e1535f28fe35764ee19
+  jekyll-multiple-languages-plugin (1.8.0) sha256=8a1eefdceb2049538dac370a7c9e986940585a0b3bb390e13b11db1637820866
   jekyll-paginate-v2 (3.0.0) sha256=001be6c1963caa41fed9c2f43b0d47201defa0395381eb8830487c1c2fc4f4e3
   jekyll-regex-replace (1.1.0) sha256=3738e6a0aa07dd3f9b7369e6e38e5d245c623bbd70c31b21e7838c654377a00c
   jekyll-sass-converter (3.1.0) sha256=83925d84f1d134410c11d0c6643b0093e82e3a3cf127e90757a85294a3862443

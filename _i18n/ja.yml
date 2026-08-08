@@ -1,0 +1,28 @@
+nav:
+  current: "（現在）"
+  toggle_nav: "ナビゲーションを切り替え"
+  search_open: "検索を開く"
+  search: "検索"
+  theme: "テーマを切り替え"
+  theme_label: "配色テーマを切り替え"
+
+news:
+  empty: "ニュースはまだありません。"
+
+footer:
+  newsletter: "メールで更新を受け取る"
+  subscribe: "登録"
+
+search:
+  placeholder: "コマンドまたは検索…"
+home:
+  banner: "王成善 公式サイト"
+  quote1: "すべての地層は、時間へ宛てた一頁の手紙である。"
+  quote2: "46億年、地球はその答えを石に書き記してきた。"
+  name: "王成善"
+  readmore: "もっと読む"
+  card_works: "学術研究成果"
+  card_bio: "経歴"
+  card_projects: "研究プロジェクト"
+  card_news: "ニュース"
+  caption: "地質学者・王成善が、深い時間が地球の石に刻まれる仕組みを語る。"

@@ -16,6 +16,24 @@ footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
 keywords: 王成善, 中国科学院院士, 地质学家, 沉积学, 大地构造, 青藏高原, 松辽盆地, 大陆科学钻探, 成都理工大学
 lang: zh-CN # the language of your site (for example: en, fr, cn, ru, etc.)
+
+# -----------------------------------------------------------------------------
+# 多语言(jekyll-multiple-languages-plugin,2026-08):
+#   zh 默认(无 URL 前缀,omit_default_locale),en/ja/ko 加前缀
+# -----------------------------------------------------------------------------
+langs: ["zh", "en", "ja", "ko"]
+languages: ["zh", "en", "ja", "ko"]
+default_locale: "zh"
+omit_default_locale: true
+locale_subdir: false
+exclude_from_localization:
+  - assets
+  - images
+  - css
+  - js
+  - public
+  - img
+  - favicon.ico
 icon: 王 # the text/emoji used as the favicon (alternatively, provide image name in /assets/img/)
 apple_touch_icon: # image name in /assets/img/ (or a rooted path / absolute URL) used for iOS home-screen bookmarks; needs a real 180x180 PNG, since Safari ignores the emoji favicon above. Left empty, iOS falls back to a screenshot of the page.
 
@@ -267,6 +285,8 @@ plugins:
   - jekyll-toc
   - jekyll-twitter-plugin
   - jemoji
+
+  - jekyll-multiple-languages-plugin  # 多语言 i18n(2026-08)
 
   # al-folio plugins
   - al_folio_core

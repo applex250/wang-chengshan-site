@@ -25,6 +25,8 @@ group :jekyll_plugins do
     gem 'jekyll-twitter-plugin'
     gem 'jemoji'
 
+    gem 'jekyll-multiple-languages-plugin'  # 多语言 i18n(zh/en/ja/ko),2026-08
+
     gem 'classifier-reborn'  # used for content categorization during the build
 end
 

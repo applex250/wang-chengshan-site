@@ -24,7 +24,7 @@ layout: default
   <!-- Red banner: main title -->
   <div class="fh-banner">
     <div class="fh-banner-content">
-      <h1>Welcome to the Official Site of Wang Chengshan</h1>
+      <h1>{% t home.banner %}</h1>
     </div>
   </div>
 
@@ -35,12 +35,12 @@ layout: default
       <!-- Quote area (Feynman .dropQuote) -->
       <div class="fh-quote">
         <div class="fh-quote-content">
-          <h1>Every stratum is a letter written to time. <span>For 4.6 billion years, the Earth has written its answers in stone.</span></h1>
-          <img class="fh-headshot" src="{{ '/assets/img/prof_pic.jpg' | relative_url }}" alt="Wang Chengshan" />
+          <h1>{% t home.quote1 %} <span>{% t home.quote2 %}</span></h1>
+          <img class="fh-headshot" src="{{ '/assets/img/prof_pic.jpg' | relative_url }}" alt="{% t home.name %}" />
           <p>
-            <strong>Wang Chengshan</strong><br />
+            <strong>{% t home.name %}</strong><br />
             <br />
-            <a href="{{ '/cv/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a>
+            <a href="{{ '/cv/' | relative_url }}">{% t home.readmore %} &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a>
           </p>
         </div>
       </div>
@@ -48,13 +48,13 @@ layout: default
       <!-- Circle cards, row 1 right -->
       <div class="fh-card fh-card-r">
         <img src="{{ '/assets/img/wall/wang_chengshan_unesco_speaking.jpg' | relative_url }}" alt="Selected Scientific Works" />
-        <h2>Selected Scientific Works</h2>
+        <h2>{% t home.card_works %}</h2>
         <p><a href="{{ '/publications/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a></p>
       </div>
       <div class="fh-card fh-card-r">
         <img src="{{ '/assets/img/wall/wang_chengshan_medal_portrait.jpg' | relative_url }}" alt="Biography" />
-        <h2>Biography</h2>
-        <p><a href="{{ '/cv/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a></p>
+        <h2>{% t home.card_bio %}</h2>
+        <p><a href="{{ '/cv/' | relative_url }}">{% t home.readmore %} &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a></p>
       </div>
 
       <div class="fh-clearfix"></div>
@@ -62,12 +62,12 @@ layout: default
       <!-- Circle cards, row 2 left -->
       <div class="fh-card fh-card-l">
         <img src="{{ '/assets/img/wall/2026_songke1_well.jpg' | relative_url }}" alt="Research Projects" />
-        <h2>Research Projects</h2>
+        <h2>{% t home.card_projects %}</h2>
         <p><a href="{{ '/projects/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a></p>
       </div>
       <div class="fh-card fh-card-l">
         <img src="{{ '/assets/img/wall/2026_national_award_team_people_hall.jpg' | relative_url }}" alt="News &amp; Updates" />
-        <h2>News &amp; Updates</h2>
+        <h2>{% t home.card_news %}</h2>
         <p><a href="{{ '/news/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a></p>
       </div>
 
@@ -82,7 +82,7 @@ layout: default
         >
           <source src="{{ '/assets/video/pexels-engin-akyurt-6069112-960x540-30fps.mp4' | relative_url }}" type="video/mp4" />
         </video>
-        <p><strong>Geologist Wang Chengshan</strong> explains how deep time is written into the stones of our planet.</p>
+        <p>{% t home.caption %}</p>
       </div>
 
     </div>

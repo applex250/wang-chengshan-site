@@ -6,8 +6,7 @@
    字体 1:1 对照费曼原站(不引入外部字体):
      Vollkorn(衬线,标题) → Georgia 系;Raleway(无衬线,正文) → Helvetica 系。 */
 
-/* 费曼字体 1:1(自托管,见 _sass/_fonts.scss):Vollkorn 衬线 / Raleway 无衬线 */
-$fh-serif: "Vollkorn", Georgia, "Times New Roman", serif;
+/* 字体:英文页统一 Raleway(见 _sass/_fonts.scss) */
 $fh-sans: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 .fh-hero {
@@ -46,7 +45,7 @@ $fh-sans: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .fh-banner-content h1 {
-  font-family: $fh-serif; /* 费曼 banner h1 = Vollkorn */
+  font-family: $fh-sans; /* 单一字体:与正文同族(原 Vollkorn 已弃) */
   font-size: 32px;
   font-weight: 700;
   line-height: 45px; /* 费曼 #bannerContent h1 line-height:45px */
@@ -177,7 +176,7 @@ $fh-sans: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 .fh-card h2 {
   margin: 10px 0 0;
-  font-family: $fh-serif; /* 费曼 .circleContent h2 = Vollkorn */
+  font-family: $fh-sans; /* 单一字体:与正文同族(原 Vollkorn 已弃) */
   font-size: 24px;
   font-weight: 400;
   line-height: 1; /* 费曼 body line-height:1 */

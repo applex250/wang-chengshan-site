@@ -1,20 +1,49 @@
-/* ========== 首页英文版字体 1:1(2026-08) ========== */
-/* 与费曼官网相同的字体:Vollkorn(衬线标题) + Raleway(无衬线正文)。
-   两者均为 SIL OFL 许可,允许自托管;latin 子集已本地化,
-   零外部请求(GitHub Pages 同源)。变量字体,400/700(Vollkorn)、
-   300/400/700(Raleway) 共用同一 woff2。 */
-@font-face {
-  font-family: "Vollkorn";
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url("../lib/fonts/vollkorn-latin.woff2") format("woff2");
-}
-
+/* ========== 全站字体(2026-08):一种语言一种字体 ========== */
+/* 每种语言统一一个字体(标题正文同款,不再混排):
+     zh → Noto Sans SC    en → Raleway    ja → Noto Sans JP    ko → Noto Sans KR
+   Raleway 自托管;Noto 三语全分片自托管(见 _sass/_fonts-noto.scss,
+   unicode-range 按需加载,零外部请求)。 */
 @font-face {
   font-family: "Raleway";
   font-style: normal;
   font-weight: 300 700;
   font-display: swap;
   src: url("../lib/fonts/raleway-latin.woff2") format("woff2");
+}
+
+/* 默认(英文)Raleway */
+body,
+html {
+  font-family: "Raleway", system-ui, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 中文:Noto Sans SC */
+html[lang="zh"] body,
+html[lang="zh"] {
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+}
+
+/* 日文:Noto Sans JP */
+html[lang="ja"] body,
+html[lang="ja"] {
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+/* 韩文:Noto Sans KR */
+html[lang="ko"] body,
+html[lang="ko"] {
+  font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans CJK KR", sans-serif;
+}
+
+/* 标题与正文同字体(单一字体原则,不单独设置衬线) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.post-title,
+.navbar-brand,
+.profile .more-info {
+  font-family: inherit;
 }

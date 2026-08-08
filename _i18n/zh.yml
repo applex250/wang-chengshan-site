@@ -1,0 +1,28 @@
+nav:
+  current: "（当前）"
+  toggle_nav: "切换导航"
+  search_open: "打开搜索"
+  search: "搜索"
+  theme: "切换主题"
+  theme_label: "切换配色主题"
+
+news:
+  empty: "暂无新闻。"
+
+footer:
+  newsletter: "订阅邮件更新"
+  subscribe: "订阅"
+
+search:
+  placeholder: "输入命令或搜索…"
+home:
+  banner: "王成善官方网站"
+  quote1: "每一道岩层，都是一页写给时间的信。"
+  quote2: "四十六亿年，地球把答案写进石头里。"
+  name: "王成善"
+  readmore: "阅读更多"
+  card_works: "学术成果"
+  card_bio: "学术简历"
+  card_projects: "科研项目"
+  card_news: "新闻动态"
+  caption: "地质学家王成善讲述：深时如何被镌刻进地球的石头。"
