@@ -1,0 +1,20 @@
+/* ========== 首页英文版字体 1:1(2026-08) ========== */
+/* 与费曼官网相同的字体:Vollkorn(衬线标题) + Raleway(无衬线正文)。
+   两者均为 SIL OFL 许可,允许自托管;latin 子集已本地化,
+   零外部请求(GitHub Pages 同源)。变量字体,400/700(Vollkorn)、
+   300/400/700(Raleway) 共用同一 woff2。 */
+@font-face {
+  font-family: "Vollkorn";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../lib/fonts/vollkorn-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("../lib/fonts/raleway-latin.woff2") format("woff2");
+}

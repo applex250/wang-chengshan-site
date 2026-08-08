@@ -6,9 +6,9 @@
    字体 1:1 对照费曼原站(不引入外部字体):
      Vollkorn(衬线,标题) → Georgia 系;Raleway(无衬线,正文) → Helvetica 系。 */
 
-/* 费曼字体栈映射 */
-$fh-serif: Georgia, "Times New Roman", "Songti SC", "STSong", "SimSun", serif;
-$fh-sans: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+/* 费曼字体 1:1(自托管,见 _sass/_fonts.scss):Vollkorn 衬线 / Raleway 无衬线 */
+$fh-serif: "Vollkorn", Georgia, "Times New Roman", serif;
+$fh-sans: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 .fh-hero {
   position: relative;
