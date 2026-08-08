@@ -1,10 +1,10 @@
 /* ========== 首页极简 Hero(2026-08 重构) ========== */
 /* "与地球对话":全幅大图 + 深红黑渐变遮罩 + 居中标题/副题/三句文案。
-   信息全部收敛到导航栏,首页只留视觉与一句话。 */
+   下方 2×2 栏目卡片(参考 Richard Feynman 官网排版:图片+栏目名+"进入")。 */
 
 .home-hero {
   position: relative;
-  min-height: calc(100vh - 5.5rem); /* 扣除导航栏高度,首屏即 hero */
+  min-height: 58vh; /* 压缩高度,首屏露出下方栏目卡片(费曼站排版) */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,8 +26,7 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    radial-gradient(ellipse 90% 70% at 50% 40%, rgba(12, 5, 5, 0.32), rgba(12, 5, 5, 0.62) 85%);
+  background: radial-gradient(ellipse 90% 70% at 50% 40%, rgba(12, 5, 5, 0.32), rgba(12, 5, 5, 0.62) 85%);
 }
 
 .home-hero-content {
@@ -40,7 +39,7 @@
 
 .home-hero-title {
   font-family: var(--font-family-serif, "Songti SC", "STSong", "STZhongsong", "SimSun", "Noto Serif CJK SC", serif);
-  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  font-size: clamp(2.4rem, 6vw, 4rem);
   font-weight: 600;
   letter-spacing: 0.18em;
   text-indent: 0.18em; /* 抵消字距造成的视觉偏移 */
@@ -50,8 +49,8 @@
 }
 
 .home-hero-sub {
-  margin: 1.6rem 0 0;
-  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  margin: 1.4rem 0 0;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
   letter-spacing: 0.32em;
   text-indent: 0.32em;
   color: rgba(247, 245, 240, 0.92);
@@ -59,26 +58,91 @@
 }
 
 .home-hero-copy {
-  margin: 2.8rem auto 0;
+  margin: 2.4rem auto 0;
   max-width: 44rem;
-  font-size: clamp(1rem, 1.7vw, 1.2rem);
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
   line-height: 2.3;
   letter-spacing: 0.06em;
   color: rgba(247, 245, 240, 0.94);
   text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* 深色模式:遮罩略加深,保持一致的沉浸感 */
+/* ========== 2×2 栏目卡片(费曼站排版) ========== */
+.home-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  max-width: 60rem;
+  margin: 2.5rem auto 4rem;
+  padding: 0 1.5rem;
+}
+
+.home-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--memorial-paper);
+  border: 1px solid var(--memorial-line);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  text-decoration: none !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+
+  img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    filter: saturate(0.92);
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.14);
+    border-color: var(--memorial-red-deep);
+
+    .home-card-link {
+      color: var(--memorial-red-deep);
+    }
+  }
+}
+
+.home-card-body {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 1rem 1.2rem;
+}
+
+.home-card-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--global-text-color);
+  letter-spacing: 0.08em;
+}
+
+.home-card-link {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  color: var(--global-text-color-light);
+  transition: color 0.25s ease;
+}
+
+/* 深色模式:遮罩略加深,卡片背景/边框随主题 */
 html[data-theme="dark"] .home-hero-overlay {
   background: radial-gradient(ellipse 90% 70% at 50% 40%, rgba(8, 3, 3, 0.4), rgba(8, 3, 3, 0.7) 85%);
 }
 
-/* 移动端:高度收敛,标题/副题/文案降级 */
+html[data-theme="dark"] .home-card {
+  background: var(--global-card-bg-color);
+}
+
+/* 移动端:hero 高度收敛,卡片单列 */
 @media (max-width: 768px) {
   .home-hero {
-    min-height: 74vh;
+    min-height: 62vh;
     align-items: flex-start;
-    padding-top: 4rem;
+    padding-top: 3rem;
   }
 
   .home-hero-title {
@@ -93,7 +157,14 @@ html[data-theme="dark"] .home-hero-overlay {
   }
 
   .home-hero-copy {
-    margin-top: 2.2rem;
+    margin-top: 2rem;
     line-height: 2.2;
+  }
+
+  .home-cards {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+    margin: 1.8rem auto 3rem;
+    padding: 0 1.2rem;
   }
 }

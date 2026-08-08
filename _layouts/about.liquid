@@ -2,7 +2,8 @@
 layout: default
 ---
 <!-- 首页极简 Hero(2026-08 重构):大图 + 遮罩 + "与地球对话" + 三句文案。
-     移除原 profile/长文/新闻/代表性成果/社交区块,信息全部收敛到导航栏。 -->
+     下方 2×2 栏目卡片(参考 Richard Feynman 官网排版):
+     图片 + 栏目名 + "进入",信息收敛到导航栏与首页快捷入口。 -->
 <div class="home-hero">
   {% if page.hero and page.hero.image %}
     <div
@@ -22,4 +23,36 @@ layout: default
       <div class="home-hero-copy">{{ content }}</div>
     {% endif %}
   </div>
+</div>
+
+<!-- 2×2 栏目快捷卡片 -->
+<div class="home-cards">
+  <a class="home-card" href="{{ '/news/' | relative_url }}">
+    <img src="{{ '/assets/img/wall/2026_national_award_team_people_hall.jpg' | relative_url }}" alt="新闻动态" loading="lazy" />
+    <div class="home-card-body">
+      <h3 class="home-card-title">新闻动态</h3>
+      <span class="home-card-link">进入 <i class="fa-solid fa-arrow-right"></i></span>
+    </div>
+  </a>
+  <a class="home-card" href="{{ '/publications/' | relative_url }}">
+    <img src="{{ '/assets/img/wall/wang_chengshan_unesco_speaking.jpg' | relative_url }}" alt="学术成果" loading="lazy" />
+    <div class="home-card-body">
+      <h3 class="home-card-title">学术成果</h3>
+      <span class="home-card-link">进入 <i class="fa-solid fa-arrow-right"></i></span>
+    </div>
+  </a>
+  <a class="home-card" href="{{ '/projects/' | relative_url }}">
+    <img src="{{ '/assets/img/wall/2026_songke1_well.jpg' | relative_url }}" alt="科研项目" loading="lazy" />
+    <div class="home-card-body">
+      <h3 class="home-card-title">科研项目</h3>
+      <span class="home-card-link">进入 <i class="fa-solid fa-arrow-right"></i></span>
+    </div>
+  </a>
+  <a class="home-card" href="{{ '/cv/' | relative_url }}">
+    <img src="{{ '/assets/img/wall/wang_chengshan_medal_portrait.jpg' | relative_url }}" alt="学术简历" loading="lazy" />
+    <div class="home-card-body">
+      <h3 class="home-card-title">学术简历</h3>
+      <span class="home-card-link">进入 <i class="fa-solid fa-arrow-right"></i></span>
+    </div>
+  </a>
 </div>
