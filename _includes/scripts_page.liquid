@@ -1,0 +1,71 @@
+<!-- 页面级脚本(2026-08 从 scripts.liquid 拆出):全部作用于 #swup 内容区,
+     由 swup 的 ScriptsPlugin 在每次内容交换后重新执行,
+     配合 swup-init.js 的 DOMContentLoaded 垫片完成新内容的重初始化。
+     依赖的库(Masonry/imagesLoaded/tocbot/AlFolioUi)已全局常驻 scripts.liquid,
+     此处只剩初始化与自包含脚本,无执行顺序竞态。
+     导航栏/页脚等持久区脚本仍在 scripts.liquid,只执行一次。 -->
+
+{% if site.enable_masonry %}
+  <!-- Masonry 初始化(库已全局加载) -->
+  <script defer src="{{ '/assets/js/masonry.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
+{% endif %}
+
+{% if site.plugins contains 'al_charts' %}
+  <!-- Charts and Diagrams -->
+  {% include plugins/al_charts_scripts.liquid %}
+{% endif %}
+
+{% if page.calendar %}
+  <!-- Calendar setup -->
+  <script defer src="{{ '/assets/js/calendar-setup.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
+{% endif %}
+
+{% if site.plugins contains 'al_math' and page.math != false %}
+  <!-- Math and Tikzjax (2026-08: 页面级开关 page.math=false 可跳过,首页禁用省 4MB MathJax) -->
+  {% include plugins/al_math_scripts.liquid %}
+{% endif %}
+
+{% if page.typograms %}
+  <!-- Typograms -->
+  <script src="{{ '/assets/js/typograms.js' | relative_url | bust_file_cache }}"></script>
+{% endif %}
+
+{% if page.pretty_table and site.al_folio.compat.bootstrap.enabled %}
+  <!-- Bootstrap Table -->
+  <!-- Bootstrap Table doesn't go well with diff2html -->
+  <script
+    defer
+    src="{{ site.third_party_libraries.bootstrap-table.url.js }}"
+    integrity="{{ site.third_party_libraries.bootstrap-table.integrity.js }}"
+    crossorigin="anonymous"
+  ></script>
+{% endif %}
+{% if page.pretty_table and site.al_folio.compat.bootstrap.enabled != true %}
+  <script defer src="{{ '/assets/js/table-engine.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
+{% endif %}
+
+<!-- Common JS(摘要/BibTeX 折叠、侧栏 TOC 初始化、popover 初始化,
+     均作用于内容区;库 tocbot/AlFolioUi 已全局常驻) -->
+<script defer src="{{ '/assets/js/common.js' | relative_url | bust_file_cache }}"></script>
+<script defer src="{{ '/assets/js/copy_code.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="{{ '/assets/js/jupyter_new_tab.js' | relative_url | bust_file_cache }}"></script>
+
+<!-- Badges -->
+{% if site.enable_publication_badges.altmetric %}
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+{% endif %}
+{% if site.enable_publication_badges.dimensions %}
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+{% endif %}
+
+{% if site.plugins contains 'al_img_tools' %}
+  <!-- Image Features -->
+  {% include plugins/al_img_tools_scripts.liquid %}
+{% endif %}
+
+{% if page.tabs %}
+  <!-- Jekyll Tabs -->
+  <script src="{{ '/assets/js/tabs.js' | relative_url | bust_file_cache }}"></script>
+{% endif %}

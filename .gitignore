@@ -16,6 +16,10 @@ output/playwright/
 test-results/
 vendor
 
+# 例外:swup 库需随站部署(GitHub Pages 无 CDN 兜底,2026-08)
+!assets/js/vendor/
+!assets/js/vendor/swup/
+
 # Python bytecode from bin/ helper scripts
 __pycache__/
 *.pyc

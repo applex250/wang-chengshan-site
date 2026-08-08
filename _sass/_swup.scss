@@ -1,0 +1,23 @@
+/* ========== Swup 页面切换动画(2026-08) ========== */
+/* 动画只作用于 #swup 内容区;导航栏与页脚在容器之外,完全不参与。
+   swup 在切换时给 <html> 加 is-animating/is-leaving 等类,并等待
+   animationSelector(默认 [class*="swup-transition-"])匹配元素上的
+   过渡结束后才替换内容——这里的 0.32s 即切换节奏。 */
+.swup-transition-main {
+  transition:
+    opacity 0.32s ease,
+    transform 0.32s ease;
+  opacity: 1;
+  transform: none;
+}
+
+html.is-animating .swup-transition-main {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swup-transition-main {
+    transition: none;
+  }
+}

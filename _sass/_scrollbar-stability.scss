@@ -1,0 +1,60 @@
+/* ========== 滚动条宽度稳定(2026-08,本站新增) ========== */
+/* 经典滚动条(Windows)占 ~15px。页面间内容高度不同 → 滚动条出现/消失 →
+   可用宽度变化 → 整个居中布局(导航栏/内容区/版权栏)随每次切换左右平移,
+   表现为"点击导航后整页左右抽动"。修复:html 垂直滚动条槽常驻,页面宽度
+   恒定,切换零位移。scrollbar-gutter: stable 对根视口在 Chrome 下不生效
+   (实测),故用 overflow-y: scroll 兜底;overlay 滚动条(触屏/macOS 默认)
+   不占宽度,常驻槽无视觉效果,无副作用。 */
+html {
+  overflow-y: scroll;
+  overflow-x: hidden; /* 页面级横向滚动条永不出现(内容溢出由各容器自消化) */
+  scrollbar-gutter: stable;
+}
+
+/* 长内容断行兜底:BibTeX 代码块/长链接不换行会撑出横向滚动条。
+   注意 specificity:pygments 主题 CSS 在 main.css 之后加载,其
+   `.highlight pre`(0,1,1) 会覆盖 `.bibtex pre`(0,1,1),故用
+   `.bibtex figure.highlight pre`(0,2,1) 兜底(实测 1087px 代码行,2026-08) */
+.bibtex pre,
+.bibtex figure.highlight pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.post a,
+.cv a {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* 论文列表行:Bootstrap .row 负 margin(±15px)在无 padding 的 li 里
+   右缘超出 15px → .bibliography 横向溢出(实测 li scrollWidth 915>900)。
+   li 补左右 padding 让 row 贴边,视觉不变,溢出消除 */
+.bibliography li {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* cv 时间线行:list-group-item 右侧无 padding,row 负 margin 同样溢出
+   15px(实测 scrollWidth 603>588),补右侧 padding 抵消 */
+.cv .list-group-item {
+  padding-right: 15px;
+}
+
+/* ========== 横向滚动条默认隐藏(2026-08) ========== */
+/* 需求:不显示横向滚动条,内容默认从最左开始。
+   WebKit/Blink:方向伪元素只隐藏横向滚动条(垂直保留)。
+   Firefox/旧 Edge:scrollbar-width/ms-overflow-style 不分方向,
+   只对已知横向可滚容器(figure.highlight 代码块、table-responsive)
+   整体隐藏——这些容器纵向无需滚动,无副作用。 */
+::-webkit-scrollbar:horizontal {
+  height: 0;
+  display: none;
+}
+
+figure.highlight,
+.table-responsive {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}

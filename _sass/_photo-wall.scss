@@ -1,11 +1,14 @@
-/* ========== 照片墙(首页动态背景) ========== */
+/* ========== 照片墙(首页动态背景,2026-08 常驻改造) ========== */
 /* 层级:body 背景 → body::before 纹理 → 照片墙(z-index:-1) → 主内容 */
+/* DOM 常驻全站(#swup 容器外,不随页面切换重建),仅首页显示:
+   visibility 切换不中断 .photo-wall-track 的滚动动画,切回首页零抽动。 */
 .photo-wall {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
   overflow: hidden;
+  visibility: hidden;
 
   /* 左右渐变遮罩:照片在边缘沉入底色,不干扰边缘内容 */
   &::before,
@@ -28,6 +31,10 @@
     right: 0;
     background: linear-gradient(270deg, var(--global-bg-color) 0%, transparent 100%);
   }
+}
+
+body.photo-wall-active .photo-wall {
+  visibility: visible;
 }
 
 .photo-wall-track {

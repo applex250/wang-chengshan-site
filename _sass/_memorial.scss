@@ -187,10 +187,34 @@ footer a:hover {
   margin-left: 0;
 }
 
+/* cv 联系信息表格:覆盖 Bootstrap .table 硬编码文字色 #212529,
+   深色模式下表格文字随 --global-text-color 变浅(2026-08 修复) */
+.table-cv {
+  color: var(--global-text-color);
+
+  td {
+    color: var(--global-text-color);
+  }
+}
+
 /* ========== 7c. 新闻页时间轴年表 ========== */
+/* 时间线缩进用 margin-left + 等宽抵消:表格总宽(margin+width)恒等于容器,
+   不产生横向溢出/滚动条(2026-08 实测修复) */
 .news .memorial-timeline {
   border-left: 1px solid var(--memorial-line);
   margin-left: 0.35rem;
+  width: calc(100% - 0.35rem);
+  /* fixed 布局 + 单元格断行,表格宽度恒等于容器,
+     消除长标题撑出的横向滚动条 */
+  table-layout: fixed;
+  /* 覆盖 Bootstrap .table 硬编码 #212529,深色模式文字随主题变浅 */
+  color: var(--global-text-color);
+
+  td {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    color: var(--global-text-color);
+  }
 }
 
 .news .memorial-timeline th {
@@ -198,6 +222,7 @@ footer a:hover {
   color: var(--memorial-gold);
   font-weight: 700;
   padding-left: 1.4rem;
+  white-space: nowrap;
 }
 
 .news .memorial-timeline th::before {

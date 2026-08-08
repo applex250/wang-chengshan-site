@@ -34,7 +34,11 @@ start_jekyll() {
     manage_gemfile_lock
     ensure_bundle_deps
     mkdir -p "$DOCKER_DESTINATION"
-    bundle exec jekyll serve --watch --port=8080 --host=0.0.0.0 --livereload --verbose --trace --force_polling --destination "$DOCKER_DESTINATION" --config "$CONFIG_FILE" &
+    # 2026-08-08: 移除 --livereload。Windows 宿主机 + Docker bind mount 下
+    # --force_polling 会频繁误判文件变化 → 反复 rebuild → livereload 反复广播
+    # 整页 reload,打断 swup 的 SPA 切换(点击导航"偶尔出错"、页面被刷新重置)。
+    # 保留 --watch:文件变化仍会重建,swup fetch 到的是新内容,体验稳定。
+    bundle exec jekyll serve --watch --port=8080 --host=0.0.0.0 --verbose --trace --force_polling --destination "$DOCKER_DESTINATION" --config "$CONFIG_FILE" &
 }
 
 start_jekyll

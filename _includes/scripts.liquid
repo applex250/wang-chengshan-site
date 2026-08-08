@@ -1,94 +1,52 @@
-<script>
+<script data-swup-ignore-script>
   window.alFolio = {
     compatBootstrap: {{ site.al_folio.compat.bootstrap.enabled | default: false | jsonify }}
   };
 </script>
 
-<!-- Core navigation/runtime scripts -->
-<script src="{{ '/assets/js/nav-toggle.js' | relative_url | bust_file_cache }}"></script>
+<!-- Core navigation/runtime scripts (data-swup-ignore-script: 持久区脚本,
+     只执行一次,swup 切换时不重放——否则 SwupScriptsPlugin 会全文档重放,
+     导致 nav-toggle 重复绑定、swup-init 二次实例化白屏) -->
+<script data-swup-ignore-script src="{{ '/assets/js/nav-toggle.js' | relative_url | bust_file_cache }}"></script>
 {% if site.al_folio.compat.bootstrap.enabled %}
-  <script src="{{ '/assets/js/bootstrap-compat.js' | relative_url | bust_file_cache }}"></script>
+  <script data-swup-ignore-script src="{{ '/assets/js/bootstrap-compat.js' | relative_url | bust_file_cache }}"></script>
 {% endif %}
 
+<!-- ============ 库文件(仅定义全局对象,全局加载一次) ============
+     2026-08 swup 接入:库与初始化分离。库常驻全局,容器内初始化脚本
+     重放时总能找到 window.Masonry / window.tocbot / window.AlFolioUi,
+     消除动态插入脚本的执行顺序竞态。不用 defer:需在解析阶段先于
+     容器内 defer 初始化脚本执行(位于 body 末尾,阻塞可忽略)。 -->
 {% if site.enable_masonry %}
-  <!-- Masonry & imagesLoaded -->
+  <!-- Masonry & imagesLoaded libraries -->
   <script
-    defer
+    data-swup-ignore-script
     src="{{ site.third_party_libraries.masonry.url.js }}"
     integrity="{{ site.third_party_libraries.masonry.integrity.js }}"
     crossorigin="anonymous"
   ></script>
   <script
-    defer
+    data-swup-ignore-script
     src="{{ site.third_party_libraries.imagesloaded.url.js }}"
     integrity="{{ site.third_party_libraries.imagesloaded.integrity.js }}"
     crossorigin="anonymous"
   ></script>
-  <script defer src="{{ '/assets/js/masonry.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
 {% endif %}
 
-{% if site.plugins contains 'al_charts' %}
-  <!-- Charts and Diagrams -->
-  {% include plugins/al_charts_scripts.liquid %}
-{% endif %}
+<!-- Tocbot library(初始化在内容区的 common.js 中) -->
+<script
+  data-swup-ignore-script
+  src="{{ site.third_party_libraries.tocbot.url.js }}"
+  integrity="{{ site.third_party_libraries.tocbot.integrity.js }}"
+  crossorigin="anonymous"
+></script>
 
-{% if page.calendar %}
-  <!-- Calendar setup -->
-  <script defer src="{{ '/assets/js/calendar-setup.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
-{% endif %}
+<!-- Tooltips & popovers runtime(定义 window.AlFolioUi;内容区 tooltip
+     由 swup-init.js 的 content:replace 钩子在新内容上重新初始化) -->
+<script data-swup-ignore-script src="{{ '/assets/js/tooltips-setup.js' | relative_url | bust_file_cache }}"></script>
 
-{% if site.plugins contains 'al_math' and page.math != false %}
-  <!-- Math and Tikzjax (2026-08: 页面级开关 page.math=false 可跳过,首页禁用省 4MB MathJax) -->
-  {% include plugins/al_math_scripts.liquid %}
-{% endif %}
-
-{% if page.typograms %}
-  <!-- Typograms -->
-  <script src="{{ '/assets/js/typograms.js' | relative_url | bust_file_cache }}"></script>
-{% endif %}
-
-<!-- Tooltips & popovers runtime -->
-<script src="{{ '/assets/js/tooltips-setup.js' | relative_url | bust_file_cache }}"></script>
-
-{% if page.pretty_table and site.al_folio.compat.bootstrap.enabled %}
-  <!-- Bootstrap Table -->
-  <!-- Bootstrap Table doesn't go well with diff2html -->
-  <script
-    defer
-    src="{{ site.third_party_libraries.bootstrap-table.url.js }}"
-    integrity="{{ site.third_party_libraries.bootstrap-table.integrity.js }}"
-    crossorigin="anonymous"
-  ></script>
-{% endif %}
-{% if page.pretty_table and site.al_folio.compat.bootstrap.enabled != true %}
-  <script defer src="{{ '/assets/js/table-engine.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
-{% endif %}
-
-{% if page.toc and page.toc.sidebar %}
-  <!-- Tocbot -->
-  <script
-    defer
-    src="{{ site.third_party_libraries.tocbot.url.js }}"
-    integrity="{{ site.third_party_libraries.tocbot.integrity.js }}"
-    crossorigin="anonymous"
-  ></script>
-{% endif %}
-
-<!-- Load Common JS -->
-<script src="{{ '/assets/js/no_defer.js' | relative_url | bust_file_cache }}"></script>
-<script defer src="{{ '/assets/js/common.js' | relative_url | bust_file_cache }}"></script>
-<script defer src="{{ '/assets/js/copy_code.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
-
-<!-- Jupyter Open External Links New Tab -->
-<script defer src="{{ '/assets/js/jupyter_new_tab.js' | relative_url | bust_file_cache }}"></script>
-
-<!-- Badges -->
-{% if site.enable_publication_badges.altmetric %}
-  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
-{% endif %}
-{% if site.enable_publication_badges.dimensions %}
-  <script async src="https://badge.dimensions.ai/badge.js"></script>
-{% endif %}
+<!-- Load Common JS(no_defer 防主题闪烁,全局一次) -->
+<script data-swup-ignore-script src="{{ '/assets/js/no_defer.js' | relative_url | bust_file_cache }}"></script>
 
 {% if site.enable_cookie_consent and site.plugins contains 'al_cookie' %}
   <!-- Cookie Consent -->
@@ -99,19 +57,9 @@
   {% include plugins/al_analytics_scripts.liquid %}
 {% endif %}
 
-{% if site.plugins contains 'al_img_tools' %}
-  <!-- Image Features -->
-  {% include plugins/al_img_tools_scripts.liquid %}
-{% endif %}
-
 {% if site.enable_progressbar %}
   <!-- Scrolling Progress Bar -->
-  <script defer src="{{ '/assets/js/progress-bar.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
-{% endif %}
-
-{% if page.tabs %}
-  <!-- Jekyll Tabs -->
-  <script src="{{ '/assets/js/tabs.js' | relative_url | bust_file_cache }}"></script>
+  <script defer data-swup-ignore-script src="{{ '/assets/js/progress-bar.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
 {% endif %}
 
 {% if site.back_to_top %}
@@ -121,11 +69,11 @@
   %}
   {% assign back_to_top_integrity = site.third_party_libraries['vanilla-back-to-top'].integrity.js %}
   {% if back_to_top_integrity %}
-    <script src="{{ back_to_top_js }}" integrity="{{ back_to_top_integrity }}" crossorigin="anonymous"></script>
+    <script data-swup-ignore-script src="{{ back_to_top_js }}" integrity="{{ back_to_top_integrity }}" crossorigin="anonymous"></script>
   {% else %}
-    <script src="{{ back_to_top_js }}"></script>
+    <script data-swup-ignore-script src="{{ back_to_top_js }}"></script>
   {% endif %}
-  <script>
+  <script data-swup-ignore-script>
     addBackToTop();
   </script>
 {% endif %}
@@ -152,3 +100,13 @@
   <!-- Marimo notebooks -->
   {% include plugins/al_marimo_scripts.liquid %}
 {% endif %}
+
+<!-- Swup 页面切换(2026-08):库本体本地化于 assets/js/vendor/swup/,
+     初始化见 assets/js/swup-init.js。库加载失败时 swup-init 静默返回,
+     整站回退为普通整页跳转。以下四者均为持久区脚本,加 data-swup-ignore-script
+     防止被 ScriptsPlugin 全文档重放(重放会让 swup-init 二次实例化→双实例
+     竞争 is-animating 类→内容区永久 opacity:0 白屏)。 -->
+<script data-swup-ignore-script src="{{ '/assets/js/vendor/swup/Swup.umd.js' | relative_url }}"></script>
+<script data-swup-ignore-script src="{{ '/assets/js/vendor/swup/SwupHeadPlugin.umd.js' | relative_url }}"></script>
+<script data-swup-ignore-script src="{{ '/assets/js/vendor/swup/SwupScriptsPlugin.umd.js' | relative_url }}"></script>
+<script data-swup-ignore-script src="{{ '/assets/js/swup-init.js' | relative_url | bust_file_cache }}"></script>

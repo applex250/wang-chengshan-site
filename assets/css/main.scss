@@ -39,8 +39,16 @@
 // Photo wall（首页沉浸式横向滚动照片墙，本站新增）
 @use "photo-wall";
 
+// Scrollbar stability（滚动条宽度常驻，消除页面切换时整页左右抽动，本站新增）
+@use "scrollbar-stability";
+
 // Font stack（系统字体栈覆盖，移除 Google Fonts 外部依赖，本站新增）
 @use "font-stack";
 
-// Page transition（跨页过渡动画，View Transitions API，本站新增）
-@use "page-transition";
+// 注：跨页 View Transitions 实验已移除（2026-08-08）——3 秒串行动画导致
+// 过渡期间页面冻结不可交互（点导航无响应）、中断重放（重复淡入淡出）、
+// fixed 导航栏快照闪烁。原文件存档于 _backup_demo/page-transition.scss.removed。
+// 现由 swup 库接管页面切换动画（仅 #swup 内容区，见下）。
+
+// Swup（页面切换动画，仅作用 #swup 内容区，本站新增）
+@use "swup";
