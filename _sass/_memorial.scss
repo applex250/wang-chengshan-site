@@ -16,22 +16,6 @@
   height: auto;
 }
 
-/* ========== 2. 章节标题金色饰线 ========== */
-.post-header h1::after,
-.card-title::after {
-  content: "";
-  display: block;
-  width: 56px;
-  height: 2px;
-  margin-top: 0.45rem;
-  background: var(--memorial-gold-line);
-}
-
-/* 联系信息等 CV 卡片标题的饰线默认不缩进 */
-.card .card-title::after {
-  margin-top: 0.35rem;
-}
-
 /* ========== 3. 档案框(四角金色角标) ========== */
 .memorial-frame {
   position: relative;
@@ -171,10 +155,6 @@ footer a:hover {
   border: 2px solid var(--memorial-paper);
 }
 
-.cv .card-title::after {
-  margin-left: 0;
-}
-
 /* cv 联系信息表格:覆盖 Bootstrap .table 硬编码文字色 #212529,
    深色模式下表格文字随 --global-text-color 变浅(2026-08 修复) */
 .table-cv {
@@ -230,17 +210,10 @@ footer a:hover {
 }
 
 /* ========== 7d. 论文/项目/书籍展柜 ========== */
+/* (2026-08:原 .publications h2::after 金色饰线已删除) */
 .publications h2 {
   position: relative;
   padding-bottom: 0.35rem;
-}
-
-.publications h2::after {
-  content: "";
-  display: block;
-  width: 48px;
-  height: 2px;
-  background: var(--memorial-gold-line);
 }
 
 /* 项目卡片:米白底 + 红系细线(展柜感) */
@@ -295,10 +268,5 @@ footer a:hover {
 
   .news .memorial-timeline th {
     padding-left: 1.1rem;
-  }
-
-  .post-header h1::after,
-  .card-title::after {
-    width: 40px;
   }
 }
