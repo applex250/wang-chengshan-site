@@ -1,0 +1,28 @@
+/* ========== 系统字体栈覆盖(2026-08) ========== */
+/* 目的:移除 Google Fonts 外部依赖(被墙→FOUT 文字跳变)。
+   中文由系统 CJK 渲染(视觉不变),拉丁用系统字体,零外部请求。 */
+body,
+html {
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    "Noto Sans CJK SC",
+    "Source Han Sans SC",
+    sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.post-title,
+.navbar-brand,
+.profile .more-info {
+  font-family: "Songti SC", "STSong", "STZhongsong", "SimSun", "Noto Serif CJK SC", "Source Han Serif SC", Georgia, serif;
+}

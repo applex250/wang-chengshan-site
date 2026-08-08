@@ -38,3 +38,6 @@
 
 // Photo wall（首页沉浸式横向滚动照片墙，本站新增）
 @use "photo-wall";
+
+// Font stack（系统字体栈覆盖，移除 Google Fonts 外部依赖，本站新增）
+@use "font-stack";
