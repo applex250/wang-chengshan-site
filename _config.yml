@@ -238,7 +238,6 @@ exclude:
   - readme_preview/
   - gems/
   - migrations/
-  - vendor
 keep_files:
   - CNAME
   - .nojekyll
