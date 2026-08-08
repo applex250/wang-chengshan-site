@@ -109,9 +109,9 @@
   font-family: var(--font-family-sans, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif);
   font-size: 32px; /* 费曼 h1 全局 32px(继承) */
   font-weight: 700;
-  line-height: 1.6;
+  line-height: 1.4; /* 费曼 body line-height:1,中文取 1.4 保行距 */
   color: #222222;
-  margin: 0 0 1.2rem;
+  margin: 0; /* 费曼 reset 后 h1 margin:0,p 的 1em 提供间距 */
 }
 
 .fh-quote-content h1 span {
@@ -120,7 +120,7 @@
 
 .fh-quote-content p {
   font-size: 18px;
-  line-height: 1.8;
+  line-height: 1.5; /* 费曼 18px/line-height:1,中文取 1.5 */
   color: #000;
   margin: 1em 0;
 }
@@ -172,13 +172,13 @@
 }
 
 .fh-card p {
-  font-size: 16px;
+  font-size: 15px; /* 费曼全局 p 15px */
   color: #000;
   margin: 1em 0;
 }
 
 .fh-card a {
-  font-size: 16px;
+  font-size: 16px; /* 费曼 .circleContent a 16px */
   color: var(--memorial-red-deep); /* 费曼 #5084ca → 红 */
 }
 
