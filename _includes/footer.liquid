@@ -1,15 +1,8 @@
-{% capture footer_contents %}
-  &copy; 版权所有 {{ site.time | date: '%Y' }}
-  {{ site.first_name }}
-  {{ site.middle_name }}
-  {{ site.last_name }}. {{ site.footer_text }}
-  {% if site.impressum_path %}
-    <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
-  {% endif %}
-  {% if site.last_updated %}
-    最后更新：{{ 'now' | date: '%Y年%-m月%-d日' }}。
-  {% endif %}
-{% endcapture %}
+{% comment %}
+  2026-08:版权栏文字已按要求清空(版权所有/课题组成员/Powered by 等)。
+  保留 footer 空结构以维持 sticky-bottom 布局,后续如需版权信息在此填写。
+{% endcomment %}
+{% assign footer_contents = "" %}
 
 {% if site.footer_fixed %}
   <footer class="fixed-bottom" role="contentinfo">
