@@ -20,16 +20,16 @@
 
 ## 文件清单
 
-| 文件 | 操作 | 内容 |
-|---|---|---|
-| `scripts/build_wall_assets.py` | 新建 | 压缩素材脚本(PIL,最长边 640px,JPEG q70) |
-| `assets/img/wall/*.jpg` | 生成 | 17 张墙版压缩图(每张 20-80KB) |
-| `_data/photo_wall.yml` | 新建 | 17 项布局参数(file/w/y/rot/blur/z/o/w) |
-| `_includes/photo-wall.html` | 新建 | 照片墙 DOM(Liquid 双套序列) |
-| `_sass/_photo-wall.scss` | 新建 | 布局/动画/遮罩/降级/移动端 |
-| `assets/css/main.scss` | 修改 | `@use "photo-wall";` |
-| `_layouts/about.liquid` | 修改 | 页面末尾 `{% include photo-wall.html %}` |
-| `.hermes/plans/2026-08-08_010000-photo-wall-homepage.md` | 新建 | 本计划 |
+| 文件                                                     | 操作 | 内容                                     |
+| -------------------------------------------------------- | ---- | ---------------------------------------- |
+| `scripts/build_wall_assets.py`                           | 新建 | 压缩素材脚本(PIL,最长边 640px,JPEG q70)  |
+| `assets/img/wall/*.jpg`                                  | 生成 | 17 张墙版压缩图(每张 20-80KB)            |
+| `_data/photo_wall.yml`                                   | 新建 | 17 项布局参数(file/w/y/rot/blur/z/o/w)   |
+| `_includes/photo-wall.html`                              | 新建 | 照片墙 DOM(Liquid 双套序列)              |
+| `_sass/_photo-wall.scss`                                 | 新建 | 布局/动画/遮罩/降级/移动端               |
+| `assets/css/main.scss`                                   | 修改 | `@use "photo-wall";`                     |
+| `_layouts/about.liquid`                                  | 修改 | 页面末尾 `{% include photo-wall.html %}` |
+| `.hermes/plans/2026-08-08_010000-photo-wall-homepage.md` | 新建 | 本计划                                   |
 
 ---
 
@@ -45,6 +45,7 @@
 期望:17 张全部生成,单张 <100KB,总 <2MB;最大原图(unesco 6.3MB)墙版 <80KB。
 
 **Step 3:** 提交
+
 ```bash
 git add scripts/build_wall_assets.py assets/img/wall/
 git commit -m "assets: 照片墙压缩素材(17 张,640px 墙版)"
@@ -57,6 +58,7 @@ git commit -m "assets: 照片墙压缩素材(17 张,640px 墙版)"
 **Files:** 新建 `_data/photo_wall.yml`
 
 **Step 1:** 17 项,每项字段:
+
 - `id`: 序号(1-17,供 CSS 精细控制)
 - `file`: 墙版文件名
 - `w`: 格子宽 px(140-340,小图 140-180、大合影/工作照 240-340,错落)
@@ -77,19 +79,21 @@ git commit -m "assets: 照片墙压缩素材(17 张,640px 墙版)"
 **Files:** 新建 `_includes/photo-wall.html`
 
 **Step 1:** 结构:
+
 ```html
 {% if page.layout == 'about' %}
 <div class="photo-wall" aria-hidden="true">
   <div class="photo-wall-track">
     {% for copy in (0..1) %}{% for p in site.data.photo_wall %}
-      <figure class="pw-item" style="--w:{{ p.w }}px; --y:{{ p.y }}px; --rot:{{ p.rot }}deg; --blur:{{ p.blur }}px; --z:{{ p.z }}; --o:{{ p.o }};">
-        <img src="{{ '/assets/img/wall/' | append: p.file | relative_url }}" alt="" loading="lazy" decoding="async" draggable="false">
-      </figure>
+    <figure class="pw-item" style="--w:{{ p.w }}px; --y:{{ p.y }}px; --rot:{{ p.rot }}deg; --blur:{{ p.blur }}px; --z:{{ p.z }}; --o:{{ p.o }};">
+      <img src="{{ '/assets/img/wall/' | append: p.file | relative_url }}" alt="" loading="lazy" decoding="async" draggable="false" />
+    </figure>
     {% endfor %}{% endfor %}
   </div>
 </div>
 {% endif %}
 ```
+
 (两套 17 张 = 34 个 figure;`page.layout == 'about'` 保证只有首页渲染)
 
 **Step 2:** prettier 校验:`npx prettier --write _includes/photo-wall.html`
@@ -103,33 +107,80 @@ git commit -m "assets: 照片墙压缩素材(17 张,640px 墙版)"
 **Files:** 新建 `_sass/_photo-wall.scss`
 
 **Step 1:** 布局与动画:
+
 ```scss
 .photo-wall {
-  position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden;
-  &::before, &::after {   /* 左右渐变遮罩,沉入底色 */
-    content: ""; position: absolute; top: 0; bottom: 0; width: 10vw;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  &::before,
+  &::after {
+    /* 左右渐变遮罩,沉入底色 */
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 10vw;
     background: linear-gradient(90deg, var(--global-bg-color), transparent);
-    z-index: 2; }
-  &::after { right: 0; transform: scaleX(-1); }
-  &::before { left: 0; }
+    z-index: 2;
+  }
+  &::after {
+    right: 0;
+    transform: scaleX(-1);
+  }
+  &::before {
+    left: 0;
+  }
 }
 .photo-wall-track {
-  position: absolute; top: 50%; left: 0; display: flex; align-items: flex-start;
-  gap: 0; width: max-content; transform: translateY(-50%);
-  animation: pw-scroll 160s linear infinite; will-change: transform;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  width: max-content;
+  transform: translateY(-50%);
+  animation: pw-scroll 160s linear infinite;
+  will-change: transform;
 }
 .pw-item {
-  flex: none; margin: 0 14px; margin-top: var(--y); z-index: var(--z);
-  transform: rotate(var(--rot)); filter: blur(var(--blur));
-  opacity: var(--o); width: var(--w); border-radius: 3px;
-  box-shadow: 0 6px 24px rgba(26, 26, 26, 0.10);
-  img { display: block; width: 100%; height: auto; }
+  flex: none;
+  margin: 0 14px;
+  margin-top: var(--y);
+  z-index: var(--z);
+  transform: rotate(var(--rot));
+  filter: blur(var(--blur));
+  opacity: var(--o);
+  width: var(--w);
+  border-radius: 3px;
+  box-shadow: 0 6px 24px rgba(26, 26, 26, 0.1);
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
-@keyframes pw-scroll { from { transform: translateY(-50%) translateX(0); } to { transform: translateY(-50%) translateX(-50%); } }
+@keyframes pw-scroll {
+  from {
+    transform: translateY(-50%) translateX(0);
+  }
+  to {
+    transform: translateY(-50%) translateX(-50%);
+  }
+}
 @media (prefers-reduced-motion: reduce) {
-  .photo-wall-track { animation: none; }
+  .photo-wall-track {
+    animation: none;
+  }
 }
-@media (max-width: 768px) { .photo-wall { display: none; } }
+@media (max-width: 768px) {
+  .photo-wall {
+    display: none;
+  }
+}
 ```
 
 **Step 2:** 说明:translateX(-50%) 时两套序列总宽一半,正好从第 1 张位置平移到第 17 张位置 → 无缝。速度 8500px/160s ≈ 53px/s,缓慢优雅。
@@ -157,6 +208,7 @@ git commit -m "assets: 照片墙压缩素材(17 张,640px 墙版)"
 **Step 2:** 推送,等 CI(Prettier + Deploy + broken links)
 
 **Step 3:** 抓 gh-pages `index.html` 验证:
+
 - `.photo-wall` 存在
 - 34 个 `.pw-item`(17×2)
 - 图片 src 含 `/assets/img/wall/` 且 relative_url 正确(带 baseurl)
@@ -168,16 +220,16 @@ git commit -m "assets: 照片墙压缩素材(17 张,640px 墙版)"
 
 ## 风险与权衡
 
-| 风险 | 对策 |
-|---|---|
-| 原图 30MB 拖垮页面 | 墙版 640px/70 压缩,总 <2MB;`loading="lazy"` |
-| 照片墙压过文字 | 透明度 20-40% + 左右 10vw 渐隐 + z-index:-1 在内容下;文字区自带底色 |
-| 动画卡顿 | 纯 `transform`(GPU 合成)+ `will-change`;无 JS |
-| 移动端流量/拥挤 | ≤768px 隐藏照片墙 |
-| 用户动效敏感 | `prefers-reduced-motion` 静止 |
-| 无缝断裂 | 双套序列 + translateX(-50%),周期整数对齐 |
-| 官方肖像 182×273 太小 | 放最小格子(140-160px 宽)+ 1.5px blur,作为"档案照"点缀 |
-| baseurl 部署路径 | 全部 `relative_url` |
+| 风险                  | 对策                                                                |
+| --------------------- | ------------------------------------------------------------------- |
+| 原图 30MB 拖垮页面    | 墙版 640px/70 压缩,总 <2MB;`loading="lazy"`                         |
+| 照片墙压过文字        | 透明度 20-40% + 左右 10vw 渐隐 + z-index:-1 在内容下;文字区自带底色 |
+| 动画卡顿              | 纯 `transform`(GPU 合成)+ `will-change`;无 JS                       |
+| 移动端流量/拥挤       | ≤768px 隐藏照片墙                                                   |
+| 用户动效敏感          | `prefers-reduced-motion` 静止                                       |
+| 无缝断裂              | 双套序列 + translateX(-50%),周期整数对齐                            |
+| 官方肖像 182×273 太小 | 放最小格子(140-160px 宽)+ 1.5px blur,作为"档案照"点缀               |
+| baseurl 部署路径      | 全部 `relative_url`                                                 |
 
 ## 开放问题
 
