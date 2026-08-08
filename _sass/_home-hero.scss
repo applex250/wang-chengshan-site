@@ -49,12 +49,11 @@ $fh-sans: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-family: $fh-serif; /* 费曼 banner h1 = Vollkorn */
   font-size: 32px;
   font-weight: 700;
-  line-height: 50px; /* 费曼 line-height:45px */
+  line-height: 45px; /* 费曼 #bannerContent h1 line-height:45px */
+  letter-spacing: normal; /* 费曼默认 0(覆盖主题字距) */
   color: #fff;
   text-shadow: 1px 1px 2px #000000;
   margin: 0;
-  letter-spacing: 0.12em;
-  text-indent: 0.12em;
 }
 
 /* 白底主体(费曼 #bodyWrap 白底;banner 后两行 <br> 留白 ≈ padding-top) */
@@ -115,6 +114,7 @@ $fh-sans: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 32px; /* 费曼 h1 全局 32px(继承) */
   font-weight: 700;
   line-height: 1; /* 费曼 body line-height:1,按英文原版 1:1 */
+  letter-spacing: normal; /* 费曼默认 0(覆盖主题字距) */
   color: #222222;
   margin: 0; /* 费曼 reset 后 h1 margin:0,p 的 1em 提供间距 */
 }
@@ -139,6 +139,7 @@ $fh-sans: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 .fh-quote-content a {
   color: var(--memorial-red-deep); /* 费曼 #5084ca → 红 */
   font-size: 16px;
+  line-height: 1; /* 费曼 body line-height:1(主题全局 a 行高 1.8 需覆盖) */
 }
 
 .fh-headshot {
@@ -180,11 +181,13 @@ $fh-sans: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 24px;
   font-weight: 400;
   line-height: 1; /* 费曼 body line-height:1 */
+  letter-spacing: normal; /* 费曼默认 0(覆盖主题 h2 字距 0.02em) */
   color: #222222;
 }
 
 .fh-card p {
   font-size: 15px; /* 费曼全局 p 15px */
+  line-height: 1; /* 费曼 body line-height:1(覆盖主题 p 1.8) */
   color: #000;
   margin: 1em 0;
 }
@@ -192,6 +195,7 @@ $fh-sans: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 .fh-card a {
   font-size: 16px; /* 费曼 .circleContent a 16px */
   color: var(--memorial-red-deep); /* 费曼 #5084ca → 红 */
+  line-height: 1; /* 费曼 body line-height:1 */
 }
 
 /* 右下引语区(费曼 .dropQuote1: 右浮 400px,视频框 400×270 + 说明) */
@@ -214,7 +218,7 @@ $fh-sans: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 .fh-quote1 p {
   font-size: 15px; /* 费曼全局 p 15px */
-  line-height: 1.5; /* 费曼 body line-height:1,说明句取 1.5 保可读 */
+  line-height: 1; /* 费曼 body line-height:1 */
   color: #000;
   margin: 1em 0;
 }
