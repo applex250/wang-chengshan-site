@@ -1,7 +1,8 @@
 /* ========== 跨页过渡 View Transitions(2026-08) ========== */
-/* 现代浏览器原生跨页动画:旧页淡出+微缩,新页淡入+微上移。
+/* 现代浏览器原生跨页动画。串行节奏(用户要求):旧页先淡出(2000ms)完成,
+   新页再淡入(延迟 2000ms 后开始,fill-mode both 在延迟期保持隐藏)。
    仅 opacity/transform,不触发 reflow;不支持时自动降级为普通跳转。
-   时长演进(用户逐步要求放慢):320/360 → 550/700 → 900/1100 → 2000/2000(2 秒,沉稳显著)。 */
+   时长演进:320/360 → 550/700 → 900/1100 → 2000 并行 → 2000 串行(当前)。 */
 @view-transition {
   navigation: auto;
 }
@@ -11,7 +12,8 @@
 }
 
 ::view-transition-new(root) {
-  animation: vt-in 2000ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* 第二个 2000ms 为 delay:等旧页淡出完成后再淡入(串行) */
+  animation: vt-in 2000ms cubic-bezier(0.22, 1, 0.36, 1) 2000ms both;
 }
 
 @keyframes vt-out {
