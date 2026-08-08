@@ -533,8 +533,10 @@ third_party_libraries:
         dark_theme: "https://cdn.jsdelivr.net/npm/echarts@{{version}}/theme/dark-fresh-cut.js"
     version: "5.5.0"
   google_fonts:
-    # 2026-08 移除:Google Fonts 被墙导致 FOUT/等待,改用系统字体栈(见 _sass/_font-stack.scss)
-    enabled: false
+    # 2026-08:页面已不加载(head.liquid 本地化移除);保留 url 字段仅为兼容
+    # jekyll-3rd-party-libraries 插件遍历(url 为 nil 会 NoMethodError 构建崩溃)
+    url:
+      fonts: ""
   highlightjs:
     integrity:
       css:
