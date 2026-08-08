@@ -11,5 +11,3 @@ _data/citations.yml
 .al-folio-overrides.yml
 # Vendored third-party script (do not reformat)
 assets/js/instantpage.js
-# Internal planning docs (2026-08: 计划文档不再参与格式检查,避免 CI 误红)
-.hermes/plans/
