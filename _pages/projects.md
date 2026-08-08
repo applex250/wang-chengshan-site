@@ -6,6 +6,7 @@ description: 牵头或主持的主要科学研究项目。
 nav: true
 nav_order: 4
 horizontal: false
+languages: [zh]
 ---
 
 <!-- pages/projects.md：首页式正文排版（无卡片，继承 .post 轻盈字体） -->

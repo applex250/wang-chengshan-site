@@ -4,6 +4,7 @@ title: 著作
 permalink: /books/
 nav: false
 collection: books
+languages: [zh]
 ---
 
 ## 代表性著作

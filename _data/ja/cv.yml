@@ -1,0 +1,200 @@
+cv:
+  name: 王成善
+  headline: 中国科学院院士・地質学者・堆積学者
+  email: wangchengshan@cdut.edu.cn # 実際のメールアドレスに置き換えてください
+  location: 北京市海淀区学院路29号, 中国地質大学（北京）100083
+
+  custom_connections:
+    - fontawesome_icon: building-columns
+      placeholder: 中国地質大学（北京）
+      url: https://www.cugb.edu.cn/
+    - fontawesome_icon: building-columns
+      placeholder: 成都理工大学
+      url: https://www.cdut.edu.cn
+
+  sections:
+    个人简介:
+      - 1951年11月、黒竜江省ハルビン市生まれ。地質学者・堆積学者であり、中国科学院院士（2013年選出）、中国地質大学（北京）教授・博士課程指導教官。主に堆積学と大地構造学を研究し、チベット高原の隆起、深時古気候学と古海洋学を重点的に探求。松遼盆地国際大陸科学掘削プロジェクトを主導し、「深時デジタル地球（DDE）」国際大科学計画を率先して発起した。
+
+    教育经历:
+      - institution: 成都地質学院（現 成都理工大学）
+        location: 四川省・成都
+        area: 地質学科 鉱床探査学科
+        degree: 学士
+        start_date: 1974
+        end_date: 1977
+        highlights:
+          - 1977年に鉱床探査学科を卒業
+
+      - institution: 成都地質学院（現 成都理工大学）
+        location: 四川省・成都
+        area: 地質学科
+        degree: 修士
+        start_date: 1978
+        end_date: 1981
+        highlights:
+          - 1981年に地質学修士号を取得
+
+    工作经历:
+      - company: チベット・昌都（チャムド）工業局
+        position: 地質班技術員
+        start_date: 1977
+        end_date: 1978
+
+      - company: 成都地質学院（現 成都理工大学）
+        position: 教員（母校に留任）
+        location: 四川省・成都
+        start_date: 1981
+        end_date: 2003
+        summary: 1981年に母校に留まって教鞭を執り、長年にわたり堆積学と大地構造の教育・研究に従事。
+
+      - company: 成都地質学院
+        position: 堆積地質研究所所長
+        location: 四川省・成都
+        start_date: 1987
+        end_date: 1991
+        highlights:
+          - 1987年9月より所長に就任
+
+      - company: 成都理工大学
+        position: 副学長
+        location: 四川省・成都
+        start_date: 1991
+        end_date: 2001
+        highlights:
+          - 1991年4月〜2001年9月まで副学長を務める
+
+      - company: 米国地質調査所（USGS）
+        position: 客員研究員
+        start_date: 1993
+        end_date: 1994
+
+      - company: 成都理工大学
+        position: 学長
+        location: 四川省・成都
+        start_date: 2001
+        end_date: 2003
+        highlights:
+          - 2001年9月に学長に就任
+
+      - company: 西南科技大学
+        position: 教授
+        location: 四川省・綿陽
+        start_date: 2003
+        end_date: 2004
+
+      - company: 中国地質大学（北京）
+        position: 教授・博士課程指導教官
+        location: 北京
+        start_date: 2005
+        end_date: 現在
+        highlights:
+          - 2005年より地球科学・資源学院で教鞭を執る
+
+    学术兼职与项目:
+      - company: 国際大陸科学掘削計画（ICDP）
+        position: 松遼盆地国際大陸科学掘削プロジェクト 首席科学者
+        summary: 20年にわたる松遼盆地国際大陸科学掘削プロジェクトを主導し、2025年度国家科学技術進歩賞一等賞を受賞。
+
+      - company: 深時デジタル地球（DDE）国際大科学計画
+        position: 執行委員会主席
+        summary: IUGSが認定する初の国際大科学計画「Deep-time Digital Earth（深時デジタル地球）」を主導的に提唱し、地球進化データのグローバルな統合と共有を推進。
+
+      - company: 『地球科学の地平線（Earth Science Horizons, ESH）』
+        position: 創刊編集長
+        start_date: 2026
+        summary: 欧州地球科学連合（EGU）の創設者らと共同で創設した地球科学レビュー誌であり、TRAC学術原則（透明性・再現性・主体責任・明確性）を初めて提唱。
+
+      - company: 国家重点基礎研究発展計画（973計画）
+        position: 首席科学者（2件）
+        summary: 国家「973」プロジェクト2件の首席科学者を務める。
+
+      - company: ユネスコ国際地球科学計画（IGCP）
+        position: プロジェクト主席（IGCP 463、555）
+        summary: UNESCO/IUGS の IGCP プロジェクト2件で主席を務める。
+
+      - company: 国際堆積学会（IAS）
+        position: 副会長
+
+      - company: 教育部科学技術委員会
+        position: 地球科学・資源環境部会 副主任
+
+      - company: 中国科学院
+        position: 地学部常務委員会委員
+
+      - company: 中国地質学会
+        position: 地質教育分会会長
+
+      - company: 国際大陸科学掘削中国委員会
+        position: 副主席
+
+      - company: 中国チベット高原研究会
+        position: 常務理事
+
+      - company: 『堆積学報』
+        position: 編集長
+
+    奖励荣誉:
+      - name: 国家科学技術進歩賞一等賞（松遼盆地国際大陸科学掘削工程）
+        date: 2025
+        summary: 中華人民共和国国務院より授与
+
+      - name: 何梁何利基金 科学技術進歩賞
+        date: 2024
+        summary: 何梁何利基金より授与
+
+      - name: 国家教学成果二等賞
+        date: 2023
+        summary: 中華人民共和国教育部より授与
+
+      - name: 国家自然科学賞二等賞（チベット高原成長の深部過程、岩石圏構造と地表隆起）
+        date: 2015
+        summary: 中華人民共和国国務院より授与
+
+      - name: 全国先進工作者
+        date: 2010
+        summary: 中国共産党中央委員会・国務院より授与
+
+      - name: 全国五一労働賞章
+        date: 2007
+        summary: 中華全国総工会より授与
+
+      - name: 国家自然科学賞二等賞（チベット・テチスヒマラヤの中―新生代堆積地質と大陸古海洋学）
+        date: 2004
+        summary: 第一完成者、中華人民共和国国務院より授与
+
+      - name: 李四光地質科学賞
+        date: 2003
+        summary: 李四光地質科学賞基金より授与
+
+      - name: 四川省学術・技術リーダー
+        date: 2000
+        summary: 2000年に四川省学術・技術リーダーに選出
+
+      - name: 国家傑出青年科学基金
+        date: 1996
+        summary: 国家自然科学基金委員会の傑出青年科学基金の助成を受ける
+
+      - name: 中国青年科技賞
+        date: 1991
+        summary: 中国科学技術協会などより授与
+
+    研究方向:
+      - name: チベット高原の隆起と堆積応答
+        summary: 高原隆起プロセスの復元、堆積―構造のカップリング、「原チベット高原」隆起モデル
+
+      - name: 深時古気候と古海洋学
+        summary: 白亜紀海洋レッドベッド、温室気候、大陸科学掘削、深時デジタル地球
+
+      - name: 堆積学と大地構造
+        summary: 堆積盆地解析、松遼盆地白亜系大陸科学掘削
+
+      - name: ビッグデータ堆積学
+        summary: サイクル層序学、地球自転リズム、天文サイクルと堆積記録の交差研究
+
+    语言:
+      - name: 中国語
+        summary: 母語
+
+      - name: 英語
+        summary: 流暢

@@ -4,6 +4,7 @@ title: 新闻动态
 permalink: /news/
 nav: true
 nav_order: 2
+languages: [zh]
 ---
 
 {% include news.liquid %}

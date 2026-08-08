@@ -7,6 +7,7 @@ year: 常年开设
 term: 春季学期
 location: 成都理工大学
 course_id: earth-system-frontiers
+languages: [zh]
 ---
 
 ## 课程简介

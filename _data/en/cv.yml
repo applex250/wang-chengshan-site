@@ -1,0 +1,200 @@
+cv:
+  name: Wang Chengshan
+  headline: Academician of the Chinese Academy of Sciences · Geologist · Sedimentologist
+  email: wangchengshan@cdut.edu.cn # please replace with the real email address
+  location: No. 29 Xueyuan Road, Haidian District, Beijing, China University of Geosciences (Beijing) 100083
+
+  custom_connections:
+    - fontawesome_icon: building-columns
+      placeholder: China University of Geosciences (Beijing)
+      url: https://www.cugb.edu.cn/
+    - fontawesome_icon: building-columns
+      placeholder: Chengdu University of Technology
+      url: https://www.cdut.edu.cn
+
+  sections:
+    个人简介:
+      - Born in Harbin, Heilongjiang Province, in November 1951, Prof. Wang Chengshan is a geologist and sedimentologist, an Academician of the Chinese Academy of Sciences (elected in 2013), and a professor and doctoral supervisor at China University of Geosciences (Beijing). His research focuses on sedimentology and tectonics, with particular emphasis on the uplift of the Tibetan Plateau, deep-time paleoclimate and paleoceanography. He led the International Continental Scientific Drilling Project in the Songliao Basin and initiated the Deep-time Digital Earth (DDE) international big science program.
+
+    教育经历:
+      - institution: Chengdu College of Geology (now Chengdu University of Technology)
+        location: Chengdu, Sichuan
+        area: Department of Geology, Department of Ore Prospecting
+        degree: Bachelor's Degree
+        start_date: 1974
+        end_date: 1977
+        highlights:
+          - Graduated with a bachelor's degree from the Department of Ore Prospecting in 1977
+
+      - institution: Chengdu College of Geology (now Chengdu University of Technology)
+        location: Chengdu, Sichuan
+        area: Department of Geology
+        degree: Master's Degree
+        start_date: 1978
+        end_date: 1981
+        highlights:
+          - Received a master's degree in geology in 1981
+
+    工作经历:
+      - company: Changdu Industrial Bureau, Tibet
+        position: Technician, Geology Group
+        start_date: 1977
+        end_date: 1978
+
+      - company: Chengdu College of Geology (now Chengdu University of Technology)
+        position: Faculty member (retained after graduation)
+        location: Chengdu, Sichuan
+        start_date: 1981
+        end_date: 2003
+        summary: Retained as faculty after graduation in 1981; long engaged in teaching and research on sedimentology and tectonics.
+
+      - company: Chengdu College of Geology
+        position: Director, Institute of Sedimentary Geology
+        location: Chengdu, Sichuan
+        start_date: 1987
+        end_date: 1991
+        highlights:
+          - Served as Director from September 1987
+
+      - company: Chengdu University of Technology
+        position: Vice President
+        location: Chengdu, Sichuan
+        start_date: 1991
+        end_date: 2001
+        highlights:
+          - Served as Vice President from April 1991 to September 2001
+
+      - company: United States Geological Survey (USGS)
+        position: Visiting Scholar
+        start_date: 1993
+        end_date: 1994
+
+      - company: Chengdu University of Technology
+        position: President
+        location: Chengdu, Sichuan
+        start_date: 2001
+        end_date: 2003
+        highlights:
+          - Appointed President in September 2001
+
+      - company: Southwest University of Science and Technology
+        position: Professor
+        location: Mianyang, Sichuan
+        start_date: 2003
+        end_date: 2004
+
+      - company: China University of Geosciences (Beijing)
+        position: Professor and Doctoral Supervisor
+        location: Beijing
+        start_date: 2005
+        end_date: Present
+        highlights:
+          - Teaching at the School of Earth Sciences and Resources since 2005
+
+    学术兼职与项目:
+      - company: International Continental Scientific Drilling Program (ICDP)
+        position: Chief Scientist, Songliao Basin International Continental Scientific Drilling Project
+        summary: Led the 20-year Songliao Basin International Continental Scientific Drilling Project, which was awarded the First Prize of the 2025 National Science and Technology Progress Award.
+
+      - company: Deep-time Digital Earth (DDE) International Big Science Program
+        position: Chair of the Executive Committee
+        summary: Initiated the Deep-time Digital Earth (DDE) program, the first international big science program certified by IUGS, promoting the global integration and sharing of Earth evolution data.
+
+      - company: Earth Science Horizons (ESH)
+        position: Founding Editor-in-Chief
+        start_date: 2026
+        summary: Co-founded a review journal of Earth sciences together with the founders of the European Geosciences Union (EGU), and first proposed the TRAC scholarly principles (Transparency, Reproducibility, Accountability, Clarity).
+
+      - company: National Basic Research Program of China (973 Program)
+        position: Chief Scientist (two projects)
+        summary: Served as Chief Scientist of two national 973 Program projects.
+
+      - company: UNESCO International Geoscience Programme (IGCP)
+        position: Project Leader (IGCP 463, 555)
+        summary: Served as Leader of two UNESCO/IUGS IGCP projects.
+
+      - company: International Association of Sedimentologists (IAS)
+        position: Vice President
+
+      - company: Science and Technology Committee of the Ministry of Education
+        position: Deputy Director, Earth Sciences and Resources & Environment Division
+
+      - company: Chinese Academy of Sciences
+        position: Member of the Standing Committee, Department of Earth Sciences
+
+      - company: Geological Society of China
+        position: President, Geological Education Branch
+
+      - company: Chinese Committee for ICDP
+        position: Vice President
+
+      - company: China Society on Tibetan Plateau Research
+        position: Standing Council Member
+
+      - company: Acta Sedimentologica Sinica
+        position: Editor-in-Chief
+
+    奖励荣誉:
+      - name: First Prize, National Science and Technology Progress Award (International Continental Scientific Drilling Project in the Songliao Basin)
+        date: 2025
+        summary: Awarded by the State Council of the People's Republic of China
+
+      - name: Ho Leung Ho Lee Foundation Science and Technology Progress Prize
+        date: 2024
+        summary: Awarded by the Ho Leung Ho Lee Foundation
+
+      - name: Second Prize, National Teaching Achievement Award
+        date: 2023
+        summary: Awarded by the Ministry of Education of the People's Republic of China
+
+      - name: Second Prize, National Natural Science Award (Deep Processes of Tibetan Plateau Growth, Lithospheric Structure and Surface Uplift)
+        date: 2015
+        summary: Awarded by the State Council of the People's Republic of China
+
+      - name: National Model Worker
+        date: 2010
+        summary: Awarded by the CPC Central Committee and the State Council
+
+      - name: National May Day Labor Medal
+        date: 2007
+        summary: Awarded by the All-China Federation of Trade Unions
+
+      - name: Second Prize, National Natural Science Award (Mesozoic–Cenozoic Sedimentary Geology of the Tibetan Tethyan Himalaya and Continental Paleoceanography)
+        date: 2004
+        summary: First contributor; awarded by the State Council of the People's Republic of China
+
+      - name: Li Siguang Geological Science Award
+        date: 2003
+        summary: Awarded by the Li Siguang Geological Science Award Foundation
+
+      - name: Academic and Technical Leader of Sichuan Province
+        date: 2000
+        summary: Named an Academic and Technical Leader of Sichuan Province in 2000
+
+      - name: National Science Fund for Distinguished Young Scholars
+        date: 1996
+        summary: Funded by the National Science Fund for Distinguished Young Scholars of the National Natural Science Foundation of China
+
+      - name: China Youth Science and Technology Award
+        date: 1991
+        summary: Awarded by the China Association for Science and Technology and others
+
+    研究方向:
+      - name: Tibetan Plateau Uplift and Sedimentary Response
+        summary: Reconstruction of plateau uplift processes, sediment–tectonics coupling, and the "proto-Tibetan Plateau" uplift model
+
+      - name: Deep-time Paleoclimate and Paleoceanography
+        summary: Cretaceous oceanic red beds, greenhouse climates, continental scientific drilling, deep-time digital Earth
+
+      - name: Sedimentology and Tectonics
+        summary: Sedimentary basin analysis, Cretaceous continental scientific drilling in the Songliao Basin
+
+      - name: Big-data Sedimentology
+        summary: Cyclostratigraphy, Earth's rotation rhythms, and the intersection of astronomical cycles with sedimentary records
+
+    语言:
+      - name: Chinese
+        summary: Native
+
+      - name: English
+        summary: Proficient

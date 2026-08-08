@@ -7,6 +7,7 @@ tags: 人物报道
 categories: 人物
 featured: true
 related_posts: false
+languages: [zh]
 ---
 
 ## 科学家语录

@@ -3,6 +3,7 @@ layout: page
 title: 深时古气候与古海洋学
 description: UNESCO 地球科学计划（IGCP）项目（两项）· 负责人
 importance: 3
+languages: [zh]
 ---
 
 担任两项联合国教科文组织（UNESCO）地球科学计划（IGCP）项目负责人，围绕**深时古气候与古海洋学**开展国际合作研究。

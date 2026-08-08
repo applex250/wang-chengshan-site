@@ -146,7 +146,7 @@
                   {% endif %}
                   <li>
                     <a
-                      href="{{ target | relative_url }}"
+                      href="{{ site.baseurl_root }}{{ target }}"
                       {% if lang == site.lang %}class="lang-active"{% endif %}
                     >
                       {{ site.data.langs[lang] }}

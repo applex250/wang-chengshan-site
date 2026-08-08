@@ -3,6 +3,7 @@ layout: page
 title: 深时数字地球（DDE）国际大科学计划
 description: IUGS 认证的首个国际大科学计划 · 发起人 & 执行委员会主席
 importance: 2
+languages: [zh]
 ---
 
 王成善院士主导发起并担任**执行委员会主席**的**深时数字地球（Deep-time Digital Earth, DDE）国际大科学计划**，是国际地质科学联合会（IUGS）认证启动的**首个国际大科学计划（Big Science Program）**。

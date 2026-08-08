@@ -9,4 +9,5 @@ cv_format: rendercv # options: rendercv, jsonresume
 description: 王成善院士学术简历。
 toc:
   sidebar: left
+languages: [zh]
 ---

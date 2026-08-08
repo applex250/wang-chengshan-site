@@ -10,4 +10,5 @@ children:
   - title: divider
   - title: 学术随笔
     permalink: /blog/
+languages: [zh]
 ---

@@ -4,6 +4,7 @@ date: 2026-07-01 09:00:00+0800
 inline: false
 external_url: https://www.cugb.edu.cn/xynews/51643.jhtml
 title: 在第4届PubTech出版与创新大会作大会主旨报告
+languages: [zh]
 ---
 
 2026年6月（北京国际图书博览会期间），王成善院士应邀出席第4届PubTech出版与创新大会并作**首场大会主旨报告**《AI时代下的科技期刊：认识与实践》，系统分析生成式AI对学术出版的影响。
