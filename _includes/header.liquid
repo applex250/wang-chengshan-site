@@ -140,7 +140,7 @@
               <ul class="lang-list">
                 {% assign cur_path = page.url | remove_first: site.baseurl %}
                 {% for lang in site.languages %}
-                  {% assign target = '/' | append: cur_path | remove_first: '//' %}
+                  {% assign target = cur_path %}
                   {% if lang != site.default_locale %}
                     {% assign target = '/' | append: lang | append: target %}
                   {% endif %}
