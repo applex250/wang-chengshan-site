@@ -94,14 +94,14 @@
   });
 
   /*
-   * 照片墙显隐:DOM 常驻全站(见 default.liquid + _sass/_photo-wall.scss),
-   * 仅首页显示。按 URL 切换 body.photo-wall-active——visibility 切换
-   * 不中断滚动动画,切回首页照片墙直接就是完整状态,零抽动。
-   * 首页判定:pathname 去掉首尾斜杠后只剩 baseurl 一段(本站单级 baseurl)。
+   * 照片墙显隐:DOM 常驻全站(见 default.liquid + _sass/_photo-wall.scss)。
+   * 2026-08 首页重构为极简 hero 后照片墙"仅不显示"(代码/图加载保留)。
+   * 恢复方法:改为
+   *   const segments = location.pathname.replace(/^\/+|\/+$/g, "").split("/").filter(Boolean);
+   *   document.body.classList.toggle("photo-wall-active", segments.length === 1);
    */
   const updatePhotoWall = () => {
-    const segments = location.pathname.replace(/^\/+|\/+$/g, "").split("/").filter(Boolean);
-    document.body.classList.toggle("photo-wall-active", segments.length === 1);
+    document.body.classList.remove("photo-wall-active");
   };
 
   /*

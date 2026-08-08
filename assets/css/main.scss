@@ -39,6 +39,9 @@
 // Photo wall（首页沉浸式横向滚动照片墙，本站新增）
 @use "photo-wall";
 
+// Home hero（首页极简"与地球对话"主视觉，本站新增 2026-08）
+@use "home-hero";
+
 // Scrollbar stability（滚动条宽度常驻，消除页面切换时整页左右抽动，本站新增）
 @use "scrollbar-stability";
 
