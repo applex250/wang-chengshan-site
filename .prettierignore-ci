@@ -1,0 +1,4 @@
+# CI 专用 prettier ignore(仅 prettier.yml 使用 --ignore-path 引用)
+# 本地 npx prettier . --check 仍检查这些文件(默认读 .prettierignore,不含排除)
+# 计划文档照常提交到仓库,但 CI 的格式检查跳过它(2026-08-08 用户拍板)
+.hermes/plans/

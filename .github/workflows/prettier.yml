@@ -25,12 +25,14 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Prettier Check 🔎
         id: prettier
-        run: npx prettier . --check
+        # --ignore-path .prettierignore-ci:CI 跳过 .hermes/plans/(计划文档),
+        # 本地 npx prettier . --check 仍检查(默认 .prettierignore 不含排除)
+        run: npx prettier . --check --ignore-path .prettierignore-ci
       - name: Create diff 📝
         # https://docs.github.com/en/actions/learn-github-actions/expressions#failure
         if: ${{ failure() }}
         run: |
-          npx prettier . --write
+          npx prettier . --write --ignore-path .prettierignore-ci
           git diff -- . ':(exclude)package-lock.json' ':(exclude)package.json' > diff.txt
           npm install -g diff2html-cli
           diff2html -i file -s side -F diff.html -- diff.txt
