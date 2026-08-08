@@ -1,15 +1,15 @@
 ---
 layout: default
 ---
-<!-- 首页:排版 1:1 复刻 Richard Feynman 官网(richardfeynman.com/index.html)。
-     结构:黑底大图 Hero(底部 10px 红条) → 红色 Banner(主标题) → 白底主体
-     [左侧名言区(头像+名字+阅读更多) | 右侧 2 张圆形卡片]
-     [左侧 2 张圆形卡片 | 右下引语区]。
-     配色遵守本站约束:黑/红/白(原站橙 #c4793a、蓝 #5084ca 均改红系)。
-     本站导航栏为全局持久区(swup 架构),不随页面渲染,故 Hero 区不含导航。 -->
+<!-- English homepage: 1:1 replica of richardfeynman.com/index.html.
+     Layout: black hero image (10px red bottom bar) → red banner (title) →
+     white body [quote + headshot | 2 circle cards]
+     [2 circle cards | video + caption].
+     Colors follow site constraints (black/red/white; original orange/blue → red).
+     The global navbar is a persistent region (swup architecture), rendered outside. -->
 <div class="fh-wrap">
 
-  <!-- Hero:黑底大图 + 底部 10px 红条 -->
+  <!-- Hero: black background image + 10px red bottom bar -->
   <div class="fh-hero">
     {% if page.hero and page.hero.image %}
       <div
@@ -21,58 +21,57 @@ layout: default
     {% endif %}
   </div>
 
-  <!-- Banner 红条:主标题 -->
+  <!-- Red banner: main title -->
   <div class="fh-banner">
     <div class="fh-banner-content">
-      <h1>与地球对话</h1>
+      <h1>Welcome to the Official Site of Wang Chengshan</h1>
     </div>
   </div>
 
-  <!-- 白底主体 -->
+  <!-- White body -->
   <div class="fh-body">
     <div class="fh-content">
 
-      <!-- 名言区(费曼 dropQuote) -->
+      <!-- Quote area (Feynman .dropQuote) -->
       <div class="fh-quote">
         <div class="fh-quote-content">
-          <h1>每一道岩层，都是一页写给时间的信。<span>四十六亿年，地球把答案写进石头里。</span></h1>
-          <img class="fh-headshot" src="{{ '/assets/img/prof_pic.jpg' | relative_url }}" alt="王成善" />
+          <h1>Every stratum is a letter written to time. <span>For 4.6 billion years, the Earth has written its answers in stone.</span></h1>
+          <img class="fh-headshot" src="{{ '/assets/img/prof_pic.jpg' | relative_url }}" alt="Wang Chengshan" />
           <p>
-            <strong>王成善</strong><br />
+            <strong>Wang Chengshan</strong><br />
             <br />
-            <a href="{{ '/cv/' | relative_url }}">阅读更多 &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a>
+            <a href="{{ '/cv/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a>
           </p>
         </div>
       </div>
 
-      <!-- 圆形卡片 第 1 行右侧 -->
+      <!-- Circle cards, row 1 right -->
       <div class="fh-card fh-card-r">
-        <img src="{{ '/assets/img/wall/wang_chengshan_unesco_speaking.jpg' | relative_url }}" alt="学术成果" />
-        <h2>学术成果</h2>
+        <img src="{{ '/assets/img/wall/wang_chengshan_unesco_speaking.jpg' | relative_url }}" alt="Selected Scientific Works" />
+        <h2>Selected Scientific Works</h2>
         <p><a href="{{ '/publications/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a></p>
       </div>
       <div class="fh-card fh-card-r">
-        <img src="{{ '/assets/img/wall/wang_chengshan_medal_portrait.jpg' | relative_url }}" alt="学术简历" />
-        <h2>学术简历</h2>
+        <img src="{{ '/assets/img/wall/wang_chengshan_medal_portrait.jpg' | relative_url }}" alt="Biography" />
+        <h2>Biography</h2>
         <p><a href="{{ '/cv/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a></p>
       </div>
 
       <div class="fh-clearfix"></div>
 
-      <!-- 圆形卡片 第 2 行左侧 -->
+      <!-- Circle cards, row 2 left -->
       <div class="fh-card fh-card-l">
-        <img src="{{ '/assets/img/wall/2026_songke1_well.jpg' | relative_url }}" alt="科研项目" />
-        <h2>科研项目</h2>
+        <img src="{{ '/assets/img/wall/2026_songke1_well.jpg' | relative_url }}" alt="Research Projects" />
+        <h2>Research Projects</h2>
         <p><a href="{{ '/projects/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a></p>
       </div>
       <div class="fh-card fh-card-l">
-        <img src="{{ '/assets/img/wall/2026_national_award_team_people_hall.jpg' | relative_url }}" alt="新闻动态" />
-        <h2>新闻动态</h2>
+        <img src="{{ '/assets/img/wall/2026_national_award_team_people_hall.jpg' | relative_url }}" alt="News &amp; Updates" />
+        <h2>News &amp; Updates</h2>
         <p><a href="{{ '/news/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a></p>
       </div>
 
-      <!-- 右下引语区(费曼 dropQuote1,原为视频,此处放引言) -->
-      <!-- 右下引语区(费曼 dropQuote1:视频框 400×270 + 说明文字) -->
+      <!-- Lower-right area (Feynman .dropQuote1: video 400×270 + caption) -->
       <div class="fh-quote1">
         <video
           controls
@@ -83,7 +82,7 @@ layout: default
         >
           <source src="{{ '/assets/video/pexels-engin-akyurt-6069112-960x540-30fps.mp4' | relative_url }}" type="video/mp4" />
         </video>
-        <p><strong>地质学家 · 沉积学家 · 中国科学院院士</strong> —— 在亿万年的尺度上，与这颗星球促膝长谈。</p>
+        <p><strong>Geologist Wang Chengshan</strong> explains how deep time is written into the stones of our planet.</p>
       </div>
 
     </div>

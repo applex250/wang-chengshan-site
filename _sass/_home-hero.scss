@@ -1,10 +1,14 @@
 /* ========== 首页:Richard Feynman 官网排版 1:1 复刻(2026-08) ========== */
 /* 结构:fh-hero(黑底大图+底部10px红条) → fh-banner(红条主标题) →
         fh-body(白底):fh-quote(左,名言+头像) + fh-card-r×2(右)
-        fh-clearfix → fh-card-l×2(左) + fh-quote1(右,引语)
+        fh-clearfix → fh-card-l×2(左) + fh-quote1(右,视频+说明)
    版心 960px(与费曼站一致),配色遵守本站黑/红/白约束。
-   字体:标题用系统衬线(近似 Vollkorn),正文系统无衬线(近似 Raleway),
-   不引入外部字体依赖。 */
+   字体 1:1 对照费曼原站(不引入外部字体):
+     Vollkorn(衬线,标题) → Georgia 系;Raleway(无衬线,正文) → Helvetica 系。 */
+
+/* 费曼字体栈映射 */
+$fh-serif: Georgia, "Times New Roman", "Songti SC", "STSong", "SimSun", serif;
+$fh-sans: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
 
 .fh-hero {
   position: relative;
@@ -42,7 +46,7 @@
 }
 
 .fh-banner-content h1 {
-  font-family: var(--font-family-serif, "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", serif);
+  font-family: $fh-serif; /* 费曼 banner h1 = Vollkorn */
   font-size: 32px;
   font-weight: 700;
   line-height: 50px; /* 费曼 line-height:45px */
@@ -107,7 +111,7 @@
 
 .fh-quote-content h1 {
   padding-top: 5px; /* 费曼 .dropQuoteContent h1 padding-top:5px */
-  font-family: var(--font-family-sans, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif);
+  font-family: $fh-sans; /* 费曼 .dropQuoteContent h1 = Raleway */
   font-size: 32px; /* 费曼 h1 全局 32px(继承) */
   font-weight: 700;
   line-height: 1; /* 费曼 body line-height:1,按英文原版 1:1 */
@@ -117,6 +121,12 @@
 
 .fh-quote-content h1 span {
   font-weight: 300; /* 费曼 span font-weight:300 */
+}
+
+.fh-quote-content p,
+.fh-card p,
+.fh-quote1 p {
+  font-family: $fh-sans; /* 费曼 p = Raleway */
 }
 
 .fh-quote-content p {
@@ -166,7 +176,7 @@
 
 .fh-card h2 {
   margin: 10px 0 0;
-  font-family: var(--font-family-serif, "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", serif);
+  font-family: $fh-serif; /* 费曼 .circleContent h2 = Vollkorn */
   font-size: 24px;
   font-weight: 400;
   line-height: 1; /* 费曼 body line-height:1 */
