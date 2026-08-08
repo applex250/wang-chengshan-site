@@ -105,9 +105,9 @@
 }
 
 .fh-quote-content h1 {
-  padding-top: 5px;
+  padding-top: 5px; /* 费曼 .dropQuoteContent h1 padding-top:5px */
   font-family: var(--font-family-sans, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif);
-  font-size: 28px;
+  font-size: 32px; /* 费曼 h1 全局 32px(继承) */
   font-weight: 700;
   line-height: 1.6;
   color: #222222;
@@ -132,9 +132,9 @@
 
 .fh-headshot {
   float: left;
-  margin-right: 10px;
-  width: 96px;
-  height: 120px;
+  margin-right: 10px; /* 费曼 headshot 78×78,float:left margin-right:10px */
+  width: 78px;
+  height: 78px;
   object-fit: cover;
   border-radius: 6px;
 }
@@ -157,8 +157,8 @@
 }
 
 .fh-card img {
-  width: 150px;
-  height: 150px;
+  width: 225px; /* 费曼圆形图标 225×225,与卡片容器等宽 */
+  height: 225px;
   border-radius: 50%; /* 费曼为圆形图标,照片用圆形裁切 */
   object-fit: cover;
 }
