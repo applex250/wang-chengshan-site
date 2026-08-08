@@ -2,6 +2,7 @@
 layout: about
 title: 首页
 permalink: /
+math: false # 首页无公式,禁用 MathJax(省 4MB 请求,2026-08)
 subtitle: >
   地质学家 · 沉积学家 · 中国科学院院士
   <br><a href='https://www.cugb.edu.cn/' target='_blank'>中国地质大学（北京）</a> · <a href='https://www.cdut.edu.cn/' target='_blank'>成都理工大学</a>
