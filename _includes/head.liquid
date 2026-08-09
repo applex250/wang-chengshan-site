@@ -1,6 +1,10 @@
 <!-- Metadata, OpenGraph and Schema.org -->
 {% include metadata.liquid %}
 
+<!-- 防止 HTML 被浏览器启发式缓存:部署后旧页面导致语言切换/内容过期(GitHub Pages 对 HTML 缓存 10 分钟,无法改响应头,此处为兜底) -->
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="pragma" content="no-cache" />
+
 <!-- Security: Content Security Policy -->
 <!-- Permissive CSP suitable for academic websites. Allows external images, videos, and common embed services. -->
 <!-- To customize for your needs, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->

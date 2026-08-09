@@ -156,6 +156,21 @@
                 {% endfor %}
               </ul>
             </li>
+            <script>
+              (function () {
+                document.addEventListener("click", function (evt) {
+                  var a = evt.target.closest(".lang-list a");
+                  if (!a) return;
+                  evt.preventDefault();
+                  var href = a.getAttribute("href") || "";
+                  if (!href || href.indexOf("#") === 0) return;
+                  location.href = href.split("?")[0] + "?v=" + Date.now();
+                });
+                if (location.search.indexOf("?v=") === 0) {
+                  history.replaceState(null, "", location.pathname);
+                }
+              })();
+            </script>
           {% endif %}
         </ul>
       </div>
