@@ -1,14 +1,15 @@
 ---
 layout: default
 ---
-<!-- English homepage: 1:1 replica of richardfeynman.com/index.html.
-     Layout: black hero image (10px red bottom bar) → red banner (title) →
-     white body [quote + headshot | 2 circle cards]
-     [2 circle cards | video + caption].
-     Colors follow site constraints (black/red/white; original orange/blue → red).
-     The global navbar is a persistent region (swup architecture), rendered outside. -->
+<!--
+  English homepage: 1:1 replica of richardfeynman.com/index.html.
+  Layout: black hero image (10px red bottom bar) → red banner (title) →
+  white body [quote + headshot | 2 circle cards]
+  [2 circle cards | video + caption].
+  Colors follow site constraints (black/red/white; original orange/blue → red).
+  The global navbar is a persistent region (swup architecture), rendered outside.
+-->
 <div class="fh-wrap">
-
   <!-- Hero: black background image + 10px red bottom bar -->
   <div class="fh-hero">
     {% if page.hero and page.hero.image %}
@@ -31,15 +32,17 @@ layout: default
   <!-- White body -->
   <div class="fh-body">
     <div class="fh-content">
-
       <!-- Quote area (Feynman .dropQuote) -->
       <div class="fh-quote">
         <div class="fh-quote-content">
-          <h1>{% t home.quote1 %} <span>{% t home.quote2 %}</span></h1>
-          <img class="fh-headshot" src="{{ '/assets/img/prof_pic.jpg' | relative_url }}" alt="{% t home.name %}" />
+          <h1>
+            {% t home.quote1 %}
+            <span>{% t home.quote2 %}</span>
+          </h1>
+          <img class="fh-headshot" src="{{ '/assets/img/prof_pic.jpg' | relative_url }}" alt="{% t home.name %}">
           <p>
-            <strong>{% t home.name %}</strong><br />
-            <br />
+            <strong>{% t home.name %}</strong><br>
+            <br>
             <a href="{{ '/cv/' | relative_url }}">{% t home.readmore %} &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a>
           </p>
         </div>
@@ -47,28 +50,36 @@ layout: default
 
       <!-- Circle cards, row 1 right -->
       <div class="fh-card fh-card-r">
-        <img src="{{ '/assets/img/wall/wang_chengshan_unesco_speaking.jpg' | relative_url }}" alt="Selected Scientific Works" />
+        <img src="{{ '/assets/img/wall/wang_chengshan_unesco_speaking.jpg' | relative_url }}" alt="Selected Scientific Works">
         <h2>{% t home.card_works %}</h2>
-        <p><a href="{{ '/publications/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a></p>
+        <p>
+          <a href="{{ '/publications/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a>
+        </p>
       </div>
       <div class="fh-card fh-card-r">
-        <img src="{{ '/assets/img/wall/wang_chengshan_medal_portrait.jpg' | relative_url }}" alt="Biography" />
+        <img src="{{ '/assets/img/wall/wang_chengshan_medal_portrait.jpg' | relative_url }}" alt="Biography">
         <h2>{% t home.card_bio %}</h2>
-        <p><a href="{{ '/cv/' | relative_url }}">{% t home.readmore %} &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a></p>
+        <p>
+          <a href="{{ '/cv/' | relative_url }}">{% t home.readmore %} &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a>
+        </p>
       </div>
 
       <div class="fh-clearfix"></div>
 
       <!-- Circle cards, row 2 left -->
       <div class="fh-card fh-card-l">
-        <img src="{{ '/assets/img/wall/2026_songke1_well.jpg' | relative_url }}" alt="Research Projects" />
+        <img src="{{ '/assets/img/wall/2026_songke1_well.jpg' | relative_url }}" alt="Research Projects">
         <h2>{% t home.card_projects %}</h2>
-        <p><a href="{{ '/projects/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a></p>
+        <p>
+          <a href="{{ '/projects/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a>
+        </p>
       </div>
       <div class="fh-card fh-card-l">
-        <img src="{{ '/assets/img/wall/2026_national_award_team_people_hall.jpg' | relative_url }}" alt="News &amp; Updates" />
+        <img src="{{ '/assets/img/wall/2026_national_award_team_people_hall.jpg' | relative_url }}" alt="News &amp; Updates">
         <h2>{% t home.card_news %}</h2>
-        <p><a href="{{ '/news/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a></p>
+        <p>
+          <a href="{{ '/news/' | relative_url }}">Read More &nbsp;&nbsp;<i class="fa-solid fa-caret-right"></i></a>
+        </p>
       </div>
 
       <!-- Lower-right area (Feynman .dropQuote1: video 400×270 + caption) -->
@@ -80,11 +91,10 @@ layout: default
           height="270"
           poster="{{ '/assets/img/wall/2026_songke1_well.jpg' | relative_url }}"
         >
-          <source src="{{ '/assets/video/pexels-engin-akyurt-6069112-960x540-30fps.mp4' | relative_url }}" type="video/mp4" />
+          <source src="{{ '/assets/video/songliao-drilling-cctv.mp4' | relative_url }}" type="video/mp4">
         </video>
         <p>{% t home.caption %}</p>
       </div>
-
     </div>
   </div>
 </div>
