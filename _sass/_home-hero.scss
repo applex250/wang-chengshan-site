@@ -15,17 +15,21 @@ $fh-sans: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #000;
   border-bottom: 10px solid var(--memorial-red-deep); /* 费曼 10px #c4793a → 红 */
   background-size: cover;
-  background-position: center 30%;
+  /* 2026-08:30% → 10%,让图片顶部多显示(天空/山顶露出来),
+     并抵消容器 mt-5 使图顶贴导航下方,消除 48px 空白 */
+  background-position: center 10%;
   /* 突破本站内容容器,与费曼站一致全宽 */
   margin-left: calc(50% - 50vw);
   width: 100vw;
+  /* 抵消 #swup 容器 mt-5(3rem),消除导航栏与 hero 大图之间的 48px 空白 */
+  margin-top: -3rem;
 }
 
 .fh-hero-bg {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center 30%;
+  background-position: center 10%;
 }
 
 /* Banner 红条(费曼 #banner: 高50px 橙底,全宽) */
