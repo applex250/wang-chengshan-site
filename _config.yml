@@ -22,7 +22,7 @@ lang: zh-CN # the language of your site (for example: en, fr, cn, ru, etc.)
 #   zh 默认(无 URL 前缀,omit_default_locale),en/ja/ko 加前缀
 # -----------------------------------------------------------------------------
 langs: ["zh", "en", "ja", "ko"]
-languages: ["zh", "en", "ja", "ko"]
+languages: ["zh", "en"]
 default_locale: "zh"
 omit_default_locale: true
 locale_subdir: false
