@@ -5,6 +5,17 @@
 <meta http-equiv="cache-control" content="no-cache" />
 <meta http-equiv="pragma" content="no-cache" />
 
+<!-- 预加载当前语言主字体:消除首访 font-display:swap 闪动导致的布局横移 -->
+{% if site.lang == 'en' %}
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ '/assets/lib/fonts/raleway-latin.woff2' | relative_url }}" />
+{% elsif site.lang == 'ja' %}
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ '/assets/lib/fonts/noto-sans-jp/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFBEj756wwr4v0qHnANADNsISRDl2PRkiiWsg.117.woff2' | relative_url }}" />
+{% elsif site.lang == 'ko' %}
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ '/assets/lib/fonts/noto-sans-kr/PbyxFmXiEBPT4ITbgNA5Cgms3VYcOA-vvnIzzuoyeLGC5nwuDo-KBTUm6CryotyJROlrnQ.119.woff2' | relative_url }}" />
+{% else %}
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ '/assets/lib/fonts/noto-sans-sc/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FnYkldv7JjxkkgFsFSSOPMOkySAZ73y9ViAt3acb8NexQ2w.119.woff2' | relative_url }}" />
+{% endif %}
+
 <!-- Security: Content Security Policy -->
 <!-- Permissive CSP suitable for academic websites. Allows external images, videos, and common embed services. -->
 <!-- To customize for your needs, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->

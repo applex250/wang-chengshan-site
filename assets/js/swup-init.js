@@ -140,8 +140,9 @@
     nav.querySelectorAll("li.nav-item:not(.dropdown)").forEach((li) => {
       const link = li.querySelector(":scope > a.nav-link");
       const hrefPath = pathOf(link && link.getAttribute("href"));
-      // 首页链接 href 只有 baseurl 一段,不参与前缀匹配,避免整站常亮
-      const isHome = hrefPath.split("/").filter(Boolean).length === 1;
+      // 首页链接带 data-nav-home 标记(header.liquid 渲染),只精确匹配,
+      // 避免 en/ja/ko 站(/baseurl/lang)首页被当作前缀匹配整站常亮
+      const isHome = !!(link && link.hasAttribute("data-nav-home"));
       const isActive = hrefPath === current || (!isHome && hrefPath && current.startsWith(hrefPath + "/"));
       setItemActive(li, isActive);
     });
