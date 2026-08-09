@@ -17,9 +17,9 @@
   --global-theme-color: #8b1a1a;
   --global-hover-color: #c41e3a;
   --global-hover-text-color: #{v.$white-color};
-  --global-footer-bg-color: #6b1414;
-  --global-footer-text-color: #f3e5e5;
-  --global-footer-link-color: #{v.$white-color};
+  --global-footer-bg-color: #f1f1ef; /* 2026-08:底栏红色背景已去除,与页面背景一致 */
+  --global-footer-text-color: #{v.$black-color};
+  --global-footer-link-color: #8b1a1a;
   --global-distill-app-color: #{v.$grey-color};
   --global-divider-color: rgba(139, 26, 26, 0.18);
   --global-card-bg-color: #e9e9e7;
