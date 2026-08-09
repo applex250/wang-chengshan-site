@@ -272,3 +272,17 @@
     padding-left: 1.1rem;
   }
 }
+
+/* ========== 全站禁用斜体(2026-08) ========== */
+/* 所有斜体元素一律正体显示。注意:不触发行内 style 的 font-style(内联最高优先级
+   场景罕见),Font Awesome 图标(<i class=fa-*>)不受影响(图标由伪元素渲染)。 */
+em,
+i,
+cite,
+address,
+dfn,
+var,
+samp,
+.italic {
+  font-style: normal !important;
+}
