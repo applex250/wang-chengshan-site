@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://applex250.github.io/wang-chengshan-site/ko/sitemap.xml
