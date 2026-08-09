@@ -55,41 +55,41 @@
         <!-- 联系信息 -->
         {% if cv.name or cv.headline or cv.location or cv.email or cv.phone or cv.website or cv.custom_connections %}
           <div class="card mt-3 p-3 memorial-frame">
-            <h3 id="联系信息" class="card-title font-weight-medium">联系信息</h3>
+            <h3 id="联系信息" class="card-title font-weight-medium">{{ site.data.cv_sections['联系信息'][site.lang] }}</h3>
             <table class="table table-cv table-sm table-borderless">
               {% if cv.name %}
                 <tr>
-                  <td class="p-1 pr-2 font-weight-bold"><b>姓名</b></td>
+                  <td class="p-1 pr-2 font-weight-bold"><b>{{ site.data.cv_sections['姓名'][site.lang] }}</b></td>
                   <td class="p-1 pl-2 font-weight-light">{{ cv.name }}</td>
                 </tr>
               {% endif %}
               {% if cv.headline %}
                 <tr>
-                  <td class="p-1 pr-2 font-weight-bold"><b>职称</b></td>
+                  <td class="p-1 pr-2 font-weight-bold"><b>{{ site.data.cv_sections['职称'][site.lang] }}</b></td>
                   <td class="p-1 pl-2 font-weight-light">{{ cv.headline }}</td>
                 </tr>
               {% endif %}
               {% if cv.email %}
                 <tr>
-                  <td class="p-1 pr-2 font-weight-bold"><b>邮箱</b></td>
+                  <td class="p-1 pr-2 font-weight-bold"><b>{{ site.data.cv_sections['邮箱'][site.lang] }}</b></td>
                   <td class="p-1 pl-2 font-weight-light">{{ cv.email }}</td>
                 </tr>
               {% endif %}
               {% if cv.phone %}
                 <tr>
-                  <td class="p-1 pr-2 font-weight-bold"><b>电话</b></td>
+                  <td class="p-1 pr-2 font-weight-bold"><b>{{ site.data.cv_sections['电话'][site.lang] }}</b></td>
                   <td class="p-1 pl-2 font-weight-light">{{ cv.phone }}</td>
                 </tr>
               {% endif %}
               {% if cv.location %}
                 <tr>
-                  <td class="p-1 pr-2 font-weight-bold"><b>所在地</b></td>
+                  <td class="p-1 pr-2 font-weight-bold"><b>{{ site.data.cv_sections['所在地'][site.lang] }}</b></td>
                   <td class="p-1 pl-2 font-weight-light">{{ cv.location }}</td>
                 </tr>
               {% endif %}
               {% if cv.website %}
                 <tr>
-                  <td class="p-1 pr-2 font-weight-bold"><b>个人主页</b></td>
+                  <td class="p-1 pr-2 font-weight-bold"><b>{{ site.data.cv_sections['个人主页'][site.lang] }}</b></td>
                   <td class="p-1 pl-2 font-weight-light">
                     <a href="{{ cv.website }}" target="_blank">{{ cv.website }}</a>
                   </td>
@@ -98,7 +98,7 @@
               {% if cv.custom_connections %}
                 {% for conn in cv.custom_connections %}
                   <tr>
-                    <td class="p-1 pr-2 font-weight-bold"><b>单位</b></td>
+                    <td class="p-1 pr-2 font-weight-bold"><b>{{ site.data.cv_sections['单位'][site.lang] }}</b></td>
                     <td class="p-1 pl-2 font-weight-light">
                       {% if conn.url %}
                         <a href="{{ conn.url }}" target="_blank">{{ conn.placeholder }}</a>
@@ -211,36 +211,36 @@
         <!-- 联系信息 -->
         {% if site.data.resume.basics %}
           <div class="card mt-3 p-3 memorial-frame">
-            <h3 id="联系信息" class="card-title font-weight-medium">联系信息</h3>
+            <h3 id="联系信息" class="card-title font-weight-medium">{{ site.data.cv_sections['联系信息'][site.lang] }}</h3>
             {% assign basics = site.data.resume.basics %}
             <table class="table table-cv table-sm table-borderless">
               {% if basics.name %}
                 <tr>
-                  <td class="p-1 pr-2 font-weight-bold"><b>姓名</b></td>
+                  <td class="p-1 pr-2 font-weight-bold"><b>{{ site.data.cv_sections['姓名'][site.lang] }}</b></td>
                   <td class="p-1 pl-2 font-weight-light">{{ basics.name }}</td>
                 </tr>
               {% endif %}
               {% if basics.label %}
                 <tr>
-                  <td class="p-1 pr-2 font-weight-bold"><b>职称</b></td>
+                  <td class="p-1 pr-2 font-weight-bold"><b>{{ site.data.cv_sections['职称'][site.lang] }}</b></td>
                   <td class="p-1 pl-2 font-weight-light">{{ basics.label }}</td>
                 </tr>
               {% endif %}
               {% if basics.email %}
                 <tr>
-                  <td class="p-1 pr-2 font-weight-bold"><b>邮箱</b></td>
+                  <td class="p-1 pr-2 font-weight-bold"><b>{{ site.data.cv_sections['邮箱'][site.lang] }}</b></td>
                   <td class="p-1 pl-2 font-weight-light">{{ basics.email }}</td>
                 </tr>
               {% endif %}
               {% if basics.phone %}
                 <tr>
-                  <td class="p-1 pr-2 font-weight-bold"><b>电话</b></td>
+                  <td class="p-1 pr-2 font-weight-bold"><b>{{ site.data.cv_sections['电话'][site.lang] }}</b></td>
                   <td class="p-1 pl-2 font-weight-light">{{ basics.phone }}</td>
                 </tr>
               {% endif %}
               {% if basics.location %}
                 <tr>
-                  <td class="p-1 pr-2 font-weight-bold"><b>所在地</b></td>
+                  <td class="p-1 pr-2 font-weight-bold"><b>{{ site.data.cv_sections['所在地'][site.lang] }}</b></td>
                   <td class="p-1 pl-2 font-weight-light">
                     {% if basics.location.address %}{{ basics.location.address }}, {% endif %}
                     {% if basics.location.city %}{{ basics.location.city }}, {% endif %}
@@ -251,7 +251,7 @@
               {% endif %}
               {% if basics.url %}
                 <tr>
-                  <td class="p-1 pr-2 font-weight-bold"><b>个人主页</b></td>
+                  <td class="p-1 pr-2 font-weight-bold"><b>{{ site.data.cv_sections['个人主页'][site.lang] }}</b></td>
                   <td class="p-1 pl-2 font-weight-light">
                     <a href="{{ basics.url }}" target="_blank">{{ basics.url }}</a>
                   </td>

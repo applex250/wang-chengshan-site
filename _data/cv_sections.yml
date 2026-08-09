@@ -33,3 +33,28 @@
   en: Languages
   ja: 言語
   ko: 언어
+
+联系信息:
+  zh: 联系信息
+  en: Contact Information
+姓名:
+  zh: 姓名
+  en: Name
+职称:
+  zh: 职称
+  en: Title
+邮箱:
+  zh: 邮箱
+  en: Email
+电话:
+  zh: 电话
+  en: Phone
+所在地:
+  zh: 所在地
+  en: Location
+个人主页:
+  zh: 个人主页
+  en: Website
+单位:
+  zh: 单位
+  en: Affiliation
