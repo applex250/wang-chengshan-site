@@ -125,15 +125,6 @@
   border-color: var(--memorial-red-deep);
 }
 
-/* 页脚金色顶线 */
-footer {
-  border-top: 2px solid transparent;
-  border-image: var(--memorial-gold-line) 1;
-}
-
-footer a:hover {
-  color: var(--memorial-gold-light) !important;
-}
 
 /* ========== 7. 首页肖像档案框 ========== */
 .profile img {
