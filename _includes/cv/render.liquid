@@ -120,7 +120,10 @@
           {% assign section_entries = section_pair[1] %}
 
           <div class="card mt-3 p-3 memorial-frame">
-            <h3 id="{{ section_title }}" class="card-title font-weight-medium">{{ section_title }}</h3>
+            <h3 id="{{ section_title }}" class="card-title font-weight-medium">
+              {%- assign sec_tr = site.data.cv_sections[section_title] -%}
+              {{ sec_tr[site.lang] | default: section_title }}
+            </h3>
             <div>
               {% if section_title == '个人简介' %}
                 {% comment %} TextEntry:纯文本段落 {% endcomment %}

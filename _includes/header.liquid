@@ -41,7 +41,8 @@
 
       <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav">
         <ul class="navbar-nav navbar-menu-list flex-nowrap">
-          {% for page in site.pages %}
+          {% assign site_pages_lang = site.pages | where_exp: "p", "p.languages == nil or p.languages contains site.lang" %}
+          {% for page in site_pages_lang %}
             {% if page.permalink == '/' %} {% assign about_title = page.title %} {% endif %}
           {% endfor %}
 
@@ -56,7 +57,7 @@
           </li>
 
           <!-- Other pages -->
-          {% assign sorted_pages = site.pages | sort: 'nav_order' %}
+          {% assign sorted_pages = site_pages_lang | sort: 'nav_order' %}
           {% for p in sorted_pages %}
             {% if p.nav and p.autogen == null %}
               {% if p.dropdown %}

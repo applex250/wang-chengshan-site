@@ -207,14 +207,18 @@ newsletter:
 collections:
   books:
     output: true
+    permalink: /books/:name/
   news:
     defaults:
       layout: post
     output: true
+    permalink: /news/:name/
   projects:
     output: true
+    permalink: /projects/:name/
   teachings:
     output: true
+    permalink: /teachings/:name/
 
 # -----------------------------------------------------------------------------
 # Jekyll settings
