@@ -18,22 +18,18 @@ keywords: 王成善, 中国科学院院士, 地质学家, 沉积学, 大地构�
 lang: zh-CN # the language of your site (for example: en, fr, cn, ru, etc.)
 
 # -----------------------------------------------------------------------------
-# 多语言(jekyll-multiple-languages-plugin,2026-08):
-#   zh 默认(无 URL 前缀,omit_default_locale),en/ja/ko 加前缀
+# 多语言(jekyll-multiple-languages-plugin 1.8.0,2026-08):
+#   zh 默认(无 URL 前缀,omit_default_locale),en 加前缀
+#   注意:
+#   - jmlp 1.8.0 实际读取的排除键是复数 exclude_from_localizations;此处不配置,
+#     assets 随语言复制到 /en/assets(relative_url 按语言 baseurl 解析,删了会 404)。
+#   - jmlp 对 _posts 的读取会重定向到 _i18n/<lang>/_posts/(插件原生约定),
+#     博客文章必须放在该目录才会被构建。
 # -----------------------------------------------------------------------------
-langs: ["zh", "en", "ja", "ko"]
 languages: ["zh", "en"]
 default_locale: "zh"
 omit_default_locale: true
 locale_subdir: false
-exclude_from_localization:
-  - assets
-  - images
-  - css
-  - js
-  - public
-  - img
-  - favicon.ico
 icon: 王 # the text/emoji used as the favicon (alternatively, provide image name in /assets/img/)
 apple_touch_icon: # image name in /assets/img/ (or a rooted path / absolute URL) used for iOS home-screen bookmarks; needs a real 180x180 PNG, since Safari ignores the emoji favicon above. Left empty, iOS falls back to a screenshot of the page.
 
@@ -128,9 +124,9 @@ max_width: 930px
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
 # see https://schema.org/docs/faq.html for more information
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
-serve_schema_org: false # Include Schema.org in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+serve_og_meta: true # Include Open Graph meta tags in the HTML head
+serve_schema_org: true # Include Schema.org in the HTML head
+og_image: assets/img/prof_pic.jpg # The site-wide (default for all links) Open Graph preview image
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
@@ -183,9 +179,8 @@ giscus:
   emit_metadata: 0
   lang: zh-CN
 
-# Disqus comments (DEPRECATED)
-disqus_shortname: al-folio # put your disqus shortname
-# https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+# Disqus comments (DEPRECATED,未配置,评论区不渲染)
+disqus_shortname:
 
 # External sources.
 # 如需引入外部博客（如 medium）文章，可在此添加 RSS 源。
@@ -241,7 +236,6 @@ kramdown:
 include: ["_pages", "assets/vendor"]
 exclude:
   - AGENTS.md
-  - al-folio-upgrade-report.md
   - bin/
   - CLAUDE.md
   - Dockerfile
@@ -254,10 +248,13 @@ exclude:
   - lighthouse_results/
   - package.json
   - package-lock.json
-  - _pages/about_einstein.md
   - purgecss.config.js
   - README.md
   - readme_preview/
+  - 日报.md
+  - requirements.txt
+  - scripts/
+  - test/
   - gems/
   - migrations/
 keep_files:
@@ -274,9 +271,6 @@ plugins:
   - jekyll-cache-bust
   - jekyll-email-protect
   - jekyll-feed
-  - jekyll-get-json
-  - jekyll-imagemagick
-  - jekyll-jupyter-notebook
   - jekyll-link-attributes
   - jekyll-minifier
   - jekyll-paginate-v2
@@ -451,25 +445,11 @@ external_links:
 # -----------------------------------------------------------------------------
 # Responsive WebP Images
 # -----------------------------------------------------------------------------
-
-# MAKE SURE imagemagick is installed and on your PATH before enabling imagemagick. In a terminal, run:
-#   convert -version
-imagemagick:
-  enabled: true # enables responsive images for your site (recommended, see https://github.com/alshedivat/al-folio/issues/537)
-  widths:
-    - 480
-    - 800
-    - 1400
-  input_directories:
-    - assets/img/
-  input_formats:
-    - ".jpg"
-    - ".jpeg"
-    - ".png"
-    - ".tiff"
-    - ".gif"
-  output_formats:
-    webp: "-auto-orient -quality 85"
+# 2026-08:jekyll-imagemagick 已停用——页面图片均为固定 <img>/CSS 背景,
+# 无 srcset 消费者,生成 -480/-800/-1400.webp 变体纯属构建与部署负担。
+# 如需恢复:Gemfile 与本文件 plugins 列表同时加回 jekyll-imagemagick,
+# 并恢复下方 widths 配置(见 git 历史)。
+# -----------------------------------------------------------------------------
 
 # Lazy loading images
 #   If you enable lazy loading, all images will add the loading="lazy" attribute.
@@ -706,21 +686,5 @@ third_party_libraries:
 # -----------------------------------------------------------------------------
 # Get external JSON data
 # -----------------------------------------------------------------------------
-
-jekyll_get_json:
-  - data: resume
-    json: assets/json/resume.json # it can also be an url
-
-jsonresume:
-  - basics
-  - work
-  - education
-  - publications
-  - projects
-  - volunteer
-  - awards
-  - certificates
-  - skills
-  - languages
-  - interests
-  - references
+# 2026-08:jekyll_get_json 与 jsonresume 配置已移除——CV 使用 _data/cv.yml
+# (cv_format: rendercv),assets/json/resume.json 为模板演示数据,未被渲染。

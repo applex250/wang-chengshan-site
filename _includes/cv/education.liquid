@@ -5,6 +5,11 @@
   - JSONResume: institution, area, studyType, startDate, endDate, location, courses, highlights
 {% endcomment %}
 
+{% comment %} 开放区间年份标签按语言输出(jmlp 不本地化 _data,此处硬编码双语) {% endcomment %}
+{% assign cv_present_label = '至今' %}
+{% if site.lang == 'en' %}
+  {% assign cv_present_label = 'present' %}
+{% endif %}
 <ul class="card-text font-weight-light list-group list-group-flush">
   {% for entry in entries %}
     <li class="list-group-item">
@@ -31,7 +36,7 @@
           {% if start_date != '' %}
             {% comment %} Extract year only from dates like "1933-01-01" or just use "1933" as is {% endcomment %}
             {% assign startDate = start_date | split: '-' | first %}
-            {% assign endDate = end_date | split: '-' | first | default: '至今' %}
+            {% assign endDate = end_date | split: '-' | first | default: cv_present_label %}
             {% assign date = startDate | append: ' - ' | append: endDate %}
           {% elsif point_date != '' %}
             {% comment %} A standalone date is a point in time, never an open-ended range, so it renders as a single year {% endcomment %}
@@ -80,11 +85,11 @@
           {% endif %}
 
           {% if entry.institution %}
-            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ entry.institution }}</h6>
+            <p class="cv-sub ml-1 ml-md-4">{{ entry.institution }}</p>
           {% endif %}
 
           {% if entry.area %}
-            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">{{ entry.area }}</h6>
+            <p class="cv-sub ml-1 ml-md-4">{{ entry.area }}</p>
           {% endif %}
 
           {% if entry.courses or entry.highlights %}

@@ -17,7 +17,7 @@ $fh-sans: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-size: cover;
   /* 2026-08:30% → 10%,让图片顶部多显示(天空/山顶露出来),
      并抵消容器 mt-5 使图顶贴导航下方,消除 48px 空白 */
-  background-position: center 15%;
+  background-position: center 32%;
   /* 突破本站内容容器,与费曼站一致全宽 */
   margin-left: calc(50% - 50vw);
   width: 100vw;
@@ -29,7 +29,7 @@ $fh-sans: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center 15%;
+  background-position: center 32%;
 }
 
 /* Banner 红条(费曼 #banner: 高50px 橙底,全宽) */

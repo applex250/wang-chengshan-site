@@ -17,10 +17,18 @@ layout: default
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
     <p class="post-meta">
-      发布于 {{ page.date | date: '%Y年%-m月%-d日' }}
-      {% if page.author %}，作者 {{ page.author }}{% endif %}
-      {% assign last_date = page.last_modified_at | default: page.last_updated %}
-      {% if last_date %}，更新于 {{ last_date | date: '%Y年%-m月%-d日' }}{% endif %}
+      {% comment %} 发布元信息按语言输出(zh: 发布于/作者/更新于 / en: Published/Author/Updated) {% endcomment %}
+      {% if site.lang == 'en' %}
+        Published {{ page.date | date: '%b %-d, %Y' }}
+        {% if page.author %}, by {{ page.author }}{% endif %}
+        {% assign last_date = page.last_modified_at | default: page.last_updated %}
+        {% if last_date %}, updated {{ last_date | date: '%b %-d, %Y' }}{% endif %}
+      {% else %}
+        发布于 {{ page.date | date: '%Y年%-m月%-d日' }}
+        {% if page.author %}，作者 {{ page.author }}{% endif %}
+        {% assign last_date = page.last_modified_at | default: page.last_updated %}
+        {% if last_date %}，更新于 {{ last_date | date: '%Y年%-m月%-d日' }}{% endif %}
+      {% endif %}
       {% if page.meta %}• {{ page.meta }}{% endif %}
     </p>
     <p class="post-tags">

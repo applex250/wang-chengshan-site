@@ -3,7 +3,7 @@
 import os
 from PIL import Image
 
-SRC = "assets/img/photos"
+SRC = "_photo_src/photos"  # 2026-08 移出 assets/,避免 31MB 原图被 Jekyll 复制进 _site
 DST = "assets/img/wall"
 EXCLUDE = {"2026_deep_coring_technology_diagram.jpg"}  # 技术图解,用户确认剔除
 

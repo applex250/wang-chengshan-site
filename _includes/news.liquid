@@ -9,6 +9,12 @@
     >
       <table class="table table-sm table-borderless memorial-timeline">
         {% assign news = site.news | reverse %}
+        {% comment %} 日期格式按语言输出(zh: 2026年7月15日 / en: Jul 15, 2026) {% endcomment %}
+        {% if site.lang == 'en' %}
+          {% assign news_date_format = '%b %-d, %Y' %}
+        {% else %}
+          {% assign news_date_format = '%Y年%-m月%-d日' %}
+        {% endif %}
         {% if include.limit and page.announcements.limit %}
           {% assign news_limit = page.announcements.limit %}
         {% else %}
@@ -16,7 +22,7 @@
         {% endif %}
         {% for item in news limit: news_limit %}
           <tr>
-            <th scope="row" style="width: 20%">{{ item.date | date: '%Y年%-m月%-d日' }}</th>
+            <th scope="row" style="width: 20%">{{ item.date | date: news_date_format }}</th>
             <td>
               {% if item.inline %}
                 {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}

@@ -63,7 +63,7 @@
    * 原理:ScriptsPlugin 的 runScripts 在 content:replace 之后遍历整个
    * document 重放脚本;此时文档 = 新容器 + 旧持久区脚本。凡是容器外的
    * 脚本都是持久区脚本(只执行一次),gem include 输出的标签(如
-   * al_search 的 search-setup.js、cookie、analytics、instantpage 等)
+   * al_search 的 search-setup.js、cookie、analytics 等)
    * 无法在 include 里加 data-swup-ignore-script,这里统一打标:
    * 否则它们会被二次执行,顶层 let/const 重复声明直接 SyntaxError,
    * 并可能破坏页面(如 livereload 的 document.write 清空文档)。
@@ -92,17 +92,6 @@
       );
     }
   });
-
-  /*
-   * 照片墙显隐:DOM 常驻全站(见 default.liquid + _sass/_photo-wall.scss)。
-   * 2026-08 首页重构为极简 hero 后照片墙"仅不显示"(代码/图加载保留)。
-   * 恢复方法:改为
-   *   const segments = location.pathname.replace(/^\/+|\/+$/g, "").split("/").filter(Boolean);
-   *   document.body.classList.toggle("photo-wall-active", segments.length === 1);
-   */
-  const updatePhotoWall = () => {
-    document.body.classList.remove("photo-wall-active");
-  };
 
   /*
    * 导航栏 active 高亮同步。
@@ -176,7 +165,6 @@
     }
 
     updateNavActive();
-    updatePhotoWall();
 
     if (window.AlFolioUi) {
       const root = document.getElementById("swup") || document;
@@ -213,7 +201,4 @@
       import(`${base}/assets/js/bibsearch.js?swup=${Date.now()}`).catch(() => {});
     }
   });
-
-  // 初始化照片墙显隐(须在全部 const 定义之后调用,避免 TDZ 报错)
-  updatePhotoWall();
 })();

@@ -50,7 +50,22 @@
 
       {% if render_rendercv and site.data.cv and site.data.cv.cv %}
         {% comment %} RenderCV format {% endcomment %}
-        {% assign cv = site.data.cv.cv %}
+        {% comment %}
+          按语言选择数据:zh 用根目录 _data/cv.yml(site.data.cv.cv),
+          其他语言用 _data/<lang>/cv.yml —— 多套一层语言目录包装,
+          即 site.data.<lang>.cv.cv(目录名 + 文件顶层键),此处做归一化;
+          两种结构都兼容,缺失时回退中文。
+        {% endcomment %}
+        {% assign cv_data = site.data.cv %}
+        {% unless site.lang == 'zh' or site.lang == blank %}
+          {% assign localized_cv = site.data[site.lang] %}
+          {% if localized_cv.cv.cv %}
+            {% assign cv_data = localized_cv.cv %}
+          {% elsif localized_cv.cv %}
+            {% assign cv_data = localized_cv %}
+          {% endif %}
+        {% endunless %}
+        {% assign cv = cv_data.cv %}
 
         <!-- 联系信息 -->
         {% if cv.name or cv.headline or cv.location or cv.email or cv.phone or cv.website or cv.custom_connections %}
@@ -192,9 +207,8 @@
                     {% if entry.bullet %}
                       <li class="list-group-item">{{ entry.bullet | markdownify | remove: '<p>' | remove: '</p>' }}</li>
                     {% elsif entry.label %}
-                      <div class="card-text font-weight-light">
-                        <strong>{{ entry.label }}:</strong> {{ entry.details }}
-                      </div>
+                      {%- comment %} div 不能直接作为 ul 的子元素(浏览器会移出列表破坏排版),包一层 li {% endcomment -%}
+                      <li class="list-group-item card-text font-weight-light"><strong>{{ entry.label }}:</strong> {{ entry.details }}</li>
                     {% else %}
                       <li class="list-group-item">{{ entry }}</li>
                     {% endif %}

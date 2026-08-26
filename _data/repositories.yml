@@ -1,6 +1,0 @@
-# 王成善院士学术主页不需要 GitHub 仓库展示,数据置空
-github_users: []
-
-repo_description_lines_max: 2
-
-github_repos: []

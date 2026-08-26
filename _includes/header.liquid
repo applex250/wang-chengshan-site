@@ -136,14 +136,15 @@
             </li>
           {% endif %}
           {% if site.languages and site.languages.size > 1 %}
-            <!-- 语言切换 -->
+            <!-- 语言切换:固定跳转到目标语言首页(2026-08 修复:原按当前路径平行映射,
+                 部分页面 page.url 解析异常导致跳到新闻页;现无论在哪个页面都回首页) -->
             <li class="nav-item lang-switch">
               <ul class="lang-list">
-                {% assign cur_path = page.url | remove_first: site.baseurl %}
                 {% for lang in site.languages %}
-                  {% assign target = cur_path %}
-                  {% if lang != site.default_locale %}
-                    {% assign target = '/' | append: lang | append: target %}
+                  {% if lang == site.default_locale %}
+                    {% assign target = '/' %}
+                  {% else %}
+                    {% assign target = '/' | append: lang | append: '/' %}
                   {% endif %}
                   <li>
                     <a

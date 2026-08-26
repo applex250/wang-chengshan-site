@@ -3,24 +3,40 @@ layout: default
 ---
 <div class="post">
   <header class="post-header">
+    {% comment %} 归档副标题按语言输出(zh: 分类/年度/标签归档 / en: category/yearly/tag archive) {% endcomment %}
+    {% if site.lang == 'en' %}
+      {% assign archive_label_cat = 'category archive' %}
+      {% assign archive_label_year = 'yearly archive' %}
+      {% assign archive_label_tag = 'tag archive' %}
+    {% else %}
+      {% assign archive_label_cat = '分类归档' %}
+      {% assign archive_label_year = '年度归档' %}
+      {% assign archive_label_tag = '标签归档' %}
+    {% endif %}
     {% if page.type == 'categories' %}
       <h1 class="post-title"><i class="fa-solid fa-tag fa-sm"></i> {{ page.title }}</h1>
-      <p class="post-description">{{ page.collection_name }} · 分类归档</p>
+      <p class="post-description">{{ page.collection_name }} · {{ archive_label_cat }}</p>
     {% elsif page.type == 'year' %}
       <h1 class="post-title"><i class="fa-solid fa-calendar fa-sm"></i> {{ page.date | date: '%Y' }}</h1>
-      <p class="post-description">{{ page.collection_name }} · 年度归档</p>
+      <p class="post-description">{{ page.collection_name }} · {{ archive_label_year }}</p>
     {% elsif page.type == 'tags' %}
       <h1 class="post-title"><i class="fa-solid fa-hashtag fa-sm"></i> {{ page.title }}</h1>
-      <p class="post-description">{{ page.collection_name }} · 标签归档</p>
+      <p class="post-description">{{ page.collection_name }} · {{ archive_label_tag }}</p>
     {% endif %}
   </header>
 
   <article class="archive">
     <div class="table-responsive">
       <table class="table table-sm table-borderless">
+        {% comment %} 日期格式按语言输出(zh: 2026年7月15日 / en: Jul 15, 2026) {% endcomment %}
+        {% if site.lang == 'en' %}
+          {% assign archive_date_format = '%b %-d, %Y' %}
+        {% else %}
+          {% assign archive_date_format = '%Y年%-m月%-d日' %}
+        {% endif %}
         {% for document in page.documents %}
           <tr>
-            <th scope="row">{{ document.date | date: '%Y年%-m月%-d日' }}</th>
+            <th scope="row">{{ document.date | date: archive_date_format }}</th>
             <td>
               {% if document.redirect == blank %}
                 <a class="post-link" href="{{ document.url | relative_url }}">{{ document.title }}</a>

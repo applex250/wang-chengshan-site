@@ -9,9 +9,6 @@ group :jekyll_plugins do
     gem 'jekyll-cache-bust'
     gem 'jekyll-email-protect'
     gem 'jekyll-feed'
-    gem 'jekyll-get-json'
-    gem 'jekyll-imagemagick'
-    gem 'jekyll-jupyter-notebook'
     gem 'jekyll-link-attributes'
     gem 'jekyll-minifier'
     gem 'jekyll-paginate-v2'
@@ -25,7 +22,7 @@ group :jekyll_plugins do
     gem 'jekyll-twitter-plugin'
     gem 'jemoji'
 
-    gem 'jekyll-multiple-languages-plugin'  # 多语言 i18n(zh/en/ja/ko),2026-08
+    gem 'jekyll-multiple-languages-plugin'  # 多语言 i18n(zh/en),2026-08
 
     gem 'classifier-reborn'  # used for content categorization during the build
 end

@@ -34,9 +34,6 @@
     <!-- Header -->
     {% include header.liquid %}
 
-    <!-- 照片墙(全站常驻背景,在 swup 容器之外:切换页面不重建、动画不重启) -->
-    {% include photo-wall.html %}
-
     <!-- Content(swup 唯一替换容器) -->
     <div class="container mt-5 swup-transition-main" role="main" id="swup">
       {% if page.toc and page.toc.sidebar %}

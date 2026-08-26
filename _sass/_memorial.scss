@@ -1,43 +1,17 @@
 /*******************************************************************************
- * Memorial 纪念组件库（共和国脊梁 · 科学家纪念美学）
+ * Memorial 站内定制样式集（原"共和国脊梁"纪念组件库,2026-08 随费曼式改版收敛)
  *
  * 依赖 _themes.scss 中的 --memorial-* 令牌。
- * 内容:纸张纹理 / 档案框 / 朱印徽章 / 时间轴 / 展柜卡片 / 克制动效。
- * 覆盖规则全部放在无层位置,优先级高于 Tailwind @layer base。
+ * 保留在用的:头像档案框 / 时间轴 / 导航与语言切换 / CV / 新闻年表 / 卡片。
+ * 已随照片墙与旧版首页移除:纸张纹理、档案框(.memorial-frame)、朱印徽章(.memorial-stamp)。
  ******************************************************************************/
 
 /* ========== 1. 背景(2026-08 改为纯色) ========== */
-/* 原纸张噪点纹理(渐变+纸纹+颗粒)已移除,背景为纯 --global-bg-color 米白;
-   照片墙(首页)保留,其边缘渐变遮罩使用 --global-bg-color,视觉无缝。 */
 
 /* Hero 稳定(2026-08):头像按 4:5 比例预留空间,加载前后不产生布局偏移(CLS) */
 .profile img {
   aspect-ratio: 4 / 5;
   height: auto;
-}
-
-/* ========== 3. 档案框(四角金色角标) ========== */
-.memorial-frame {
-  position: relative;
-  background: var(--memorial-paper);
-  border: 1px solid var(--memorial-line);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-}
-
-/* ========== 4. 朱印徽章 ========== */
-.memorial-stamp {
-  display: inline-block;
-  padding: 0.12em 0.55em;
-  background: var(--memorial-red-press);
-  color: #f5e9e0;
-  font-family: "Songti SC", "STSong", "STZhongsong", "SimSun", "Noto Serif CJK SC", serif;
-  font-style: normal; /* 显式声明:禁止任何继承斜体 */
-  font-weight: 700;
-  font-size: 0.8rem;
-  letter-spacing: 0.25em;
-  border: 1px solid rgba(139, 26, 26, 0.55);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-  white-space: nowrap;
 }
 
 /* ========== 5. 时间轴 ========== */
@@ -133,16 +107,28 @@
   background: var(--memorial-paper);
 }
 
-.profile .memorial-stamp {
-  margin-top: 0.4rem;
-}
-
 /* ========== 7b. CV 页经历时间轴 ========== */
 .cv .list-group-item {
   position: relative;
   padding-left: 1.6rem;
   border-left: 1px solid var(--memorial-line);
   margin-left: 0.35rem;
+  /* 去掉浏览器默认黑色圆点,时间轴只保留竖线上的红点(2026-08) */
+  list-style: none;
+}
+
+/* CV 条目次要行(单位/院系/摘要):常规字重+稍小字号,与条目标题(h6.title 600+)
+   拉开层级(2026-08 修复全卡片加粗拉平问题)。颜色不单独指定:
+   --global-text-color-light 未在深色主题重定义,显式用灰会在深色模式下可读性差 */
+.cv-sub {
+  font-weight: 400;
+  font-size: 0.95rem;
+  margin-bottom: 0.15rem;
+}
+
+/* 条目内明细列表(ul.items)同步去点,仅保留缩进 */
+.cv .list-group-item .items {
+  list-style: none;
 }
 
 .cv .list-group-item::before {
