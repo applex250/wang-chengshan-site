@@ -153,13 +153,69 @@
     document.body.classList.toggle("home-hero-page", Boolean(document.querySelector("#swup .fh-hero")));
   };
 
+  // Header 语言切换也在 #swup 容器外，swup 导航后不会自动更新。
+  // 这里把新页面文档里的 lang 链接同步回当前持久 header，
+  // 否则切到内页后再点语言切换仍会跳去上一个页面的对应语言路径（常见为首页）。
+  const updateLangSwitch = (visit) => {
+    const langList = document.querySelector(".lang-list");
+    if (!langList) {
+      return;
+    }
+    const toDoc = visit && visit.to && visit.to.document;
+    if (toDoc) {
+      const toList = toDoc.querySelector(".lang-list");
+      if (toList) {
+        const fromLinks = Array.from(langList.querySelectorAll("a"));
+        const toLinks = Array.from(toList.querySelectorAll("a"));
+        if (fromLinks.length && fromLinks.length === toLinks.length) {
+          toLinks.forEach((toA, idx) => {
+            const href = toA.getAttribute("href");
+            if (href) {
+              fromLinks[idx].setAttribute("href", href);
+            }
+            fromLinks[idx].classList.toggle("lang-active", toA.classList.contains("lang-active"));
+          });
+          return;
+        }
+      }
+    }
+    // 降级：按 location.pathname 本地推导（visit 未携带文档时）
+    const baseurlRoot = "/wang-chengshan-site";
+    const langs = ["zh", "en"];
+    const defaultLocale = "zh";
+    let path = location.pathname;
+    if (path.startsWith(baseurlRoot)) {
+      path = path.slice(baseurlRoot.length) || "/";
+    }
+    if (!path.startsWith("/")) {
+      path = "/" + path;
+    }
+    let currentLang = defaultLocale;
+    let currentPath = path;
+    const m = path.match(/^\/([a-z]{2})(\/|$)/);
+    if (m && langs.includes(m[1]) && m[1] !== defaultLocale) {
+      currentLang = m[1];
+      currentPath = path.slice(m[1].length + 1) || "/";
+      if (!currentPath.startsWith("/")) {
+        currentPath = "/" + currentPath;
+      }
+    }
+    const links = Array.from(langList.querySelectorAll("a"));
+    links.forEach((a, idx) => {
+      const lang = langs[idx] || (a.textContent.trim() === "EN" ? "en" : "zh");
+      const target = lang === defaultLocale ? currentPath : "/" + lang + currentPath;
+      a.setAttribute("href", baseurlRoot + target);
+      a.classList.toggle("lang-active", lang === currentLang);
+    });
+  };
+
   /*
    * 交换后补齐 tooltip/popover 初始化:
    * tooltips-setup.js 是全局脚本只跑一遍;新内容里的 [data-toggle] 元素
    * 由这里显式重扫(内部带 af*Bound 去重标记,重复调用安全;
    * popover 同时也会被重放的 common.js 初始化一遍,无副作用)。
    */
-  swup.hooks.on("content:replace", () => {
+  swup.hooks.on("content:replace", (visit) => {
     /*
      * MathJax 库不随切换重放,新内容里的公式在这里手动重渲染
      * (typesetPromise 对无公式内容无害,幂等)。
@@ -168,6 +224,7 @@
       window.MathJax.typesetPromise().catch(() => {});
     }
 
+    updateLangSwitch(visit);
     updateHomeHeroPage();
     updateNavActive();
 

@@ -127,16 +127,29 @@
           {% endif %}
           {% if site.languages and site.languages.size > 1 %}
             <!--
-              语言切换:固定跳转到目标语言首页(2026-08 修复:原按当前路径平行映射,
-              部分页面 page.url 解析异常导致跳到新闻页;现无论在哪个页面都回首页)
+              语言切换:保留当前页面的站点内路径。
+              jekyll-multiple-languages-plugin 会把当前语言的 baseurl 写入 page.url，
+              因此先去掉它，再按目标语言补上语言前缀。这样不会产生 /en/en/...，
+              也不会把子页面强制送回首页。
             -->
             <li class="nav-item lang-switch">
               <ul class="lang-list">
+                {% assign current_path = page.url | remove_first: site.baseurl %}
+                {% if current_path == blank %}
+                  {% assign current_path = '/' %}
+                {% endif %}
+                {% if site.lang != site.default_locale %}
+                  {% assign current_locale_prefix = '/' | append: site.lang | append: '/' %}
+                  {% if current_path == current_locale_prefix %}
+                    {% assign current_path = '/' %}
+                  {% elsif current_path contains current_locale_prefix %}
+                    {% assign current_path = current_path | remove_first: current_locale_prefix | prepend: '/' %}
+                  {% endif %}
+                {% endif %}
                 {% for lang in site.languages %}
-                  {% if lang == site.default_locale %}
-                    {% assign target = '/' %}
-                  {% else %}
-                    {% assign target = '/' | append: lang | append: '/' %}
+                  {% assign target = current_path %}
+                  {% if lang != site.default_locale %}
+                    {% assign target = '/' | append: lang | append: current_path %}
                   {% endif %}
                   <li>
                     <a
