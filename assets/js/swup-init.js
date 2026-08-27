@@ -85,11 +85,9 @@
      */
     const toDoc = visit && visit.to && visit.to.document;
     if (toDoc) {
-      toDoc.querySelectorAll('script#MathJax-script, script[src*="tex-mml-chtml"], script[src*="mathjax-setup"]').forEach(
-        (script) => {
-          script.setAttribute("data-swup-ignore-script", "");
-        }
-      );
+      toDoc.querySelectorAll('script#MathJax-script, script[src*="tex-mml-chtml"], script[src*="mathjax-setup"]').forEach((script) => {
+        script.setAttribute("data-swup-ignore-script", "");
+      });
     }
   });
 
@@ -149,6 +147,12 @@
     });
   };
 
+  // Header 位于 swup 替换容器外。根据新页面是否有首页 hero 同步 body 状态，
+  // 让透明叠加导航只在首页生效，避免切到内页后仍覆盖内容。
+  const updateHomeHeroPage = () => {
+    document.body.classList.toggle("home-hero-page", Boolean(document.querySelector("#swup .fh-hero")));
+  };
+
   /*
    * 交换后补齐 tooltip/popover 初始化:
    * tooltips-setup.js 是全局脚本只跑一遍;新内容里的 [data-toggle] 元素
@@ -164,6 +168,7 @@
       window.MathJax.typesetPromise().catch(() => {});
     }
 
+    updateHomeHeroPage();
     updateNavActive();
 
     if (window.AlFolioUi) {

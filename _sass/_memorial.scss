@@ -63,6 +63,69 @@
   box-shadow: 0 1px 0 var(--memorial-gold-line);
 }
 
+/* 首页导航固定叠加在主视觉上；内页继续使用常规浅色固定导航。 */
+body.home-hero-page.fixed-top-nav {
+  /* nav-toggle.js 在完成初始化后会写入 body 的内联 padding-top。
+     首页导航绝对叠加在 hero 上，必须覆盖该运行时偏移。 */
+  padding-top: 0 !important;
+}
+
+.home-hero-page #navbar {
+  position: fixed;
+  z-index: 1030;
+  background: rgba(12, 17, 20, 0.58);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: none;
+  backdrop-filter: blur(6px);
+}
+
+.home-hero-page #navbar .navbar-brand,
+.home-hero-page #navbar .nav-link,
+.home-hero-page #navbar #search-toggle .nav-link,
+.home-hero-page #navbar .navbar-toggler {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+}
+
+.home-hero-page #navbar .nav-item.active .nav-link,
+.home-hero-page #navbar .nav-item .nav-link:hover {
+  color: #fff;
+  border-bottom-color: var(--memorial-gold-light);
+}
+
+.home-hero-page #navbar .navbar-toggler .icon-bar {
+  background-color: #fff;
+}
+
+.home-hero-page #navbar .lang-list a {
+  color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.58);
+}
+
+.home-hero-page #navbar .lang-list a:hover,
+.home-hero-page #navbar .lang-list a.lang-active {
+  color: #fff;
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.13);
+}
+
+@media (max-width: 575.98px) {
+  .home-hero-page #navbar .navbar-collapse-main.show {
+    margin: 0.75rem -1rem -0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(12, 17, 20, 0.92);
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .home-hero-page #navbar .dropdown-menu {
+    background: rgba(12, 17, 20, 0.96);
+  }
+
+  .home-hero-page #navbar .dropdown-item {
+    color: #fff;
+  }
+}
+
 /* 语言切换器(多语言,2026-08) */
 .lang-switch {
   display: flex;
@@ -98,7 +161,6 @@
   color: var(--memorial-red-deep);
   border-color: var(--memorial-red-deep);
 }
-
 
 /* ========== 7. 首页肖像档案框 ========== */
 .profile img {
