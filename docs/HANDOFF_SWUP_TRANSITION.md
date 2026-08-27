@@ -8,28 +8,28 @@
 
 **[Swup](https://swup.js.org/) 4.9.2**（官方 UMD，本地化自托管）+ 两个官方插件：
 
-| 组件 | 版本 | 作用 |
-| --- | --- | --- |
-| `Swup.umd.js` | 4.9.2 | 核心：拦截链接、fetch 新页、只替换 `#swup` 容器、管理历史/前进后退 |
-| `SwupHeadPlugin.umd.js` | 2.3.1 | 交换 `<head>`：更新 `<title>` 与页面级 meta（`persistAssets` 防重复加载） |
-| `SwupScriptsPlugin.umd.js` | 2.1.0 | 交换后重放容器内页面级脚本 |
+| 组件                       | 版本  | 作用                                                                      |
+| -------------------------- | ----- | ------------------------------------------------------------------------- |
+| `Swup.umd.js`              | 4.9.2 | 核心：拦截链接、fetch 新页、只替换 `#swup` 容器、管理历史/前进后退        |
+| `SwupHeadPlugin.umd.js`    | 2.3.1 | 交换 `<head>`：更新 `<title>` 与页面级 meta（`persistAssets` 防重复加载） |
+| `SwupScriptsPlugin.umd.js` | 2.1.0 | 交换后重放容器内页面级脚本                                                |
 
 动画是 swup 官方文档的标准用法：swup 切换时给 `<html>` 加 `is-animating` 类，`_sass/_swup.scss` 里 `.swup-transition-main` 定义 0.32s 淡出淡入，只作用 `#swup` 容器——**导航栏与页脚在容器外，结构上不可能被动到**。
 
 ## 二、改动清单
 
-| 文件 | 操作 |
-| --- | --- |
-| `assets/js/vendor/swup/Swup.umd.js` | 新增（下载自 unpkg，官方包） |
-| `assets/js/vendor/swup/SwupHeadPlugin.umd.js` | 新增（同上） |
-| `assets/js/vendor/swup/SwupScriptsPlugin.umd.js` | 新增（同上） |
-| `assets/js/swup-init.js` | 新增：初始化 + DOMContentLoaded 垫片 + tooltips/popover/bibsearch 重初始化钩子 |
-| `_sass/_swup.scss` | 新增：0.32s 淡出淡入动画（含 prefers-reduced-motion 降级） |
-| `assets/css/main.scss` | 末尾追加 `@use "swup";` |
-| `_layouts/default.liquid` | 新增（遮蔽 gem）：内容容器加 `id="swup"` + `swup-transition-main`，容器尾部 include `scripts_page.liquid` |
-| `_includes/scripts_page.liquid` | 新增：页面级脚本（masonry 初始化、al_charts、calendar、al_math、typograms、表格、common/copy_code/jupyter_new_tab、badges、al_img_tools、tabs） |
-| `_includes/scripts.liquid` | 重写：只留全局/持久区脚本 + 库文件（masonry/imagesLoaded/tocbot 改全局常驻，**不用 defer**）+ swup 三库 + swup-init |
-| `_includes/news.liquid` | 顺手修复英文回退（日期恢复 `%Y年%-m月%-d日`、"暂无新闻。"） |
+| 文件                                             | 操作                                                                                                                                            |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `assets/js/vendor/swup/Swup.umd.js`              | 新增（下载自 unpkg，官方包）                                                                                                                    |
+| `assets/js/vendor/swup/SwupHeadPlugin.umd.js`    | 新增（同上）                                                                                                                                    |
+| `assets/js/vendor/swup/SwupScriptsPlugin.umd.js` | 新增（同上）                                                                                                                                    |
+| `assets/js/swup-init.js`                         | 新增：初始化 + DOMContentLoaded 垫片 + tooltips/popover/bibsearch 重初始化钩子                                                                  |
+| `_sass/_swup.scss`                               | 新增：0.32s 淡出淡入动画（含 prefers-reduced-motion 降级）                                                                                      |
+| `assets/css/main.scss`                           | 末尾追加 `@use "swup";`                                                                                                                         |
+| `_layouts/default.liquid`                        | 新增（遮蔽 gem）：内容容器加 `id="swup"` + `swup-transition-main`，容器尾部 include `scripts_page.liquid`                                       |
+| `_includes/scripts_page.liquid`                  | 新增：页面级脚本（masonry 初始化、al_charts、calendar、al_math、typograms、表格、common/copy_code/jupyter_new_tab、badges、al_img_tools、tabs） |
+| `_includes/scripts.liquid`                       | 重写：只留全局/持久区脚本 + 库文件（masonry/imagesLoaded/tocbot 改全局常驻，**不用 defer**）+ swup 三库 + swup-init                             |
+| `_includes/news.liquid`                          | 顺手修复英文回退（日期恢复 `%Y年%-m月%-d日`、"暂无新闻。"）                                                                                     |
 
 **关键设计（排障时要知道的）**：
 
@@ -90,7 +90,7 @@ curl -fsS http://127.0.0.1:8080/al-folio/ >/dev/null
 
 另外两处配套改动：
 
-- `_includes/scripts.liquid`：所有持久区脚本手工加 `data-swup-ignore-script`（nav-toggle、bootstrap-compat、masonry/imagesloaded/tocbot CDN、tooltips-setup、no_defer、progress-bar、back-to-top、swup 三库、swup-init.js），并新增注释说明。首次加载行为完全不变。
+- `_includes/scripts.liquid`：所有持久区脚本手工加 `data-swup-ignore-script`（nav-toggle、bootstrap-compat、masonry/imagesloaded/tocbot CDN、tooltips-setup、no_defer、back-to-top、swup 三库、swup-init.js），并新增注释说明。首次加载行为完全不变。
 - `swup-init.js` 开头 `window.__swupInitDone` 防重复标志：即使脚本被意外重放也绝不二次实例化 Swup（双实例会互相竞争 `is-animating` 类导致内容区永久 `opacity:0` 白屏）。
 
 **验证结果（Playwright 无头浏览器，`http://127.0.0.1:8080/wang-chengshan-site/`）**：连续切换 news/publications/projects/blog/teaching/cv、往返、浏览器前进后退、快速连点——内容区正常切换、`html` 无 `is-animating` 残留、opacity 恒为 1、**Console 零报错**。

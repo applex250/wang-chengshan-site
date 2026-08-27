@@ -4,19 +4,23 @@
   };
 </script>
 
-<!-- Core navigation/runtime scripts (data-swup-ignore-script: 持久区脚本,
-     只执行一次,swup 切换时不重放——否则 SwupScriptsPlugin 会全文档重放,
-     导致 nav-toggle 重复绑定、swup-init 二次实例化白屏) -->
+<!--
+  Core navigation/runtime scripts (data-swup-ignore-script: 持久区脚本,
+  只执行一次,swup 切换时不重放——否则 SwupScriptsPlugin 会全文档重放,
+  导致 nav-toggle 重复绑定、swup-init 二次实例化白屏)
+-->
 <script data-swup-ignore-script src="{{ '/assets/js/nav-toggle.js' | relative_url | bust_file_cache }}"></script>
 {% if site.al_folio.compat.bootstrap.enabled %}
   <script data-swup-ignore-script src="{{ '/assets/js/bootstrap-compat.js' | relative_url | bust_file_cache }}"></script>
 {% endif %}
 
-<!-- ============ 库文件(仅定义全局对象,全局加载一次) ============
-     2026-08 swup 接入:库与初始化分离。库常驻全局,容器内初始化脚本
-     重放时总能找到 window.Masonry / window.tocbot / window.AlFolioUi,
-     消除动态插入脚本的执行顺序竞态。不用 defer:需在解析阶段先于
-     容器内 defer 初始化脚本执行(位于 body 末尾,阻塞可忽略)。 -->
+<!--
+  ============ 库文件(仅定义全局对象,全局加载一次) ============
+  2026-08 swup 接入:库与初始化分离。库常驻全局,容器内初始化脚本
+  重放时总能找到 window.Masonry / window.tocbot / window.AlFolioUi,
+  消除动态插入脚本的执行顺序竞态。不用 defer:需在解析阶段先于
+  容器内 defer 初始化脚本执行(位于 body 末尾,阻塞可忽略)。
+-->
 {% if site.enable_masonry %}
   <!-- Masonry & imagesLoaded libraries -->
   <script
@@ -41,8 +45,10 @@
   crossorigin="anonymous"
 ></script>
 
-<!-- Tooltips & popovers runtime(定义 window.AlFolioUi;内容区 tooltip
-     由 swup-init.js 的 content:replace 钩子在新内容上重新初始化) -->
+<!--
+  Tooltips & popovers runtime(定义 window.AlFolioUi;内容区 tooltip
+  由 swup-init.js 的 content:replace 钩子在新内容上重新初始化)
+-->
 <script data-swup-ignore-script src="{{ '/assets/js/tooltips-setup.js' | relative_url | bust_file_cache }}"></script>
 
 <!-- Load Common JS(no_defer 防主题闪烁,全局一次) -->
@@ -55,11 +61,6 @@
 {% if site.plugins contains 'al_analytics' %}
   <!-- Analytics -->
   {% include plugins/al_analytics_scripts.liquid %}
-{% endif %}
-
-{% if site.enable_progressbar %}
-  <!-- Scrolling Progress Bar -->
-  <script defer data-swup-ignore-script src="{{ '/assets/js/progress-bar.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
 {% endif %}
 
 {% if site.back_to_top %}
@@ -101,11 +102,13 @@
   {% include plugins/al_marimo_scripts.liquid %}
 {% endif %}
 
-<!-- Swup 页面切换(2026-08):库本体本地化于 assets/js/vendor/swup/,
-     初始化见 assets/js/swup-init.js。库加载失败时 swup-init 静默返回,
-     整站回退为普通整页跳转。以下四者均为持久区脚本,加 data-swup-ignore-script
-     防止被 ScriptsPlugin 全文档重放(重放会让 swup-init 二次实例化→双实例
-     竞争 is-animating 类→内容区永久 opacity:0 白屏)。 -->
+<!--
+  Swup 页面切换(2026-08):库本体本地化于 assets/js/vendor/swup/,
+  初始化见 assets/js/swup-init.js。库加载失败时 swup-init 静默返回,
+  整站回退为普通整页跳转。以下四者均为持久区脚本,加 data-swup-ignore-script
+  防止被 ScriptsPlugin 全文档重放(重放会让 swup-init 二次实例化→双实例
+  竞争 is-animating 类→内容区永久 opacity:0 白屏)。
+-->
 <script data-swup-ignore-script src="{{ '/assets/js/vendor/swup/Swup.umd.js' | relative_url }}"></script>
 <script data-swup-ignore-script src="{{ '/assets/js/vendor/swup/SwupHeadPlugin.umd.js' | relative_url }}"></script>
 <script data-swup-ignore-script src="{{ '/assets/js/vendor/swup/SwupScriptsPlugin.umd.js' | relative_url }}"></script>
