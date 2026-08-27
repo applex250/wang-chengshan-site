@@ -3,8 +3,6 @@ nav:
   toggle_nav: "Toggle navigation"
   search_open: "Open search"
   search: "Search"
-  theme: "Toggle theme"
-  theme_label: "Toggle color theme"
 
 news:
   empty: "No news yet."

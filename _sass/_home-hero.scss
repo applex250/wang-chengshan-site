@@ -226,22 +226,6 @@ $fh-sans: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 1em 0;
 }
 
-/* 深色模式:白底区/文字/链接随主题 */
-html[data-theme="dark"] .fh-body {
-  background: var(--global-bg-color);
-}
-
-html[data-theme="dark"] .fh-quote-content h1,
-html[data-theme="dark"] .fh-card h2 {
-  color: var(--global-text-color);
-}
-
-html[data-theme="dark"] .fh-quote-content p,
-html[data-theme="dark"] .fh-card p,
-html[data-theme="dark"] .fh-quote1 p {
-  color: var(--global-text-color);
-}
-
 @media (max-width: 992px) {
   .fh-content {
     width: 100%;

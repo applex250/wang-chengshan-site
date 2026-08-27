@@ -2,7 +2,7 @@ const { test, expect } = require("@playwright/test");
 const { preparePage, stabilizeVisuals } = require("./helpers");
 
 test("publications Abs toggle opens and closes", async ({ page }) => {
-  await preparePage(page, "light");
+  await preparePage(page);
   await page.goto("/al-folio/publications/", { waitUntil: "networkidle" });
   await stabilizeVisuals(page);
 
@@ -18,7 +18,7 @@ test("publications Abs toggle opens and closes", async ({ page }) => {
 });
 
 test("publication popover works without bootstrap compat runtime", async ({ page }) => {
-  await preparePage(page, "light");
+  await preparePage(page);
   await page.goto("/al-folio/publications/", { waitUntil: "networkidle" });
   await stabilizeVisuals(page);
 
@@ -32,7 +32,7 @@ test("publication popover works without bootstrap compat runtime", async ({ page
 test("mobile navbar can expand/collapse", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "mobile", "mobile-only navigation behavior");
 
-  await preparePage(page, "light");
+  await preparePage(page);
   await page.goto("/al-folio/", { waitUntil: "networkidle" });
 
   const toggle = page.locator(".navbar-toggler").first();
@@ -47,7 +47,7 @@ test("mobile navbar can expand/collapse", async ({ page }, testInfo) => {
 });
 
 test("repositories page renders external stat cards with deterministic fixtures", async ({ page }) => {
-  await preparePage(page, "light");
+  await preparePage(page);
   await page.goto("/al-folio/repositories/", { waitUntil: "networkidle" });
   await stabilizeVisuals(page);
 
@@ -72,7 +72,7 @@ test("repositories page renders external stat cards with deterministic fixtures"
 });
 
 test("blog pagination uses core Tailwind-native styling contract", async ({ page }) => {
-  await preparePage(page, "light");
+  await preparePage(page);
   await page.goto("/al-folio/blog/", { waitUntil: "networkidle" });
   await stabilizeVisuals(page);
 
@@ -101,7 +101,7 @@ test("blog pagination uses core Tailwind-native styling contract", async ({ page
 test("navbar menu stays right-aligned on desktop pages", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name === "mobile", "desktop-only alignment contract");
 
-  await preparePage(page, "light");
+  await preparePage(page);
   await page.goto("/al-folio/", { waitUntil: "networkidle" });
   await stabilizeVisuals(page);
 
@@ -123,10 +123,10 @@ test("navbar menu stays right-aligned on desktop pages", async ({ page }, testIn
   expect(Math.abs(alignment.menuRight - alignment.containerRight)).toBeLessThanOrEqual(24);
 });
 
-test("navbar search button opens modal and toggle buttons use pointer cursor", async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name === "mobile", "navbar search/theme controls are collapsed under mobile menu");
+test("navbar search button opens modal and uses a pointer cursor", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name === "mobile", "navbar search is collapsed under the mobile menu");
 
-  await preparePage(page, "light");
+  await preparePage(page);
   await page.goto("/al-folio/", { waitUntil: "networkidle" });
   await stabilizeVisuals(page);
 
@@ -148,13 +148,11 @@ test("navbar search button opens modal and toggle buttons use pointer cursor", a
   expect(modalOpened).toBeTruthy();
 
   const searchCursor = await page.locator("#search-toggle").evaluate((el) => window.getComputedStyle(el).cursor);
-  const themeCursor = await page.locator("#light-toggle").evaluate((el) => window.getComputedStyle(el).cursor);
   expect(searchCursor).toBe("pointer");
-  expect(themeCursor).toBe("pointer");
 });
 
 test("related posts are wrapped in a valid list", async ({ page }) => {
-  await preparePage(page, "light");
+  await preparePage(page);
   await page.goto("/al-folio/blog/2023/tables/", { waitUntil: "networkidle" });
   await stabilizeVisuals(page);
 
@@ -173,7 +171,7 @@ test("related posts are wrapped in a valid list", async ({ page }) => {
 });
 
 test("inline code uses compact normal-weight typography", async ({ page }) => {
-  await preparePage(page, "light");
+  await preparePage(page);
   await page.goto("/al-folio/blog/2023/sidebar-table-of-contents/", { waitUntil: "networkidle" });
   await stabilizeVisuals(page);
 
@@ -198,7 +196,7 @@ test("inline code uses compact normal-weight typography", async ({ page }) => {
 test("project cards hover with upward lift animation", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name === "mobile", "hover-specific assertion is desktop-only");
 
-  await preparePage(page, "light");
+  await preparePage(page);
   await page.goto("/al-folio/projects/", { waitUntil: "networkidle" });
   await stabilizeVisuals(page);
 
@@ -216,7 +214,7 @@ test("project cards hover with upward lift animation", async ({ page }, testInfo
 });
 
 test("teaching calendar toggle has pointer cursor and toggles calendar visibility", async ({ page }) => {
-  await preparePage(page, "light");
+  await preparePage(page);
   await page.goto("/al-folio/teaching/", { waitUntil: "networkidle" });
   await stabilizeVisuals(page);
 
@@ -238,7 +236,7 @@ test("teaching calendar toggle has pointer cursor and toggles calendar visibilit
 test("toc sidebar renders with tocbot styling and data-toc-text label", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name === "mobile", "TOC sidebar is hidden on mobile viewport");
 
-  await preparePage(page, "light");
+  await preparePage(page);
   await page.goto("/al-folio/blog/2023/sidebar-table-of-contents/", { waitUntil: "networkidle" });
   await stabilizeVisuals(page);
 
@@ -278,7 +276,7 @@ test("toc sidebar renders with tocbot styling and data-toc-text label", async ({
 });
 
 test("tailwind table engine provides search, pagination, and sorting in pretty tables", async ({ page }) => {
-  await preparePage(page, "light");
+  await preparePage(page);
   await page.goto("/al-folio/blog/2023/tables/", { waitUntil: "networkidle" });
   await stabilizeVisuals(page);
 
@@ -299,7 +297,7 @@ test("tailwind table engine provides search, pagination, and sorting in pretty t
 });
 
 test("lightbox galleries open in-page modal instead of navigating away", async ({ page }) => {
-  await preparePage(page, "light");
+  await preparePage(page);
   await page.goto("/al-folio/blog/2024/photo-gallery/", { waitUntil: "networkidle" });
   await stabilizeVisuals(page);
 
@@ -328,7 +326,7 @@ test("core pages no longer emit jQuery-style runtime errors", async ({ page }) =
     }
   });
 
-  await preparePage(page, "light");
+  await preparePage(page);
   const pages = ["/al-folio/", "/al-folio/projects/", "/al-folio/blog/2024/photo-gallery/", "/al-folio/blog/2023/tables/"];
 
   for (const target of pages) {

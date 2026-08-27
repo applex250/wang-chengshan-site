@@ -68,10 +68,7 @@ async function applyNetworkStubs(page) {
   });
 }
 
-async function preparePage(page, themeSetting = "light") {
-  await page.addInitScript((setting) => {
-    window.localStorage.setItem("theme", setting);
-  }, themeSetting);
+async function preparePage(page) {
   await applyNetworkStubs(page);
 }
 
@@ -116,7 +113,7 @@ function diffRatio(actualPng, baselinePng) {
   return changed / (width * height);
 }
 
-async function compareWithBaseline(context, currentPage, route, themeSetting, options = {}) {
+async function compareWithBaseline(context, currentPage, route, options = {}) {
   const fullPage = options.fullPage !== false;
 
   const captureParityScreenshot = async (page) => {
@@ -162,7 +159,7 @@ async function compareWithBaseline(context, currentPage, route, themeSetting, op
   const baselineTarget = new URL(normalizedRoute, normalizedBaselineRoot).toString();
 
   const baselinePage = await context.newPage();
-  await preparePage(baselinePage, themeSetting);
+  await preparePage(baselinePage);
   await baselinePage.goto(baselineTarget, { waitUntil: "networkidle" });
   await stabilizeVisuals(baselinePage);
   await baselinePage.waitForTimeout(500);

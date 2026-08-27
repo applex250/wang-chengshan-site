@@ -20,8 +20,7 @@
 ### 2. 红色学术主题（本地覆盖 gem，属预期行为）
 
 - 新增 `_sass/_themes.scss`：完整复制 `al_folio_core` gem（v1.0.15）同名文件后改色：
-  - 亮色主题主色 `--global-theme-color: #b71c1c`（学术深红），hover `#d32f2f`
-  - 暗色主题主色 `#ef5350`，hover `#e57373`
+  - 仅保留亮色主题，主色 `--global-theme-color: #8b1a1a`（学术深红），hover `#c41e3a`
   - 亮色页脚改为深红 `#6b1414`
 - ⚠️ 注意：`_sass/` 属于 starter 仓库的 style-contract 禁入路径，`npm run lint:style-contract` 会失败。但 `docs/CUSTOMIZE.md` 明确允许**用户自建站**用同名文件覆盖 gem 主题——本站已转为王成善个人站，此失败属预期。建议执行：
   `bundle exec al-folio upgrade overrides accept _sass/_themes.scss` 并提交 `.al-folio-overrides.yml`。
@@ -89,7 +88,7 @@ curl -fsS http://127.0.0.1:8080/al-folio/    # 注意 baseurl 是 /al-folio
 
 1. 首页导航：首页 / 新闻动态 / 学术成果 / 科研项目 / 学术随笔 / 人才培养 / 学术简历；无英文演示项。
 2. 首页显示王成善简介、右侧肖像、新闻 4 条、底部红色页脚。
-3. 主题色为深红（链接/标题强调色 `#b71c1c`）；暗色模式切换后强调色为 `#ef5350`。
+3. 站点仅提供亮色主题，链接与标题强调色为深红 `#8b1a1a`。
 4. 「学术成果」页渲染 7 条题录，「Wang, Chengshan」加粗；无 Einstein 条目。
 5. 「学术随笔」只有 1 篇中文人物报道；搜索框搜 "Einstein/formatting" 应无结果。
 6. 「学术简历」各中文小节正常渲染；若 rendercv 报错，检查 `_data/cv.yml` 缩进。

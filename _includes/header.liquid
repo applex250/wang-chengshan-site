@@ -41,7 +41,7 @@
 
       <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav">
         <ul class="navbar-nav navbar-menu-list flex-nowrap">
-          {% assign site_pages_lang = site.pages | where_exp: "p", "p.languages == nil or p.languages contains site.lang" %}
+          {% assign site_pages_lang = site.pages | where_exp: 'p', 'p.languages == nil or p.languages contains site.lang' %}
           {% for page in site_pages_lang %}
             {% if page.permalink == '/' %} {% assign about_title = page.title %} {% endif %}
           {% endfor %}
@@ -125,19 +125,11 @@
               </button>
             </li>
           {% endif %}
-          {% if site.enable_darkmode %}
-            <!-- Toogle theme mode -->
-            <li class="toggle-container">
-              <button id="light-toggle" type="button" title="{% t nav.theme %}" aria-label="{% t nav.theme_label %}">
-                <i class="fa-half-sun-moon" id="light-toggle-system"></i>
-                <i class="fa-solid fa-moon" id="light-toggle-dark"></i>
-                <i class="fa-solid fa-sun" id="light-toggle-light"></i>
-              </button>
-            </li>
-          {% endif %}
           {% if site.languages and site.languages.size > 1 %}
-            <!-- 语言切换:固定跳转到目标语言首页(2026-08 修复:原按当前路径平行映射,
-                 部分页面 page.url 解析异常导致跳到新闻页;现无论在哪个页面都回首页) -->
+            <!--
+              语言切换:固定跳转到目标语言首页(2026-08 修复:原按当前路径平行映射,
+              部分页面 page.url 解析异常导致跳到新闻页;现无论在哪个页面都回首页)
+            -->
             <li class="nav-item lang-switch">
               <ul class="lang-list">
                 {% for lang in site.languages %}
@@ -149,7 +141,9 @@
                   <li>
                     <a
                       href="{{ site.baseurl_root }}{{ target }}"
-                      {% if lang == site.lang %}class="lang-active"{% endif %}
+                      {% if lang == site.lang %}
+                        class="lang-active"
+                      {% endif %}
                     >
                       {{ site.data.langs[lang] }}
                     </a>
@@ -159,16 +153,16 @@
             </li>
             <script>
               (function () {
-                document.addEventListener("click", function (evt) {
-                  var a = evt.target.closest(".lang-list a");
+                document.addEventListener('click', function (evt) {
+                  var a = evt.target.closest('.lang-list a');
                   if (!a) return;
                   evt.preventDefault();
-                  var href = a.getAttribute("href") || "";
-                  if (!href || href.indexOf("#") === 0) return;
-                  location.href = href.split("?")[0] + "?v=" + Date.now();
+                  var href = a.getAttribute('href') || '';
+                  if (!href || href.indexOf('#') === 0) return;
+                  location.href = href.split('?')[0] + '?v=' + Date.now();
                 });
-                if (location.search.indexOf("?v=") === 0) {
-                  history.replaceState(null, "", location.pathname);
+                if (location.search.indexOf('?v=') === 0) {
+                  history.replaceState(null, '', location.pathname);
                 }
               })();
             </script>

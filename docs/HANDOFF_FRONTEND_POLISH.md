@@ -263,7 +263,6 @@ bundle exec al-folio upgrade overrides accept _sass/_themes.scss
 
 1. **导航栏搜索框占位符**：由 `al_search` gem 的 `{% al_search_assets %}` 标签渲染，本仓库无法直接改文案。构建后查看：若为英文（如 "Search"），先查 al_search gem 是否有配置项；没有则将 `_config.yml` 中 `search_enabled: true` 改为 `false`（中文站搜索价值低）。
 2. 页脚、404 页、CV 页（rendercv 渲染）目测一遍。
-3. 暗色模式：所有新规则均使用 `var(--global-*)` 变量，天然兼容双主题，但仍需切换暗色目测一遍。
 
 ## 四、验证（Docker）
 
@@ -283,10 +282,9 @@ curl -fsS http://127.0.0.1:8080/al-folio/ >/dev/null   # 注意 baseurl 是 /al-
 3. **行高舒展**：正文 computed `line-height` 为 1.8（约 28.8px）。
 4. **新闻日期不折行**：首页新闻表格"2025年6月24日"单行显示。
 5. **语录区块为宋体**，红色左边条仍在。
-6. **暗色模式**切换后：标题/正文对比正常，红色强调色为 `#ef5350`。
-7. **手机宽度**（DevTools 375px）：首页头像、新闻表格、导航折叠正常。
-8. 七个导航页（首页/新闻动态/学术成果/科研项目/学术随笔/人才培养/学术简历）逐页过一遍，无排版错乱。
-9. 构建日志无 `Sass Error`（重点：`_typography.scss` 的 `@use "variables" as v;` 依赖 gem 的 `_variables.scss`，若报找不到，说明 load path 异常，把报错原文贴回排查）。
+6. **手机宽度**（DevTools 375px）：首页头像、新闻表格、导航折叠正常。
+7. 七个导航页（首页/新闻动态/学术成果/科研项目/学术随笔/人才培养/学术简历）逐页过一遍，无排版错乱。
+8. 构建日志无 `Sass Error`（重点：`_typography.scss` 的 `@use "variables" as v;` 依赖 gem 的 `_variables.scss`，若报找不到，说明 load path 异常，把报错原文贴回排查）。
 
 通过后 `docker compose down`。
 

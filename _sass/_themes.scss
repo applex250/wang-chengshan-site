@@ -2,7 +2,7 @@
  * Themes（本地覆盖文件）
  *
  * 本文件覆盖 al_folio_core gem 自带的 _sass/_themes.scss，
- * 将站点主色改为「中国红 / 学术红」配色（中国科学院院士学术风格）。
+ * 将站点主色改为仅亮色的「中国红 / 学术红」配色（中国科学院院士学术风格）。
  * 依据 docs/CUSTOMIZE.md「Changing theme color」：自建站点可通过同名文件覆盖 gem 默认主题。
  ******************************************************************************/
 @use "variables" as v;
@@ -61,26 +61,6 @@
   --global-danger-block-text: #600;
   --global-danger-block-title: #c00;
 
-  #light-toggle-system {
-    display: inline-block;
-  }
-
-  #light-toggle-dark {
-    display: none;
-  }
-
-  #light-toggle-light {
-    display: none;
-  }
-
-  .only-light {
-    display: block;
-  }
-
-  .only-dark {
-    display: none;
-  }
-
   #back-to-top {
     color: var(--global-back-to-top-text-color);
     background: var(--global-back-to-top-bg-color);
@@ -90,138 +70,4 @@
     width: v.$back-to-top-width;
     z-index: v.$back-to-top-z-index;
   }
-}
-
-html[data-theme="dark"] {
-  color-scheme: dark;
-  --global-bg-color: #{v.$grey-color-dark};
-  --global-code-bg-color: #{v.$code-bg-color-dark};
-  --global-text-color: #{v.$grey-color-light};
-  --global-text-color-light: #{v.$grey-color};
-  --global-theme-color: #6b1414;
-  --global-hover-color: #e57373;
-  --global-hover-text-color: #{v.$white-color};
-  --global-footer-bg-color: #{v.$grey-color-light};
-  --global-footer-text-color: #{v.$grey-color-dark};
-  --global-footer-link-color: #{v.$black-color};
-  --global-distill-app-color: #{v.$grey-color-light};
-  --global-divider-color: #424246;
-  --global-card-bg-color: #{v.$grey-900};
-  --global-back-to-top-bg-color: rgba(
-    #{color.channel(v.$white-color, "red", v.$space: rgb)},
-    #{color.channel(v.$white-color, "green", v.$space: rgb)},
-    #{color.channel(v.$white-color, "blue", v.$space: rgb)},
-    0.5
-  );
-  --global-back-to-top-text-color: #{v.$black-color};
-  --global-newsletter-bg-color: #{v.$grey-color-light};
-  --global-newsletter-text-color: #{v.$grey-color-dark};
-  /* 2026-08:背景改为纯色,原深色模式 --memorial-bg-layers 纹理已移除 */
-
-  --global-tip-block: #c41e3a;
-  --global-tip-block-bg: #5a1313;
-  --global-tip-block-text: #ffd9d9;
-  --global-tip-block-title: #f5e0e0;
-  --global-warning-block: #a02828;
-  --global-warning-block-bg: #5a1313;
-  --global-warning-block-text: #ffd9d9;
-  --global-warning-block-title: #f5e0e0;
-  --global-danger-block: #c00;
-  --global-danger-block-bg: #600;
-  --global-danger-block-text: #ffb9b9;
-  --global-danger-block-title: #ffe0e0;
-
-  .only-light {
-    display: none;
-  }
-
-  .only-dark {
-    display: block;
-  }
-}
-
-html[data-theme-setting="dark"] {
-  #light-toggle-system {
-    display: none;
-  }
-
-  #light-toggle-dark {
-    display: inline-block;
-  }
-
-  #light-toggle-light {
-    display: none;
-  }
-
-  #back-to-top {
-    color: var(--global-back-to-top-text-color);
-    background: var(--global-back-to-top-bg-color);
-  }
-}
-
-html[data-theme-setting="light"] {
-  #light-toggle-system {
-    display: none;
-  }
-
-  #light-toggle-dark {
-    display: none;
-  }
-
-  #light-toggle-light {
-    display: inline-block;
-  }
-}
-
-.fa-half-sun-moon {
-  position: relative;
-  display: inline-block;
-
-  --fa-font: var(--fa-font-solid);
-  speak: none;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  width: 1em;
-  height: 1em;
-}
-
-.fa-half-sun-moon::before,
-.fa-half-sun-moon::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  top: -0.5px;
-  bottom: -0.5px;
-  text-align: center;
-  line-height: 1em;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  font: var(--fa-font);
-}
-
-/* Left half: MOON */
-.fa-half-sun-moon::before {
-  content: "\f111";
-  color: var(--global-text-color);
-  clip-path: polygon(0 0, calc(50% - 0.5px) 0, calc(50% - 0.5px) 100%, 0 100%);
-}
-
-/* Right half: SUN */
-.fa-half-sun-moon::after {
-  content: "\f185";
-  color: var(--global-text-color);
-  clip-path: polygon(calc(50% + 0.5px) 0, 100% 0, 100% 100%, calc(50% + 0.5px) 100%);
-  right: -1.5px; /* slight overflow to avoid right-edge clipping */
-  transform: translateX(-1px); /* visually re-center the sun half */
-}
-
-#light-toggle:hover .fa-half-sun-moon::before {
-  color: var(--global-theme-color);
-}
-
-#light-toggle:hover .fa-half-sun-moon::after {
-  color: var(--global-theme-color);
 }
