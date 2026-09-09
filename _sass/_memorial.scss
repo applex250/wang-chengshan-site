@@ -236,48 +236,94 @@ body.home-hero-page.fixed-top-nav {
   }
 }
 
-/* ========== 7c. 新闻页时间轴年表 ========== */
-/* 时间线缩进用 margin-left + 等宽抵消:表格总宽(margin+width)恒等于容器,
-   不产生横向溢出/滚动条(2026-08 实测修复) */
-.news .memorial-timeline {
-  border-left: 1px solid var(--memorial-line);
-  margin-left: 0.35rem;
-  width: calc(100% - 0.35rem);
-  /* fixed 布局 + 单元格断行,表格宽度恒等于容器,
-     消除长标题撑出的横向滚动条 */
-  table-layout: fixed;
-  /* 覆盖 Bootstrap .table 硬编码 #212529,深色模式文字随主题变浅 */
+/* ========== 7c. 新闻页编辑式年表 ========== */
+.news-archive {
+  margin-top: 1.8rem;
+}
+
+.news-year {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 0 1.75rem;
+  margin: 0;
+  padding: 2rem 0 0;
+  border-top: 1px solid var(--memorial-line);
+}
+
+.news-year + .news-year {
+  margin-top: 2.75rem;
+}
+
+.news-year h2 {
+  margin: -0.42rem 0 0;
+  color: var(--memorial-red-deep);
+  font-size: 2.35rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.news-year-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.news-entry {
+  display: grid;
+  grid-template-columns: 5.75rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.1rem 0 1.1rem;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.news-entry + .news-entry {
+  padding-top: 1.1rem;
+}
+
+.news-entry time {
+  color: var(--memorial-grey-warm);
+  font-size: 0.86rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+.news-entry-content {
+  min-width: 0;
+  line-height: 1.55;
+}
+
+.news .news-title {
   color: var(--global-text-color);
-
-  td {
-    overflow-wrap: break-word;
-    word-break: break-word;
-    color: var(--global-text-color);
-  }
+  font-size: 1.06rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 180ms ease;
 }
 
-.news .memorial-timeline th {
-  position: relative;
+.news .news-title::after {
+  display: inline-block;
+  margin-left: 0.45rem;
   color: var(--memorial-gold);
-  font-weight: 700;
-  padding-left: 1.4rem;
-  white-space: nowrap;
+  content: "↗";
+  font-size: 0.85em;
+  opacity: 0;
+  transform: translate(-0.2rem, 0.08rem);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
 }
 
-.news .memorial-timeline th::before {
-  content: "";
-  position: absolute;
-  left: -5px;
-  top: 0.85em;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--memorial-red-deep);
-  border: 2px solid var(--memorial-paper);
+.news-entry:hover .news-title,
+.news .news-title:focus-visible {
+  color: var(--memorial-red-deep);
 }
 
-.news .memorial-timeline tr:hover {
-  background: rgba(139, 26, 26, 0.06);
+.news-entry:hover .news-title::after,
+.news .news-title:focus-visible::after {
+  opacity: 1;
+  transform: translate(0, 0.08rem);
 }
 
 /* ========== 7d. 论文/项目/书籍展柜 ========== */
@@ -341,9 +387,6 @@ body.home-hero-page.fixed-top-nav {
     padding-left: 1.2rem;
   }
 
-  .news .memorial-timeline th {
-    padding-left: 1.1rem;
-  }
 }
 
 /* ========== 全站禁用斜体(2026-08) ========== */

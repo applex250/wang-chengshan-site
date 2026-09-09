@@ -1,42 +1,43 @@
 <div class="news">
   {% if site.news != blank %}
     {% assign news_size = site.news | size %}
-    <div
-      class="table-responsive"
-      {% if include.limit and page.announcements.scrollable and news_size > 3 %}
-        style="max-height: 60vw"
-      {% endif %}
-    >
-      <table class="table table-sm table-borderless memorial-timeline">
-        {% assign news = site.news | reverse %}
-        {% comment %} 日期格式按语言输出(zh: 2026年7月15日 / en: Jul 15, 2026) {% endcomment %}
-        {% if site.lang == 'en' %}
-          {% assign news_date_format = '%b %-d, %Y' %}
-        {% else %}
-          {% assign news_date_format = '%Y年%-m月%-d日' %}
+    {% assign news = site.news | reverse %}
+    {% if include.limit and page.announcements.limit %}
+      {% assign news_limit = page.announcements.limit %}
+    {% else %}
+      {% assign news_limit = news_size %}
+    {% endif %}
+    <div class="news-archive">
+      {% assign current_year = '' %}
+      {% for item in news limit: news_limit %}
+        {% assign item_year = item.date | date: '%Y' %}
+        {% if item_year != current_year %}
+          {% unless current_year == '' %}
+              </ol>
+            </section>
+          {% endunless %}
+          {% assign current_year = item_year %}
+          <section class="news-year" aria-labelledby="news-year-{{ item_year }}">
+            <h2 id="news-year-{{ item_year }}">{{ item_year }}</h2>
+            <ol class="news-year-list">
         {% endif %}
-        {% if include.limit and page.announcements.limit %}
-          {% assign news_limit = page.announcements.limit %}
-        {% else %}
-          {% assign news_limit = news_size %}
-        {% endif %}
-        {% for item in news limit: news_limit %}
-          <tr>
-            <th scope="row" style="width: 20%">{{ item.date | date: news_date_format }}</th>
-            <td>
-              {% if item.inline %}
-                {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
-              {% else %}
-                {% if item.external_url %}
-                  <a class="news-title" href="{{ item.external_url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
-                {% else %}
-                  <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
-                {% endif %}
-              {% endif %}
-            </td>
-          </tr>
-        {% endfor %}
-      </table>
+        <li class="news-entry">
+          <time datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: '%m.%d' }}</time>
+          <div class="news-entry-content">
+            {% if item.inline %}
+              {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
+            {% elsif item.external_url %}
+              <a class="news-title" href="{{ item.external_url }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
+            {% else %}
+              <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+            {% endif %}
+          </div>
+        </li>
+      {% endfor %}
+      {% unless current_year == '' %}
+          </ol>
+        </section>
+      {% endunless %}
     </div>
   {% else %}
     <p>{% t news.empty %}</p>
