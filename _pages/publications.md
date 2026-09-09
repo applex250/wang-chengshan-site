@@ -2,7 +2,7 @@
 layout: page
 permalink: /publications/
 title: 学术成果
-description: 代表性论著，按年份倒序排列，由 jekyll-scholar 自动生成。
+description: 代表性论著，按发表年份倒序编排。
 nav: true
 nav_order: 3
 languages: [zh]

@@ -327,10 +327,135 @@ body.home-hero-page.fixed-top-nav {
 }
 
 /* ========== 7d. 论文/项目/书籍展柜 ========== */
-/* (2026-08:原 .publications h2::after 金色饰线已删除) */
-.publications h2 {
-  position: relative;
-  padding-bottom: 0.35rem;
+/* 论文页以期刊标签、题名和出版信息构成稳定的两列阅读网格；
+   年份只承担分段职责，避免默认样式将其变成游离的大号文字。 */
+#bibsearch {
+  width: 100%;
+  margin: 1.75rem 0 1.15rem;
+  padding: 0.65rem 0.85rem;
+  color: var(--global-text-color);
+  background: rgba(255, 255, 255, 0.42);
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  box-shadow: none;
+}
+
+#bibsearch:focus {
+  border-color: rgba(139, 26, 26, 0.35);
+  box-shadow: none;
+}
+
+.publications h2.bibliography {
+  margin: 3.5rem 0 1.5rem;
+  padding-top: 0;
+  color: var(--memorial-red-deep);
+  border-top: 0;
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-align: left;
+}
+
+.publications ol.bibliography {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.publications ol.bibliography li {
+  margin: 0;
+  padding: 0 !important;
+  border: 0;
+}
+
+.publications .bibliography li > .row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0 0 2rem;
+}
+
+.publications .bibliography li + li > .row {
+  padding-top: 0.35rem;
+}
+
+.publications .bibliography .abbr {
+  flex: 0 0 6.75rem;
+  max-width: 6.75rem;
+  padding: 0;
+}
+
+.publications .bibliography .abbr .badge {
+  padding: 0.25rem 0.55rem;
+  color: #fff;
+  border-radius: 0.2rem !important;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.publications .bibliography .abbr .preview {
+  display: block;
+  width: 100%;
+  height: 8.25rem;
+  margin: 0;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid rgba(26, 26, 26, 0.1);
+  border-radius: 0.2rem !important;
+  box-shadow: 0 0.25rem 0.8rem rgba(26, 26, 26, 0.1) !important;
+}
+
+
+.publications .bibliography [id] {
+  flex: 1 1 0;
+  max-width: none;
+  min-width: 0;
+  padding: 0;
+}
+
+.publications .bibliography .title {
+  color: var(--global-text-color);
+  font-size: 1.08rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.publications .bibliography .author,
+.publications .bibliography .periodical {
+  margin-top: 0.28rem;
+  color: var(--memorial-grey-warm);
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+
+.publications .bibliography .periodical em {
+  color: var(--global-text-color);
+}
+
+.publications .bibliography .links {
+  display: flex;
+  gap: 0.45rem;
+  margin-top: 0.8rem;
+}
+
+.publications .bibliography .links .btn {
+  margin: 0;
+  padding: 0.22rem 0.62rem;
+  color: var(--memorial-red-deep);
+  border: 1px solid var(--memorial-line);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.publications .bibliography .links .btn:hover,
+.publications .bibliography .links .btn:focus-visible {
+  color: #fff;
+  background: var(--memorial-red-deep);
+  border-color: var(--memorial-red-deep);
 }
 
 /* 项目卡片:米白底 + 红系细线(展柜感) */
@@ -341,8 +466,47 @@ body.home-hero-page.fixed-top-nav {
 }
 
 /* 论文条目链接 hover 金色微光 */
-.publications a:hover {
+.publications .author a:hover {
   color: var(--memorial-gold);
+}
+
+/* 回到顶部由 vanilla-back-to-top 提供行为；此处仅使其融入本站的深红导航体系。 */
+#back-to-top {
+  display: grid !important;
+  place-items: center !important;
+  right: 2rem !important;
+  bottom: 2rem !important;
+  width: 2.4rem !important;
+  height: 2.4rem !important;
+  color: #fff !important;
+  background: var(--memorial-red-deep) !important;
+  border: 1px solid rgba(255, 255, 255, 0.32) !important;
+  border-radius: 0.22rem !important;
+  box-shadow: 0 0.3rem 0.9rem rgba(73, 18, 18, 0.2) !important;
+  transition:
+    background 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease !important;
+}
+
+/* 替换 vanilla-back-to-top 自带、基线偏移的箭头，使用站内 Font Awesome 图标。 */
+#back-to-top > * {
+  display: none !important;
+}
+
+#back-to-top::after {
+  content: "\f077";
+  font-family: "Font Awesome 7 Free", "Font Awesome 5 Free", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 900;
+  line-height: 1;
+  transform: translateY(1px);
+}
+
+#back-to-top:hover {
+  background: #5f1111 !important;
+  box-shadow: 0 0.45rem 1.1rem rgba(73, 18, 18, 0.28) !important;
+  transform: translateY(-2px);
 }
 
 /* ========== 8. 克制动效(尊重 reduced-motion) ========== */
