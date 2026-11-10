@@ -2,7 +2,7 @@
 layout: page
 title: Deep-time Palaeoclimate and Palaeoceanography
 description: UNESCO International Geoscience Programme (IGCP) projects (two) · Leader
-importance: 3
+importance: 4
 languages: [en]
 ---
 
